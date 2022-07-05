@@ -30,13 +30,7 @@
   "rules": {
     "@next/next/no-img-element": 0,
     "semi": "off",
-    "prettier/prettier": [
-      "error",
-      {
-        "singleQuote": true,
-        "endOfLine": "auto"
-      }
-    ],
+    "prettier/prettier": "off",
     "react/jsx-no-target-blank": "off",
     "camelcase": "off",
     "@typescript-eslint/no-explicit-any": 0,
