@@ -33,6 +33,7 @@ export default function DonutProgressbar({
               trailColor: '#d6d6d6',
               backgroundColor: '#3e98c7',
             })}
+            strokeWidth={15}
           >
             {children}
           </CircularProgressbarWithChildren>
