@@ -1,5 +1,4 @@
 import { Schema } from 'mongoose';
-import { shortId } from './types/short-id';
 
 const UserSchema = new Schema(
   {
@@ -9,7 +8,7 @@ const UserSchema = new Schema(
     },
     password: {
       type: String,
-      required: true,
+      default: 'social',
     },
     login_path: {
       type: String,
