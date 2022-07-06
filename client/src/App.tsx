@@ -5,20 +5,17 @@ import Main from './pages/Main';
 import Navbar from './pages/Navbar';
 import TopNav from './pages/TopNav';
 import Home from './pages/Home';
-
-
+import MealsDetail from './pages/MealsDetail';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-
         <Route path="/" element={<Main />} />
         <Route path="/nav" element={<Navbar />} />
         <Route path="/top" element={<TopNav />} />
         <Route path="/home" element={<Home />} />
-
-
+        <Route path="/meals/detail" element={<MealsDetail />} />
       </Routes>
     </BrowserRouter>
   );
