@@ -59,18 +59,13 @@ export default function Home() {
 }
 
 const DonutContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${({ theme }) => theme.flexbox()}
 
   padding: 30px 0;
 `;
 
 const ResponsiveContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  ${({ theme }) => theme.flexbox('column')}
 `;
 
 const CalorieContainer = styled.div`
@@ -93,8 +88,7 @@ const NutrientContainer = styled.div`
 `;
 
 const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
+  ${({ theme }) => theme.flexbox()}
 
   padding: 20px 0;
 
@@ -113,9 +107,7 @@ const ButtonContainer = styled.div`
 `;
 
 const WeightContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${({ theme }) => theme.flexbox()}
 
   padding: 10px 0 20px 0;
 
