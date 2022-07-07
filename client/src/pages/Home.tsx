@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import DonutProgressbar from '../components/chart/DonutProgressbar';
+import DonutProgressbar from '../components/home/DonutProgressbar';
 import Container from '../components/styles/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import DateNavigation from '../components/common/DateNavigation';
-import Progressbar from '../components/chart/Progressbar';
+import Progressbar from '../components/home/Progressbar';
 import Logo from '../components/common/Logo';
 import Navbar from '../components/common/Navbar';
 
