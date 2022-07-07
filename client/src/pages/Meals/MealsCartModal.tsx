@@ -6,24 +6,26 @@ interface MealsCartModalProps {
 }
 const MealsCartModal: React.FC<MealsCartModalProps> = (props) => {
   const ModalContainer = styled.div`
-    position: relative;
-
+    width: 300px;
+    position: absolute;
+    top: 220px;
+    z-index: 1;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding-bottom: 30px;
-    background-color: yellow;
+    background-color: white;
     margin-left: 60px;
   `;
 
   const XBtn = styled.button`
     font-size: 13px;
     color: gray;
-    position: relative;
+    position: absolute;
     top: 10px;
-    left: 160px;
+    right: 10px;
     cursor: pointer;
     border: none;
     background: none;
