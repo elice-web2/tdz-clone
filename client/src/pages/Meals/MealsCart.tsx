@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Container from '../../components/styles/Container';
 import Navbar from '../../components/common/Navbar';
@@ -7,7 +8,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 const MealsCart: React.FC = () => {
   return (
     <Container>
-      <ShowNutrientInfo>
+      <NutrientInfoContainer>
         <IconBox>
           <div className="arrow-icon">
             <FontAwesomeIcon icon={faArrowLeft} />
@@ -15,14 +16,27 @@ const MealsCart: React.FC = () => {
         </IconBox>
         <TotalKcalBox>
           <h1>총 칼로리</h1>
-          <p>1344kcal</p>
+          <p>1344 kcal</p>
         </TotalKcalBox>
         <TdzBox>
-          <NutrientInfo nutrient={'탄수화물'} gram={400} />
-          <NutrientInfo nutrient={'단백질'} gram={200} />
-          <NutrientInfo nutrient={'지방'} gram={300} />
+          <TDZInfo nutrient={'탄수화물'} gram={400} />
+          <TDZInfo nutrient={'단백질'} gram={200} />
+          <TDZInfo nutrient={'지방'} gram={300} />
         </TdzBox>
-      </ShowNutrientInfo>
+      </NutrientInfoContainer>
+      <MealsListContainer>
+        <MealsList name={'쌀밥'} quantity={1}></MealsList>
+        <MealsList name={'너구리'} quantity={2}></MealsList>
+      </MealsListContainer>
+      <BtnContainer>
+        <StyledLink to="/meals/search">
+          <button>음식 추가</button>
+        </StyledLink>
+        <StyledLink to="/home">
+          <button className="darkBtn">기록 완료</button>
+        </StyledLink>
+      </BtnContainer>
+      <Navbar />
     </Container>
   );
 };
@@ -31,7 +45,44 @@ interface NutrientTypeProps {
   nutrient: string;
   gram: number;
 }
-const NutrientInfo: React.FC<NutrientTypeProps> = (props) => {
+const TDZInfo: React.FC<NutrientTypeProps> = (props) => {
+  const NutrientInfoBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .nutrient {
+      position: relative;
+      margin-bottom: 5px;
+    }
+
+    .circle {
+      position: absolute;
+      left: -25px;
+      top: 2px;
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+
+      background-color: ${({ color }) => {
+        if (color === '탄수화물') {
+          return 'pink';
+        } else if (color === '단백질') {
+          return '#6ff542';
+        } else {
+          return 'yellow';
+        }
+      }};
+      border-radius: 50%;
+      margin: 0 10px;
+    }
+    .gram {
+      font-size: 28px;
+      font-weight: bold;
+    }
+  `;
+
   return (
     <>
       <NutrientInfoBox color={props.nutrient}>
@@ -47,46 +98,10 @@ const NutrientInfo: React.FC<NutrientTypeProps> = (props) => {
   );
 };
 
-const NutrientInfoBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  .nutrient {
-    position: relative;
-    margin-bottom: 5px;
-  }
-
-  .circle {
-    position: absolute;
-    left: -25px;
-    top: 2px;
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-
-    background-color: ${({ color }) => {
-      if (color === '탄수화물') {
-        return 'pink';
-      } else if (color === '단백질') {
-        return '#6ff542';
-      } else {
-        return 'yellow';
-      }
-    }};
-    border-radius: 50%;
-    margin: 0 10px;
-  }
-  .gram {
-    font-size: 28px;
-    font-weight: bold;
-  }
-`;
-
-const ShowNutrientInfo = styled.div`
+const NutrientInfoContainer = styled.div`
   width: 420px;
   height: 240px;
+  margin-bottom: 30px;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   background-color: ${({ theme }) => theme.mainColor.normal};
@@ -121,5 +136,84 @@ const TdzBox = styled.div`
   justify-content: space-around;
   width: 100%;
   margin-left: 5px;
+`;
+
+const MealsListContainer = styled.ul`
+  width: 100%;
+`;
+
+interface MealsListProps {
+  name: string;
+  quantity: number;
+}
+
+const MealsList: React.FC<MealsListProps> = (props) => {
+  const MealHeaderBox = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 15px 6px 15px;
+  `;
+
+  const MealTitle = styled.h2`
+    font-size: 20px;
+    font-weight: bold;
+    background-color: white;
+  `;
+
+  const MealDeleteBtn = styled.button`
+    font-size: 20px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+  `;
+
+  const QuanText = styled.p`
+    font-size: 16px;
+    padding: 0 20px 30px 16px;
+    border-bottom: 1px solid gray;
+  `;
+
+  return (
+    <>
+      <li>
+        <MealHeaderBox>
+          <MealTitle>{props.name}</MealTitle>
+          <MealDeleteBtn>X</MealDeleteBtn>
+        </MealHeaderBox>
+        <QuanText>{props.quantity}인분</QuanText>
+      </li>
+    </>
+  );
+};
+
+const BtnContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 100px;
+  margin-bottom: 50px;
+
+  button {
+    width: 120px;
+    height: 40px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: ${({ theme }) => theme.mainColor.lighter};
+    color: white;
+  }
+  .darkBtn {
+    background-color: ${({ theme }) => theme.mainColor.darker};
+  }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
 `;
 export default MealsCart;
