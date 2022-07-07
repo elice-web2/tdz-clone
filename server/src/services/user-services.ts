@@ -1,16 +1,20 @@
-import { UserModel, userModel } from '../db';
+import { UserModel, userModel, UserData, UserInfo } from '../db';
 
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
+export interface LoginInfo {
+  email: string;
+  password: string;
+}
+
 class UserService {
-  userModel: UserModel;
-  constructor(userModel: UserModel) {
+  constructor(private userModel: UserModel) {
     this.userModel = userModel;
   }
 
   // 회원가입
-  async addUser(userInfo: any) {
+  async addUser(userInfo: any): Promise<UserData> {
     // 객체 destructuring
     const {
       email,
@@ -65,7 +69,7 @@ class UserService {
   }
 
   // 로그인
-  async getUserToken(loginInfo: any) {
+  async getUserToken(loginInfo: LoginInfo): Promise<UserData> {
     // 객체 destructuring
     const { email, password } = loginInfo;
 
