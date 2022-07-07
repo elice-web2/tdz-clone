@@ -46,7 +46,7 @@ const MainBackground = styled.div`
 `;
 
 const LogoText = styled.h1`
-  positon: relative;
+  position: relative;
   color: black;
   font-size: 60px;
   font-weight: bold;
