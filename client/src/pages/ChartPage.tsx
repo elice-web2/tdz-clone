@@ -1,12 +1,9 @@
+// dependencies
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import dayjs from 'dayjs';
 import styled from 'styled-components';
-import Logo from '../components/common/Logo';
-import Navbar from '../components/common/Navbar';
-import Container from '../components/styles/Container';
-import { Bar, Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -16,6 +13,25 @@ import {
   BarElement,
   Title,
 } from 'chart.js';
+
+// components
+import Logo from '../components/common/Logo';
+import Navbar from '../components/common/Navbar';
+import Container from '../components/styles/Container';
+import NutrientDetail from '../components/chart/NutrientDetail';
+import WeightChart from '../components/chart/WeightChart';
+import CalorieChart from '../components/chart/CalorieChart';
+import NutrientAverage from '../components/chart/NutrientAverage';
+
+// ChartJS를 react 에서 쓸 수 있도록 하는 코드
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  Title,
+  LineElement,
+  BarElement,
+);
 
 // api/chart/daily?from=2022-06-28&to=2022-07-04  7일
 // api/chart/weekly?from=2022-06-10&to=2022-07-07  4주
@@ -43,189 +59,61 @@ const DUMMY_DATA_DAILY = {
   나트륨합: 100,
 };
 
-const weightData = {
-  labels: ['6/30', '7/1', '7/2', '7/3', '7/4', '7/5', '7/6'],
-  datasets: [
-    {
-      borderColor: 'rgb(54, 162, 235)',
-      borderWidth: 2,
-      data: DUMMY_DATA_DAILY.체중,
-    },
-  ],
-};
-
-const CalorieData = {
-  labels: ['6/30', '7/1', '7/2', '7/3', '7/4', '7/5', '7/6'],
-  datasets: [
-    {
-      base: 0,
-      backgroundColor: 'green',
-      data: DUMMY_DATA_DAILY.칼로리평균,
-      maxBarThickness: 10,
-    },
-  ],
-};
-
-const weightOptions = {
-  plugins: {
-    title: {
-      display: true,
-      text: '체중',
-    },
-  },
-  scales: {
-    x: {
-      grid: {
-        display: false,
-      },
-    },
-  },
-};
-const calorieOptions = {
-  plugins: {
-    title: {
-      display: true,
-      text: '섭취 칼로리',
-    },
-  },
-  scales: {
-    x: {
-      grid: {
-        display: false,
-      },
-    },
-    y: {
-      beginAtZero: true,
-    },
-  },
-};
-
 export default function ChartPage() {
   const [filter, setFilter] = useState<'DAILY' | 'WEEKLY' | 'MONTHLY'>('DAILY');
 
   const onClickFilter = (filter: 'DAILY' | 'WEEKLY' | 'MONTHLY') => {
-    // 일간, 주간, 월간 필터 클릭 이벤트
     setFilter(filter);
   };
-
-  // ChartJS를 react 에서 쓸 수 있도록 하는 코드
-  ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    Title,
-    LineElement,
-    BarElement,
-  );
 
   return (
     <Container>
       <Logo />
 
-      <FilterContainer>
-        <Filter
-          onClick={() => onClickFilter('DAILY')}
-          isSelected={filter === 'DAILY'}
-        >
-          일간
-        </Filter>
-        <Filter
-          onClick={() => onClickFilter('WEEKLY')}
-          isSelected={filter === 'WEEKLY'}
-        >
-          주간
-        </Filter>
-        <Filter
-          onClick={() => onClickFilter('MONTHLY')}
-          isSelected={filter === 'MONTHLY'}
-        >
-          월간
-        </Filter>
-      </FilterContainer>
+      <Wrapper>
+        {/* 일간,월간,주간 필터 UI */}
+        <FilterContainer>
+          <Filter
+            onClick={() => onClickFilter('DAILY')}
+            isSelected={filter === 'DAILY'}
+          >
+            일간
+          </Filter>
+          <Filter
+            onClick={() => onClickFilter('WEEKLY')}
+            isSelected={filter === 'WEEKLY'}
+          >
+            주간
+          </Filter>
+          <Filter
+            onClick={() => onClickFilter('MONTHLY')}
+            isSelected={filter === 'MONTHLY'}
+          >
+            월간
+          </Filter>
+        </FilterContainer>
+        {/* 날짜 변경 UI */}
+        <PeriodContainer>
+          <FontAwesomeIcon icon={faAngleLeft} />
+          <p>
+            {/* 필터에 따라 날짜를 보여주고 왼쪽 오른쪽 버튼 클릭 시 날짜를 변경 가능하게 해야함 */}
+            {dayjs().add(-1, 'week').format('YY-MM-DD')} ~{' '}
+            {dayjs().add(-1, 'day').format('YY-MM-DD')}
+          </p>
+          <FontAwesomeIcon icon={faAngleRight} />
+        </PeriodContainer>
 
-      <PeriodContainer>
-        <FontAwesomeIcon icon={faAngleLeft} />
-        <p>
-          {/* 필터에 따라 날짜를 보여주고 왼쪽 오른쪽 버튼 클릭 시 날짜를 변경 가능하게 해야함 */}
-          {dayjs().add(-1, 'week').format('YY-MM-DD')} ~{' '}
-          {dayjs().add(-1, 'day').format('YY-MM-DD')}
-        </p>
-        <FontAwesomeIcon icon={faAngleRight} />
-      </PeriodContainer>
+        <WeightChart data={DUMMY_DATA_DAILY} />
+        <CalorieChart data={DUMMY_DATA_DAILY} />
+        <NutrientAverage data={DUMMY_DATA_DAILY} />
+      </Wrapper>
 
-      <Line data={weightData} options={weightOptions} />
-      <Bar data={CalorieData} options={calorieOptions} />
-
-      <Heading>영양소 평균</Heading>
-      <AverageContainer>
-        {/* 칼로리 대비 영양소 4,4,9로 백분율 계산해서 기입 필요 */}
-        <CircleContainer>
-          <NutirientCircle bgColor="#5386C1" color="white">
-            28%
-          </NutirientCircle>
-          <NutirientCircle bgColor="#FAF461">32%</NutirientCircle>
-        </CircleContainer>
-        <CircleContainer>
-          <ThirdNutirientCircle bgColor="#FAA0A0">40%</ThirdNutirientCircle>
-        </CircleContainer>
-
-        <AverageInfoContainer>
-          {/* 탄단지 평균 기입 */}
-          <NutrientAverage>
-            <div>
-              <Circle bgColor="#FAA0A0" />
-              <span>탄수화물</span>
-            </div>
-            <p>{(DUMMY_DATA_DAILY.탄수화물합 / 7).toFixed(1)}g</p>
-          </NutrientAverage>
-          <NutrientAverage>
-            <div>
-              <Circle bgColor="#5386C1" />
-              <span>단백질</span>
-            </div>
-            <p>{(DUMMY_DATA_DAILY.단백질합 / 7).toFixed(1)}g</p>
-          </NutrientAverage>
-          <NutrientAverage>
-            <div>
-              <Circle bgColor="#FAF461" />
-              <span>지방</span>
-            </div>
-            <p>{(DUMMY_DATA_DAILY.지방합 / 7).toFixed(1)}g</p>
-          </NutrientAverage>
-        </AverageInfoContainer>
-      </AverageContainer>
+      <NutrientDetail data={DUMMY_DATA_DAILY} />
 
       <Navbar />
     </Container>
   );
 }
-
-const Circle = styled.div<{ bgColor: string }>`
-  width: 10px;
-  height: 10px;
-  margin-right: 5px;
-
-  border-radius: 50%;
-  background-color: ${({ bgColor }) => bgColor};
-`;
-
-const AverageInfoContainer = styled.div`
-  ${({ theme }) => theme.flexbox('row', 'center', 'space-evenly')}
-`;
-
-const NutrientAverage = styled.div`
-  ${({ theme }) => theme.flexbox('column')}
-
-  div {
-    display: flex;
-    align-items: center;
-  }
-
-  p {
-    font-size: 24px;
-    font-weight: bold;
-  }
-`;
 
 const FilterContainer = styled.div`
   ${({ theme }) => theme.flexbox()}
@@ -263,37 +151,6 @@ const PeriodContainer = styled.div`
   }
 `;
 
-const AverageContainer = styled.div`
-  padding: 20px 0;
-`;
-
-const Heading = styled.h1`
-  padding: 5px 10px;
-
-  font-size: 24px;
-  font-weight: bold;
-`;
-
-const CircleContainer = styled.div`
-  ${({ theme }) => theme.flexbox()}
-
-  position: relative;
-`;
-
-const NutirientCircle = styled.div<{ bgColor: string; color?: string }>`
-  ${({ theme }) => theme.flexbox()}
-
-  width: 100px;
-  height: 100px;
-  background-color: ${({ bgColor }) => bgColor};
-  color: ${({ color }) => (color ? color : 'black')};
-  border-radius: 50%;
-
-  font-size: 24px;
-  font-weight: bold;
-`;
-
-const ThirdNutirientCircle = styled(NutirientCircle)`
-  position: relative;
-  top: -15px;
+const Wrapper = styled.div`
+  background-color: rgba(0, 0, 0, 0.05);
 `;
