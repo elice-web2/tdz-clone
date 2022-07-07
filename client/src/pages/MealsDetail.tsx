@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Container from '../components/styles/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faStar } from '@fortawesome/free-solid-svg-icons';
-import Navbar from './Navbar';
+import Navbar from '../components/common/Navbar';
 import { Link } from 'react-router-dom';
 
 const MealsDetail: React.FC = () => {
