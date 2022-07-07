@@ -3,6 +3,6 @@
     "target": "es6",
     "module": "commonjs",
     "esModuleInterop": true,
-    "typeRoots": ["./node_modules/@types", "./src/customType"]
+    "typeRoots": ["./node_modules/@types", "../src/customType"]
   }
 }
