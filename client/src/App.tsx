@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Main from './pages/Main';
 import Home from './pages/Home';
-import MealsDetail from './pages/MealsDetail';
+import MealsDetail from './pages/Meals/MealsDetail';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 

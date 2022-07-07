@@ -1,11 +1,48 @@
+import { useState } from 'react';
 import styled from 'styled-components';
-import Container from '../components/styles/Container';
+import Container from '../../components/styles/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faStar } from '@fortawesome/free-solid-svg-icons';
-import Navbar from '../components/common/Navbar';
+import Navbar from '../../components/common/Navbar';
 import { Link } from 'react-router-dom';
 
+interface testType {
+  name: string;
+  kcal: number;
+  carbon: number;
+  protein: number;
+  fat: number;
+  natrium: number;
+  transFat: number;
+  col: number;
+  saturatedFat: number;
+  gramPerQuantity: number;
+}
+
 const MealsDetail: React.FC = () => {
+  const [count, setCount] = useState<number>(0);
+
+  const plusHandler = () => {
+    setCount((cur) => cur + 1);
+  };
+
+  const minusHandler = () => {
+    setCount((cur) => cur - 1);
+  };
+
+  const obj: testType = {
+    name: '진라면',
+    kcal: 700,
+    carbon: 100,
+    protein: 20,
+    fat: 20,
+    natrium: 100,
+    transFat: 100,
+    col: 5,
+    saturatedFat: 10,
+    gramPerQuantity: 200,
+  };
+
   return (
     <Container>
       <MealsContainer>
@@ -20,56 +57,53 @@ const MealsDetail: React.FC = () => {
               <FontAwesomeIcon icon={faStar} />
             </div>
           </IconBox>
-          <Title>신라면</Title>
+          <Title>{obj.name}</Title>
           <MainNutrientBox>
             <div className="info-text">
               <p>칼로리</p>
-              <p>700kcal</p>
+              <p>{obj.kcal}kcal</p>
             </div>
             <div className="info-text">
               <p>탄수화물</p>
-              <p>100g</p>
+              <p>{obj.carbon}g</p>
             </div>
             <div className="info-text">
               <p>단백질</p>
-              <p>20g</p>
+              <p>{obj.protein}g</p>
             </div>
             <div className="info-text">
               <p>지방</p>
-              <p>20g</p>
+              <p>{obj.fat}g</p>
             </div>
           </MainNutrientBox>
           <SubNutrientBox>
-            <div className="left-info">
-              <div className="left-content">
-                <p>나트륨</p>
-                <p>100mg</p>
-              </div>
-              <div className="left-content">
-                <p>콜레스테롤</p>
-                <p>100mg</p>
-              </div>
+            <div className="sub-content">
+              <p>나트륨</p>
+              <p>{obj.natrium}mg</p>
             </div>
-            <div className="right-info">
-              <div className="right-content">
-                <p>트랜스지방</p>
-                <p>5g</p>
-              </div>
-              <div className="right-content">
-                <p>포화지방</p>
-                <p>10g</p>
-              </div>
+            <div className="sub-content">
+              <p>콜레스테롤</p>
+              <p>{obj.col}mg</p>
+            </div>
+
+            <div className="sub-content">
+              <p>트랜스지방</p>
+              <p>{obj.transFat}g</p>
+            </div>
+            <div className="sub-content">
+              <p>포화지방</p>
+              <p>{obj.saturatedFat}g</p>
             </div>
           </SubNutrientBox>
           <SelectBox>
             <select>
-              <option value="quantity">1개(180g)</option>
+              <option value="quantity">1개({obj.gramPerQuantity}g)</option>
               <option value="gram">g</option>
             </select>
             <div className="countBtnBox">
-              <button>-</button>
-              <input type="number" value="0"></input>
-              <button>+</button>
+              <button onClick={minusHandler}>-</button>
+              <input type="number" value={count}></input>
+              <button onClick={plusHandler}>+</button>
             </div>
           </SelectBox>
           <AddBtn>식단 추가</AddBtn>
@@ -81,8 +115,8 @@ const MealsDetail: React.FC = () => {
 };
 
 const StyledLink = styled(Link)`
-  text-decoration: none;
   color: black;
+  text-decoration: none;
 `;
 
 const MealsContainer = styled.div`
@@ -91,17 +125,17 @@ const MealsContainer = styled.div`
 `;
 
 const MealsInfoBox = styled.div`
+  position: relative;
   width: 100%;
   height: 650px;
-  background-color: ${({ theme }) => theme.mainColor.darker};
-  position: relative;
+  background-color: ${({ theme }) => theme.mainColor.lighter};
 `;
 
 const IconBox = styled.div`
-  width: 100%;
-  padding: 10px;
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  padding: 10px;
   font-size: 25px;
   box-sizing: border-box;
 
@@ -112,51 +146,49 @@ const IconBox = styled.div`
 
   .star-icon {
     margin-right: 5px;
-    cursor: pointer;
     color: yellow;
+    cursor: pointer;
   }
 `;
 const Title = styled.h1`
   width: 100%;
-  box-sizing: border-box;
+  margin-bottom: 15px;
   padding: 20px 0;
   padding-left: 30px;
   font-size: 28px;
   font-weight: bold;
-  margin-bottom: 15px;
+  box-sizing: border-box;
 `;
 const MainNutrientBox = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   .info-text {
-    font-weight: bold;
-    font-size: 18px;
-    padding: 10px 30px;
     display: flex;
     justify-content: space-between;
+    padding: 10px 30px;
+    font-weight: bold;
+    font-size: 18px;
   }
 `;
 const SubNutrientBox = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 180px);
+  gap: 10px 30px;
   width: 100%;
-  display: flex;
-  border: 1px solid black;
-  padding: 20px 30px;
+  margin: 30px 0;
+  padding-left: 30px;
+  font-size: 13px;
   box-sizing: border-box;
-  margin-bottom: 50px;
 
-  .left-info,
-  .right-info {
-    border: 1px solid green;
+  .sub-content {
     display: flex;
-    flex-direction: column;
-    padding: 10px;
     justify-content: space-between;
+    width: 150px;
 
-    .left-content,
-    .right-content {
-      display: flex;
+    p {
+      padding: 3px;
     }
   }
 `;
@@ -178,9 +210,9 @@ const SelectBox = styled.div`
     input {
       width: 30px;
       height: 30px;
-      text-align: center;
-      border: none;
       padding: 0;
+      border: none;
+      text-align: center;
       font-size: 18px;
       font-weight: bold;
     }
@@ -195,23 +227,23 @@ const SelectBox = styled.div`
       width: 30px;
       height: 30px;
       border: none;
-      cursor: pointer;
       font-size: 20px;
       font-weight: bold;
+      cursor: pointer;
     }
   }
 `;
 const AddBtn = styled.button`
-  width: 120px;
-  height: 40px;
-  font-weight: bold;
-  font-size: 14px;
-  border-radius: 10px;
-  background-color: white;
-  border: none;
   position: absolute;
   bottom: 30px;
   left: 150px;
+  width: 120px;
+  height: 40px;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 14px;
   cursor: pointer;
 `;
 
