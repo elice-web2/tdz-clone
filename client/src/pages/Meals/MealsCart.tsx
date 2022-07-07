@@ -1,11 +1,16 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Container from '../../components/styles/Container';
 import Navbar from '../../components/common/Navbar';
+import MealsCartModal from './MealsCartModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 const MealsCart: React.FC = () => {
+  const [modal, setModal] = useState<boolean>(false);
+  const clickHandler = () => {
+    setModal(true);
+  };
   return (
     <Container>
       <NutrientInfoContainer>
@@ -32,14 +37,21 @@ const MealsCart: React.FC = () => {
         <StyledLink to="/meals/search">
           <button>음식 추가</button>
         </StyledLink>
-        <StyledLink to="/home">
-          <button className="darkBtn">기록 완료</button>
-        </StyledLink>
+
+        <button className="darkBtn" onClick={clickHandler}>
+          기록 하기
+        </button>
       </BtnContainer>
+      {modal === true ? <MealsCartModal setModal={setModal} /> : null}
       <Navbar />
     </Container>
   );
 };
+
+const Container = styled.div`
+  max-width: 420px;
+  margin: 0 auto;
+`;
 
 interface NutrientTypeProps {
   nutrient: string;
