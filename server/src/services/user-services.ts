@@ -1,4 +1,4 @@
-import { UserModel, userModel, UserData, UserInfo } from '../db';
+import { UserModel, userModel, UserData, UserInfo, Nutrient } from '../db';
 
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
@@ -6,6 +6,15 @@ import jwt from 'jsonwebtoken';
 export interface LoginInfo {
   email: string;
   password: string;
+}
+
+export interface UserInfoRequired {
+  userId: string;
+  currentPassword: string;
+}
+
+interface ToUpdate {
+  [key: string]: string | number | Nutrient;
 }
 
 class UserService {
@@ -106,17 +115,20 @@ class UserService {
   }
 
   // 사용자 목록을 받음.
-  async getUsers() {
+  async getUsers(): Promise<UserData[]> {
     return await this.userModel.findAll();
   }
 
   //사용자 하나를 받음
-  async getUser(userId: string) {
+  async getUser(userId: string): Promise<UserData> {
     return await this.userModel.findById(userId);
   }
 
   // 유저정보 수정, 현재 비밀번호가 있어야 수정 가능함.
-  async setUser(userInfoRequired: any, toUpdate: any) {
+  async setUser(
+    userInfoRequired: UserInfoRequired,
+    toUpdate: ToUpdate,
+  ): Promise<UserData> {
     // 객체 destructuring
     const { userId, currentPassword } = userInfoRequired;
 
@@ -160,7 +172,7 @@ class UserService {
     });
   }
 
-  async deleteUser(userId) {
+  async deleteUser(userId: string): Promise<{ deletedCount?: number }> {
     // 우선 해당 id의 유저가 db에 있는지 확인
     let user = await this.userModel.findById(userId);
 

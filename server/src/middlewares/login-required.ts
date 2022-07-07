@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt, { JwtPayload } from 'jsonwebtoken';
 
-function adminOnly(req: Request, res: Response, next: NextFunction) {
+function loginRequired(req: Request, res: Response, next: NextFunction) {
   //쿠키로부터 httponly 옵션으로 토큰 받음
   const userToken = req.signedCookies.token;
 
@@ -17,29 +17,23 @@ function adminOnly(req: Request, res: Response, next: NextFunction) {
     return;
   }
 
-  // 해당 token 관리자 토큰인지 확인
+  // 해당 token 이 정상적인 token인지 확인
   try {
     const secretKey = process.env.JWT_SECRET_KEY || 'secret-key';
     const jwtDecoded = jwt.verify(userToken, secretKey) as JwtPayload;
 
-    const role = jwtDecoded.role;
-
-    if (role !== 'admin') {
-      console.log('서비스 사용 요청이 있습니다.하지만, 관리자 토큰이 아님.');
-      res.status(403).json({
-        result: 'forbidden-approach',
-        reason: '관리자만 사용할 수 있는 서비스입니다.',
-      });
-
-      return;
-    }
+    const userId = jwtDecoded.userId;
+    req.currentUserId = userId;
 
     next();
   } catch (error) {
-    next(error);
+    res.status(403).json({
+      result: 'forbidden-approach',
+      reason: '정상적인 토큰이 아닙니다.',
+    });
 
     return;
   }
 }
 
-export { adminOnly };
+export { loginRequired };
