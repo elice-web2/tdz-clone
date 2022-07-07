@@ -6,63 +6,63 @@ interface MealsCartModalProps {
 }
 const MealsCartModal: React.FC<MealsCartModalProps> = (props) => {
   const ModalContainer = styled.div`
-    width: 300px;
     position: absolute;
     top: 220px;
-    z-index: 1;
-    border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 300px;
+    margin-left: 60px;
     padding-bottom: 30px;
     background-color: white;
-    margin-left: 60px;
+    border-radius: 15px;
+    z-index: 1;
   `;
 
   const XBtn = styled.button`
-    font-size: 13px;
-    color: gray;
     position: absolute;
     top: 10px;
     right: 10px;
-    cursor: pointer;
     border: none;
     background: none;
+    font-size: 13px;
+    color: gray;
+    cursor: pointer;
   `;
   const Title = styled.h1`
+    margin-bottom: 15px;
+    padding: 30px 10px 10px 10px;
     font-size: 25px;
     font-weight: bold;
     text-align: center;
-    padding: 30px 10px 10px 10px;
-    margin-bottom: 15px;
   `;
   const BtnContainer = styled.div`
-    width: 250px;
     display: flex;
     justify-content: center;
     gap: 15px;
-    padding: 10px;
+    width: 250px;
     margin-bottom: 20px;
+    padding: 10px;
 
     button {
       width: 70px;
       height: 40px;
-      font-size: 16px;
       border-radius: 10px;
       border: none;
       background-color: ${({ theme }) => theme.mainColor.lighter};
+      font-size: 16px;
       cursor: pointer;
     }
   `;
   const CompleteBtn = styled.button`
     width: 120px;
     height: 40px;
-    font-size: 18px;
+    background-color: ${({ theme }) => theme.mainColor.darker};
     border-radius: 5px;
     border: none;
+    font-size: 18px;
     color: white;
-    background-color: ${({ theme }) => theme.mainColor.darker};
     cursor: pointer;
   `;
 

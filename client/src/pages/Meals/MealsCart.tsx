@@ -54,9 +54,9 @@ interface isModalProps {
 }
 
 const Container = styled.div<isModalProps>`
+  position: relative;
   max-width: 420px;
   margin: 0 auto;
-  position: relative;
   background-color: ${(props) =>
     props.modal === true ? 'rgba(0, 0, 0, 0.6)' : 'white'};
 `;
@@ -76,6 +76,7 @@ const TDZInfo: React.FC<NutrientTypeProps> = (props) => {
     align-items: center;
     justify-content: center;
     opacity: ${(props) => (props.modal === true ? '0.2' : '1')};
+
     .nutrient {
       position: relative;
       margin-bottom: 5px;
@@ -88,6 +89,7 @@ const TDZInfo: React.FC<NutrientTypeProps> = (props) => {
       display: inline-block;
       width: 10px;
       height: 10px;
+      margin: 0 10px;
       background-color: ${({ color }) => {
         if (color === '탄수화물') {
           return 'pink';
@@ -98,7 +100,6 @@ const TDZInfo: React.FC<NutrientTypeProps> = (props) => {
         }
       }};
       border-radius: 50%;
-      margin: 0 10px;
     }
     .gram {
       font-size: 28px;
@@ -185,16 +186,16 @@ const MealsList: React.FC<MealsListProps> = (props) => {
   `;
 
   const MealDeleteBtn = styled.button`
-    font-size: 20px;
     border: none;
-    cursor: pointer;
     background: none;
+    font-size: 20px;
+    cursor: pointer;
   `;
 
   const QuanText = styled.p`
-    font-size: 16px;
     padding: 0 20px 30px 16px;
     border-bottom: 1px solid gray;
+    font-size: 16px;
   `;
 
   return (
@@ -211,10 +212,10 @@ const MealsList: React.FC<MealsListProps> = (props) => {
 };
 
 const BtnContainer = styled.div`
-  width: 100%;
   display: flex;
   justify-content: center;
   gap: 40px;
+  width: 100%;
   margin-top: 100px;
   margin-bottom: 50px;
 `;
@@ -225,11 +226,11 @@ const AddMealsBtn = styled.button<isModalProps>`
   margin: 10px;
   border: none;
   border-radius: 10px;
+  background-color: ${(props) =>
+    props.modal === true ? 'rgb(0,0,0,0.1)' : props.theme.mainColor.lighter};
   font-size: 14px;
   font-weight: bold;
   cursor: pointer;
-  background-color: ${(props) =>
-    props.modal === true ? 'rgb(0,0,0,0.1)' : props.theme.mainColor.lighter};
   color: ${(props) => (props.modal === true ? 'rgb(0,0,0,0,1)' : 'white')};
 `;
 
