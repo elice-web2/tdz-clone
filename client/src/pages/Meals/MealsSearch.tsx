@@ -3,16 +3,12 @@ import { useState, useRef } from 'react';
 import Container from '../../components/styles/Container';
 import Navbar from '../../components/common/Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faMagnifyingGlass,
-  faArrowRight,
-  faPlus,
-  faStar,
-} from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { SearchUlWrapper } from './SearchUlWrapper';
 
 const MealsSearch: React.FC = () => {
-  const [isSearch, setIsSearch] = useState<boolean>(true);
-  const [inputValue, setInputValue] = useState<string>('');
+  const [isSearch, setIsSearch] = useState(true);
+  const [inputValue, setInputValue] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
@@ -73,7 +69,7 @@ const MealsSearch: React.FC = () => {
           food={['신라면', '짜파게티', '불닭볶음면']}
         ></SearchUlWrapper>
       ) : (
-        <BookMarkUlWrapper food={['밥', '된장찌개']}></BookMarkUlWrapper>
+        <SearchUlWrapper food={['밥', '된장찌개']}></SearchUlWrapper>
       )}
 
       <Navbar />
@@ -164,27 +160,7 @@ const BookMarkTabBtn = styled(SearchTabBtn)`
     props.isSearch === true ? '#f7f7f7' : props.theme.mainColor.lighter};
 `;
 
-const SearchUlWrapper: React.FC<{ food: string[] }> = (props) => {
-  return (
-    <SearchListContainer>
-      {props.food.map((el) => {
-        return <ItemsList name={el}></ItemsList>;
-      })}
-    </SearchListContainer>
-  );
-};
-
-const BookMarkUlWrapper: React.FC<{ food: string[] }> = (props) => {
-  return (
-    <SearchListContainer>
-      {props.food.map((el) => {
-        return <ItemsList name={el}></ItemsList>;
-      })}
-    </SearchListContainer>
-  );
-};
-
-const SearchListContainer = styled.ul`
+export const SearchListContainer = styled.ul`
   width: 100%;
   list-style: none;
   padding-left: 0;
@@ -193,69 +169,5 @@ const SearchListContainer = styled.ul`
   align-items: center;
   margin-bottom: 200px;
 `;
-
-const ItemsList: React.FC<{ name: string }> = (props) => {
-  const List = styled.li`
-    width: 360px;
-    padding-top: 5px;
-    border-bottom: 1px solid gray;
-  `;
-  const NamedInfo = styled.div`
-    box-sizing: border-box;
-    position: relative;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    padding: 20px 10px 10px 10px;
-
-    .arrowIcon {
-      font-size: 20px;
-      cursor: pointer;
-    }
-
-    .title {
-      font-size: 20px;
-      font-weight: bold;
-      margin-right: 15px;
-      cursor: pointer;
-    }
-    .starIcon {
-      font-size: 20px;
-      position: absolute;
-      right: 15px;
-      cursor: pointer;
-    }
-
-    .plusIcon {
-      font-size: 20px;
-      position: absolute;
-      right: 18px;
-      top: 60px;
-      cursor: pointer;
-    }
-  `;
-  const QuanInfo = styled.p`
-    font-size: 14px;
-    padding: 3px 10px 10px 13px;
-    margin-bottom: 20px;
-  `;
-  return (
-    <List>
-      <NamedInfo>
-        <div className="title">{props.name}</div>
-        <span className="arrowIcon">
-          <FontAwesomeIcon icon={faArrowRight} />
-        </span>
-        <span className="plusIcon">
-          <FontAwesomeIcon icon={faPlus} />
-        </span>
-        <span className="starIcon">
-          <FontAwesomeIcon icon={faStar} />
-        </span>
-      </NamedInfo>
-      <QuanInfo>1인분</QuanInfo>
-    </List>
-  );
-};
 
 export default MealsSearch;
