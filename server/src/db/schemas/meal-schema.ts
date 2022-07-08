@@ -2,6 +2,10 @@ import { Schema } from 'mongoose';
 
 const MealSchema = new Schema(
   {
+    meal_code: {
+      type: String,
+      required: true,
+    },
     meal_name: {
       type: String,
       required: true,
@@ -40,6 +44,10 @@ const MealSchema = new Schema(
     },
     meal_transfat: {
       type: Number,
+      required: true,
+    },
+    updated_date: {
+      type: Date,
       required: true,
     },
   },
