@@ -18,5 +18,9 @@ userRouter.post(
   //userValidator.userSignup,
   usercontroller.signUp,
 );
+userRouter.post('/auth/login', usercontroller.login);
+userRouter.get('/users/list', adminRequired, usercontroller.userList);
+userRouter.get('/users', loginRequired, usercontroller.user);
+userRouter.patch('/users', loginRequired, usercontroller.userUpdate);
 
 export { userRouter };

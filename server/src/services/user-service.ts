@@ -120,7 +120,7 @@ class UserService {
   }
 
   //사용자 하나를 받음
-  async getUser(userId: string): Promise<UserData> {
+  async getUserData(userId: string): Promise<UserData> {
     return await this.userModel.findById(userId);
   }
 
