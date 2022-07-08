@@ -10,7 +10,7 @@ const MealSchema = new Schema(
       type: String,
       required: true,
     },
-    meal_kacl: {
+    meal_kcal: {
       type: Number,
       required: true,
     },
