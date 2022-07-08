@@ -6,7 +6,7 @@ import {
   loginRequired,
   adminRequired,
 } from '../middlewares';
-import * as usercontroller from '../controllers';
+import * as userController from '../controllers';
 import { userValidator } from '../validation/validator';
 // import { register,login,getUserlist,editUserData } from '../controller';
 
@@ -16,12 +16,12 @@ const userRouter = Router();
 userRouter.post(
   '/auth/signup',
   //userValidator.userSignup,
-  usercontroller.signUp,
+  userController.signUp,
 );
-userRouter.post('/auth/login', usercontroller.login);
-userRouter.get('/users/list', adminRequired, usercontroller.userList);
-userRouter.get('/users', loginRequired, usercontroller.user);
-userRouter.patch('/users', loginRequired, usercontroller.userUpdate);
-userRouter.delete('/users', loginRequired, usercontroller.deleteUser);
+userRouter.post('/auth/login', userController.login);
+userRouter.get('/users/list', adminRequired, userController.userList);
+userRouter.get('/users', loginRequired, userController.user);
+userRouter.patch('/users', loginRequired, userController.userUpdate);
+userRouter.delete('/users', loginRequired, userController.deleteUser);
 
 export { userRouter };

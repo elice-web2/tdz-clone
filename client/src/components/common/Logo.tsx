@@ -1,29 +1,29 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Container from '../components/styles/Container';
+import Container from '../styles/Container';
 
-const TopNav: React.FC = () => {
+const Logo: React.FC = () => {
   return (
     <Container>
-      <TopNavbar>
+      <TopLogo>
         <StyledLink to="/home">TDZ</StyledLink>
-      </TopNavbar>
+      </TopLogo>
     </Container>
   );
 };
 
-const TopNavbar = styled.div`
+const TopLogo = styled.div`
   width: 420px;
   height: 60px;
+  background-color: ${({ theme }) => theme.mainColor.lighter};
   font-size: 28px;
   font-weight: bold;
   text-align: center;
   line-height: 60px;
-  background-color: ${({ theme }) => theme.mainColor.lighter};
 `;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: black;
 `;
-export default TopNav;
+export default Logo;
