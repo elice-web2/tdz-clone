@@ -52,6 +52,7 @@ const MealsSearch: React.FC = () => {
           isSearch={isSearch}
           onClick={() => {
             setIsSearch(true);
+            setInputValue('');
             inputRef.current && inputRef.current.focus();
           }}
         >
@@ -61,6 +62,7 @@ const MealsSearch: React.FC = () => {
           isSearch={isSearch}
           onClick={() => {
             setIsSearch(false);
+            setInputValue('');
           }}
         >
           즐겨찾기
