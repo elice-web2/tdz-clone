@@ -5,6 +5,15 @@ interface MealsCartModalProps {
   setModal: (value: boolean) => void;
 }
 const MealsCartModal: React.FC<MealsCartModalProps> = (props) => {
+  const OutsideModal = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.4);
+    z-index: 1;
+  `;
   const ModalContainer = styled.div`
     position: absolute;
     top: 220px;
@@ -17,7 +26,7 @@ const MealsCartModal: React.FC<MealsCartModalProps> = (props) => {
     padding-bottom: 30px;
     background-color: white;
     border-radius: 15px;
-    z-index: 1;
+    z-index: 2;
   `;
 
   const XBtn = styled.button`
@@ -70,26 +79,35 @@ const MealsCartModal: React.FC<MealsCartModalProps> = (props) => {
     text-decoration: none;
     color: white;
   `;
+
+  const Container = styled.div`
+    width: 100%;
+    height: 100%;
+  `;
+
   return (
-    <ModalContainer>
-      <XBtn
-        onClick={() => {
-          props.setModal(false);
-        }}
-      >
-        X
-      </XBtn>
-      <Title>식사 종류</Title>
-      <BtnContainer>
-        <button>아침</button>
-        <button>점심</button>
-        <button>저녁</button>
-        <button>간식</button>
-      </BtnContainer>
-      <StyledLink to="/meals">
-        <CompleteBtn>완료</CompleteBtn>
-      </StyledLink>
-    </ModalContainer>
+    <Container>
+      <OutsideModal></OutsideModal>
+      <ModalContainer>
+        <XBtn
+          onClick={() => {
+            props.setModal(false);
+          }}
+        >
+          X
+        </XBtn>
+        <Title>식사 종류</Title>
+        <BtnContainer>
+          <button>아침</button>
+          <button>점심</button>
+          <button>저녁</button>
+          <button>간식</button>
+        </BtnContainer>
+        <StyledLink to="/meals">
+          <CompleteBtn>완료</CompleteBtn>
+        </StyledLink>
+      </ModalContainer>
+    </Container>
   );
 };
 

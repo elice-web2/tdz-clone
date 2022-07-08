@@ -12,10 +12,10 @@ const MealsCart: React.FC = () => {
     setModal(true);
   };
   return (
-    <Container modal={modal}>
-      {modal === true ? <MealsCartModal setModal={setModal} /> : null}
+    <Container>
+      {modal && <MealsCartModal setModal={setModal} />}
 
-      <NutrientInfoContainer modal={modal}>
+      <NutrientInfoContainer>
         <IconBox>
           <div className="arrow-icon">
             <FontAwesomeIcon icon={faArrowLeft} />
@@ -26,56 +26,46 @@ const MealsCart: React.FC = () => {
           <p>1344 kcal</p>
         </TotalKcalBox>
         <TdzBox>
-          <TDZInfo modal={modal} nutrient={'탄수화물'} gram={400} />
-          <TDZInfo modal={modal} nutrient={'단백질'} gram={200} />
-          <TDZInfo modal={modal} nutrient={'지방'} gram={300} />
+          <TDZInfo nutrient={'탄수화물'} gram={400} />
+          <TDZInfo nutrient={'단백질'} gram={200} />
+          <TDZInfo nutrient={'지방'} gram={300} />
         </TdzBox>
       </NutrientInfoContainer>
       <MealsListContainer>
         <MealsList name={'쌀밥'} quantity={1}></MealsList>
         <MealsList name={'너구리'} quantity={2}></MealsList>
+        <MealsList name={'너구리'} quantity={2}></MealsList>
       </MealsListContainer>
       <BtnContainer>
         <StyledLink to="/meals/search">
-          <AddMealsBtn modal={modal}>음식 추가</AddMealsBtn>
+          <AddMealsBtn>음식 추가</AddMealsBtn>
         </StyledLink>
 
-        <RecordBtn modal={modal} onClick={clickHandler}>
-          기록 하기
-        </RecordBtn>
+        <RecordBtn onClick={clickHandler}>기록 하기</RecordBtn>
       </BtnContainer>
 
       <Navbar />
     </Container>
   );
 };
-interface isModalProps {
-  modal: boolean;
-}
 
-const Container = styled.div<isModalProps>`
+const Container = styled.div`
   position: relative;
   max-width: 420px;
   margin: 0 auto;
-  background-color: ${(props) =>
-    props.modal === true ? 'rgba(0, 0, 0, 0.6)' : 'white'};
+  background-color: white;
 `;
 
 interface NutrientTypeProps {
   nutrient: string;
   gram: number;
-  modal: boolean;
 }
 const TDZInfo: React.FC<NutrientTypeProps> = (props) => {
-  interface testProps {
-    modal: boolean;
-  }
-  const NutrientInfoBox = styled.div<testProps>`
+  const NutrientInfoBox = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    opacity: ${(props) => (props.modal === true ? '0.2' : '1')};
 
     .nutrient {
       position: relative;
@@ -109,7 +99,7 @@ const TDZInfo: React.FC<NutrientTypeProps> = (props) => {
 
   return (
     <>
-      <NutrientInfoBox modal={props.modal} color={props.nutrient}>
+      <NutrientInfoBox color={props.nutrient}>
         <div className="nutrient">
           <span className="circle"></span>
           {props.nutrient}
@@ -122,14 +112,13 @@ const TDZInfo: React.FC<NutrientTypeProps> = (props) => {
   );
 };
 
-const NutrientInfoContainer = styled.div<isModalProps>`
+const NutrientInfoContainer = styled.div`
   width: 420px;
   height: 240px;
   margin-bottom: 30px;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
-  background-color: ${(props) =>
-    props.modal === true ? 'rgb(0,0,0,0.1)' : props.theme.mainColor.normal};
+  background-color: ${({ theme }) => theme.mainColor.normal};
 `;
 
 const IconBox = styled.div`
@@ -199,15 +188,13 @@ const MealsList: React.FC<MealsListProps> = (props) => {
   `;
 
   return (
-    <>
-      <li>
-        <MealHeaderBox>
-          <MealTitle>{props.name}</MealTitle>
-          <MealDeleteBtn>X</MealDeleteBtn>
-        </MealHeaderBox>
-        <QuanText>{props.quantity}인분</QuanText>
-      </li>
-    </>
+    <li>
+      <MealHeaderBox>
+        <MealTitle>{props.name}</MealTitle>
+        <MealDeleteBtn>X</MealDeleteBtn>
+      </MealHeaderBox>
+      <QuanText>{props.quantity}인분</QuanText>
+    </li>
   );
 };
 
@@ -220,23 +207,21 @@ const BtnContainer = styled.div`
   margin-bottom: 50px;
 `;
 
-const AddMealsBtn = styled.button<isModalProps>`
+const AddMealsBtn = styled.button`
   width: 120px;
   height: 40px;
   margin: 10px;
   border: none;
   border-radius: 10px;
-  background-color: ${(props) =>
-    props.modal === true ? 'rgb(0,0,0,0.1)' : props.theme.mainColor.lighter};
+  background-color: ${({ theme }) => theme.mainColor.lighter};
   font-size: 14px;
   font-weight: bold;
   cursor: pointer;
-  color: ${(props) => (props.modal === true ? 'rgb(0,0,0,0,1)' : 'white')};
+  color: white;
 `;
 
 const RecordBtn = styled(AddMealsBtn)`
-  background-color: ${(props) =>
-    props.modal === true ? 'rgb(0,0,0,0.1)' : props.theme.mainColor.darker};
+  background-color: ${({ theme }) => theme.mainColor.darker};
 `;
 
 const StyledLink = styled(Link)`
