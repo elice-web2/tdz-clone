@@ -7,7 +7,7 @@ const UserInfo:React.FC = () => {
   const submitHandler = (e: React.FormEvent<HTMLFormElement>)=> {
     e.preventDefault();
    console.log("test", e.currentTarget.gender.value);
-   navigate("/mypage/goal_step1")
+   navigate("/mypage/goal_step2")
   }
 
   
