@@ -77,7 +77,7 @@ const Mode = styled.div`
   border-style: none;
   font-style:none;
   width: 50%; 
-  height 100px;
+  height: 100px;
   font-size: 16px;
   weight: 700;
   border-radius: 20px;
@@ -85,8 +85,8 @@ const Mode = styled.div`
   background-color: lightgrey;
   & + & {
     margin-left: 20px;
-  }
-  
+}
+
 `
 
 const FlexContainer = styled.div`
