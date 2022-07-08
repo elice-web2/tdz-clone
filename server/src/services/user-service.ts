@@ -172,7 +172,7 @@ class UserService {
     });
   }
 
-  async deleteUser(userId: string): Promise<{ deletedCount?: number }> {
+  async deleteUserData(userId: string): Promise<{ deletedCount?: number }> {
     // 우선 해당 id의 유저가 db에 있는지 확인
     let user = await this.userModel.findById(userId);
 
