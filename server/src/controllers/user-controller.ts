@@ -1,37 +1,22 @@
-// import { Router } from 'express';
-// import is from '@sindresorhus/is';
-// import { adminOnly, loginRequired } from '../middlewares';
-// import { userService } from '../services';
-// import { Nutrient, Role } from '../db';
+import is from '@sindresorhus/is';
+import { Request, Response, NextFunction } from 'express';
+import { userService } from '../services';
+import { UserInfo, Nutrient } from '../db';
 
-// const userRouter = Router();
+//회원 가입을 위한 function
+const signUp = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    // req (request) 에서 데이터 가져오기
+    const userInfo: UserInfo = req.body;
 
-// userRouter.post('/register', async (req, res, next) => {
-//   try {
-//     // application/json 설정을 프론트에서 안 하면, body가 비어 있게 됨.
-//     if (is.emptyObject(req.body)) {
-//       throw new Error(
-//         'headers의 Content-Type을 application/json으로 설정해주세요',
-//       );
-//     }
+    // 위 데이터를 유저 db에 추가하기
+    const newUser = await userService.addUser(userInfo);
 
-//     // req (request) 에서 데이터 가져오기
-//     const fullName: string = req.body.fullName;
-//     const email: string = req.body.email;
-//     const password: string = req.body.password;
-
-//     // 위 데이터를 유저 db에 추가하기
-//     const newUser = await userService.addUser({
-//       fullName,
-//       email,
-//       password,
-//     });
-
-//     res.status(201).json(newUser);
-//   } catch (error) {
-//     next(error);
-//   }
-// });
+    res.status(201).json(newUser);
+  } catch (error) {
+    next(error);
+  }
+};
 
 // // 구글 OAuth 용
 // userRouter.post('/register/google', async (req, res, next) => {
@@ -311,4 +296,4 @@
 //   }
 // });
 
-// export { userRouter };
+export { signUp };

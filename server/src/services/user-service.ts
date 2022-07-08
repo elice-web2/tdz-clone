@@ -23,7 +23,7 @@ class UserService {
   }
 
   // 회원가입
-  async addUser(userInfo: any): Promise<UserData> {
+  async addUser(userInfo: UserInfo): Promise<UserData> {
     // 객체 destructuring
     const {
       email,
