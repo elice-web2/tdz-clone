@@ -1,49 +1,57 @@
 import styled, { css } from 'styled-components';
 
 export const MyGoalWrapper = styled.div`
-  padding: 0 35px;
-  text-align: center;
   position: relative;
+
   height: 570px;
+  padding: 0 35px;
+  
+  text-align: center;
 `
 export const Button = styled.input`
-  width: 220px;
-  height: 30px;
-  
-  background-color: black;
-  color: white;
-  border-radius: 8px;
-  border-style: none;
-  font-style:none;
   position: absolute;
   bottom: 20px;
   left: 75px;
 
+  width: 220px;
+  height: 30px;
+  
+  background-color: black;
+  border-radius: 8px;
+  border-style: none;
+  
+  color: white;
+  font-style:none;
 `
 export const Mode = styled.div`
-  border-style: none;
-  font-style:none;
   width: 50%; 
   height: 100px;
+  
+  background-color: lightgrey;
+  border-style: none;
+  border-radius: 20px;
+
   font-size: 16px;
   font-weight: 700;
-  border-radius: 20px;
-  line-height: 100px;
-  background-color: lightgrey;
+  line-height: 100px; 
+
   & + & {
     margin-left: 20px;
-}
+  }
 
 `
 
 export const FlexContainer = styled.div`
-  width:100%;
-  margin: 10px auto;
   display:flex;
   justify-content: space-between;
   align-items : center;
+
+  width:100%;
+  margin: 10px auto;
+
   font-size: 14px;
   font-weight: 600;
+  
   &.mode {
     margin-top: 30px;
   }
@@ -57,40 +65,45 @@ export const FlexContainer = styled.div`
 `
 export const CircleContainer = styled.div`
   display:flex;
-  margin : 20px 0;
   align-items: center;
+
+  margin : 20px 0;
 `
 export const StepCircle = styled.div<{active ?: boolean}>`
   width:${props => props.active ? "40px":"30px"};
   height:${props => props.active ? "40px":"30px"};
-  border-radius: 50%;
-  background-color: ${props => props.active ? "grey":"lightgrey"};
-
+  
   margin-right: 10px;
 
+  background-color: ${props => props.active ? "grey":"lightgrey"};
+  border-radius: 50%;
 `
 export const Activity = styled.div`
+  font-size: 12px;
+  font-weight: 400;
+
   .emoji {
+    display: block;
+    
     width: 50px;
     height: 50px;
     margin: 7px auto;
-    display: block;
-    border-radius: 50%;
+
     background-color: lightgray;
+    border-radius: 50%;
   }
-  font-size: 12px;
-  font-weight: 400;
 `
 
 export const Title = styled.div<{align ?: string;}>`
-  text-align: ${props => props.align === "end" ? "end" : "start"};
+  margin-bottom: 20px;
+
   font-size: 20px;
   font-weight: 700;
-  margin-bottom: 20px;
+  text-align: ${props => props.align === "end" ? "end" : "start"};
+
   &.subTitle {
-    font-weight: 500;
     font-size: 16px;
-    /* margin: 40px 0 10px 0; */
+    font-weight: 500;
   }
   &.subCalorie {
     font-weight:400;
@@ -107,10 +120,11 @@ export const Title = styled.div<{align ?: string;}>`
   }
 `
 export const Step = styled.div`
-  text-align:start;
+  margin: 10px 0;
+
   font-size: 12px;
   font-weight: 600;
-  margin: 10px 0;
+  text-align:start;
 `
 
 export const InputTag = styled.input<{widthSize : string}>`
@@ -118,29 +132,33 @@ export const InputTag = styled.input<{widthSize : string}>`
     if (widthSize === "large") {
       return css`
         width: 100%;
-        margin: 0 0 80px 0;
         height: 45px;
+        margin: 0 0 80px 0;
+
         font-size : 20px;
         `
     } else if (widthSize === "medium") {
       return css`
         width: 40%;
-        margin: 0;
-        text-align: end;
         height: 45px;
+        margin: 0;
+
         font-size : 20px;
+        text-align: end;
         `
     } else if (widthSize === "small") {
       return css`
         width: 60%;
         height: 25px;
+
         font-size : 12px;
       `
     }
   }}
+  padding: 4px 8px;
+
+  box-sizing: border-box;
   background-color: #E1E1E1;
   border-style: none;
-  padding: 4px 8px;
-  box-sizing: border-box;
   border-radius: 4px;
 `
