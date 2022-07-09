@@ -12,6 +12,7 @@ import Mypage from './pages/Mypage/Mypage';
 import UserInfo from './pages/Mypage/UserInfo';
 import GoalUserInfo from './pages/mygoal/GoalUserInfo';
 import GoalCalories from './pages/mygoal/GoalCalories';
+import GoalNutrient from './pages/mygoal/GoalNutrient';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/mypage/user_info" element={<UserInfo />} />
         <Route path="/mypage/goal_step1" element={<GoalUserInfo />} />
         <Route path="/mypage/goal_step2" element={<GoalCalories />} />
+        <Route path="/mypage/goal_step3" element={<GoalNutrient />} />
       </Routes>
     </BrowserRouter>
   );
