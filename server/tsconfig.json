@@ -7,5 +7,5 @@
   },
   "include": ["lib/**/*.ts"],
   "exclude": ["node_modules"],
-  "files": ["./src/customType/express.d.ts"]
+  "files": ["src/customType/index.d.ts"]
 }
