@@ -18,18 +18,31 @@ const GoalNutrient:React.FC = () => {
         <S.StepCircle active></S.StepCircle> 
       </S.CircleContainer>
       <S.Step>STEP 3</S.Step>
-      <S.Title>탄단지 열량 입력하기</S.Title>
-      <S.Title align="end" className='subTitle'>목표 섭취 열량</S.Title>
+      <S.Title>탄단지 섭취량 입력하기</S.Title>
       <form onSubmit={submitHandler}>
-        <S.InputTag widthSize="medium" defaultValue="1200"></S.InputTag>
-        
-        <S.Title className='subCalorie'>철수님의 일일 건장 섭취량은</S.Title>
-        <S.Title className='calorie'>1200 kcal</S.Title>
-        <S.Title className='subCalorie'>입니다.</S.Title>
-
+        <S.Title align="end" className='subTitle'>목표 섭취 열량</S.Title>
+        <S.FlexContainer>
+          <span>탄수화물</span>
+          <span className='percentile'>30%</span>
+          <S.InputTag widthSize="medium" defaultValue="1200"></S.InputTag>
+        </S.FlexContainer>
+        <S.FlexContainer>
+          <span>단백질</span>
+          <span className='percentile'>60%</span>
+          <S.InputTag widthSize="medium" defaultValue="1200"></S.InputTag>
+        </S.FlexContainer>
+        <S.FlexContainer className='fastNutrient'>
+          <span>지방</span>
+          <span className='percentile'>10%</span>
+          <S.InputTag widthSize="medium" defaultValue="1200"></S.InputTag>
+        </S.FlexContainer>
+        <S.FlexContainer>
+          <S.Title className='subTitle'>최종 섭취 열량</S.Title>
+          <S.Title>1792 kcal</S.Title>
+        </S.FlexContainer>
         <S.Button 
           type="submit"
-          value="다음"
+          value="입력 완료"
         ></S.Button>
       </form>
     </S.MyGoalWrapper>
