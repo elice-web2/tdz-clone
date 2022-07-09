@@ -18,8 +18,9 @@ const GoalCalories = () => {
       </S.CircleContainer>
       <S.Step>STEP 2</S.Step>
       <S.Title>하루 섭취 열량 입력하기</S.Title>
-      <S.Title className='subTitle'>목표 섭취 열량</S.Title>
+      <br/>
       <form onSubmit={submitHandler}>
+        <S.Title className='subTitle'>목표 섭취 열량</S.Title>
         <S.InputTag widthSize="large" defaultValue="1200"></S.InputTag>
         
         <S.Title className='subCalorie'>철수님의 일일 건장 섭취량은</S.Title>

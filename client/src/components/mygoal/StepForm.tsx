@@ -1,11 +1,9 @@
-import styled from 'styled-components';
-interface Props {
-  active ?: boolean;
-  align ?: string;
-}
+import styled, { css } from 'styled-components';
+
 export const MyGoalWrapper = styled.div`
-  padding: 25px;
+  padding: 35px;
   text-align: center;
+  position: relative;
 `
 export const Button = styled.input`
   width: 220px;
@@ -16,6 +14,10 @@ export const Button = styled.input`
   border-radius: 8px;
   border-style: none;
   font-style:none;
+
+  position: fixed;
+  bottom: 60px;
+  left: 75px;
  
 `
 export const Mode = styled.div`
@@ -35,7 +37,7 @@ export const Mode = styled.div`
 `
 
 export const FlexContainer = styled.div`
-  width:90%;
+  width:100%;
   margin: 10px auto;
   display:flex;
   justify-content: space-between;
@@ -45,27 +47,42 @@ export const FlexContainer = styled.div`
   &.mode {
     margin-top: 30px;
   }
+  .percentile {
+    position: absolute;
+    right: 170px;
+  }
+  &.fastNutrient{
+    margin-bottom: 30px;
+  }
 `
 export const CircleContainer = styled.div`
   display:flex;
   margin : 20px 0;
   align-items: center;
 `
-export const StepCircle = styled.div<Props>`
+export const StepCircle = styled.div<{active ?: boolean}>`
   width:${props => props.active ? "40px":"30px"};
   height:${props => props.active ? "40px":"30px"};
   border-radius: 50%;
   background-color: ${props => props.active ? "grey":"lightgrey"};
 
   margin-right: 10px;
-  &.activity {
-    width: 50px;
-    height: 50px;
-    margin: 20px auto;
-  }
 
 `
-export const Title = styled.div<Props>`
+export const Activity = styled.div`
+  .emoji {
+    width: 50px;
+    height: 50px;
+    margin: 7px auto;
+    display: block;
+    border-radius: 50%;
+    background-color: lightgray;
+  }
+  font-size: 12px;
+  font-weight: 400;
+`
+
+export const Title = styled.div<{align ?: string;}>`
   text-align: ${props => props.align === "end" ? "end" : "start"};
   font-size: 20px;
   font-weight: 700;
@@ -73,7 +90,7 @@ export const Title = styled.div<Props>`
   &.subTitle {
     font-weight: 500;
     font-size: 16px;
-    margin: 40px 0 10px 0;
+    /* margin: 40px 0 10px 0; */
   }
   &.subCalorie {
     font-weight:400;
@@ -85,7 +102,7 @@ export const Title = styled.div<Props>`
   }
   
   &.calorie {
-    font-size: 50px;
+    font-size: 40px;
     text-align: center;
   }
 `
@@ -97,10 +114,33 @@ export const Step = styled.div`
 `
 
 export const InputTag = styled.input<{widthSize : string}>`
-  width: ${props => props.widthSize === "large" ? "60%" : "30%"};
-  margin: 0 0 80px 0;
-  width: 100%;
-  height: 30px;
-  background-color: lightgrey;
-  font-size : 20px;
+  ${({widthSize}) => {
+    if (widthSize === "large") {
+      return css`
+        width: 100%;
+        margin: 0 0 80px 0;
+        height: 45px;
+        font-size : 20px;
+        `
+    } else if (widthSize === "medium") {
+      return css`
+        width: 40%;
+        margin: 0;
+        text-align: end;
+        height: 45px;
+        font-size : 20px;
+        `
+    } else if (widthSize === "small") {
+      return css`
+        width: 60%;
+        height: 25px;
+        font-size : 12px;
+      `
+    }
+  }}
+  background-color: #E1E1E1;
+  border-style: none;
+  padding: 4px 8px;
+  box-sizing: border-box;
+  border-radius: 4px;
 `
