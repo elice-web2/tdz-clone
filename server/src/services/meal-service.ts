@@ -42,3 +42,6 @@ class MealService {
     return { result: 'success' };
   }
 }
+
+const mealService = new MealService(mealModel);
+export { mealService };
