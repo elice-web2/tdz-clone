@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components';
 
 export const MyGoalWrapper = styled.div`
-  padding: 35px;
+  padding: 0 35px;
   text-align: center;
   position: relative;
+  height: 570px;
 `
 export const Button = styled.input`
   width: 220px;
@@ -14,11 +15,10 @@ export const Button = styled.input`
   border-radius: 8px;
   border-style: none;
   font-style:none;
-
-  position: fixed;
-  bottom: 60px;
+  position: absolute;
+  bottom: 20px;
   left: 75px;
- 
+
 `
 export const Mode = styled.div`
   border-style: none;

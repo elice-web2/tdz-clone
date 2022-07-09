@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import Container from '../../components/styles/Container';
-import * as S from '../../components/mygoal/StepForm'
+import * as S from '../../components/mygoal/StepForm';
+import Logo from '../../components/common/Logo';
+import Navbar from '../../components/common/Navbar';
 
 const GoalNutrient:React.FC = () => {
   const navigate = useNavigate();
@@ -11,6 +13,7 @@ const GoalNutrient:React.FC = () => {
 
   return (
     <Container>
+    <Logo />
     <S.MyGoalWrapper>
       <S.CircleContainer>
         <S.StepCircle></S.StepCircle>
@@ -46,6 +49,7 @@ const GoalNutrient:React.FC = () => {
         ></S.Button>
       </form>
     </S.MyGoalWrapper>
+    <Navbar />
 </Container>
   )
 }
