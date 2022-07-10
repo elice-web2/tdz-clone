@@ -9,9 +9,6 @@ export const MyGoalWrapper = styled.div`
   text-align: center;
 `
 export const Button = styled.input`
-  position: absolute;
-  bottom: 20px;
-  left: 75px;
 
   width: 220px;
   height: 30px;
@@ -22,6 +19,8 @@ export const Button = styled.input`
   
   color: white;
   font-style:none;
+
+  cursor: pointer;
 `
 export const Mode = styled.div`
   width: 50%; 
@@ -34,6 +33,8 @@ export const Mode = styled.div`
   font-size: 16px;
   font-weight: 700;
   line-height: 100px; 
+
+  cursor: pointer;
 
   & + & {
     margin-left: 20px;
@@ -57,7 +58,7 @@ export const FlexContainer = styled.div`
   }
   .percentile {
     position: absolute;
-    right: 170px;
+    right: 46%;
   }
   &.fastNutrient{
     margin-bottom: 30px;
@@ -82,6 +83,8 @@ export const Activity = styled.div`
   font-size: 12px;
   font-weight: 400;
 
+  cursor: pointer;
+  
   .emoji {
     display: block;
     
