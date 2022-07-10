@@ -63,14 +63,14 @@ const VideoContainer = styled.div`
 `;
 
 const Video = styled.video`
-  z-index: -100;
   width: 100%;
+  z-index: -100;
 `;
 
 const LogoText = styled.h1`
   position: relative;
-  padding-top: 100px;
   margin-bottom: 80px;
+  padding-top: 100px;
   color: black;
   font-size: 60px;
   font-weight: bold;
@@ -97,6 +97,9 @@ const LoginContainer = styled.div`
 
 const LoginBox = styled.div<{ brand: string }>`
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 250px;
   height: 60px;
   padding: 5px;
@@ -110,9 +113,6 @@ const LoginBox = styled.div<{ brand: string }>`
     }
   }};
   font-size: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   box-sizing: border-box;
 
   .icon {
