@@ -52,6 +52,7 @@ const OutsideModal = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgb(0, 0, 0, 0.4);
+  z-index: 1;
 `;
 const ModalContainer = styled.div`
   position: absolute;
@@ -65,6 +66,7 @@ const ModalContainer = styled.div`
   padding-bottom: 30px;
   background-color: white;
   border-radius: 15px;
+  z-index: 2;
 `;
 
 const XBtn = styled.button`
