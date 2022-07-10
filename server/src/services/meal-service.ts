@@ -3,7 +3,7 @@ import { mealModel, MealModel, MealInfo, MealData } from '../db';
 class MealService {
   constructor(private mealModel: MealModel) {}
 
-  async getMeal(meal_name: string): Promise<MealData> {
+  async findMeal(meal_name: string): Promise<MealData> {
     const meal = await this.mealModel.findByMealName(meal_name);
 
     // db에서 찾지 못한 경우, 에러 메시지 반환
