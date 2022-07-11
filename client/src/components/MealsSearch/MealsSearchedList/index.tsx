@@ -6,11 +6,15 @@ import {
   faStar,
 } from '@fortawesome/free-solid-svg-icons';
 
-function MealsSearchedList(props: { name: string }) {
+interface MealsSearchedListProps {
+  name: string;
+}
+
+function MealsSearchedList({ name }: MealsSearchedListProps) {
   return (
     <S.List>
       <S.NamedInfo>
-        <div className="title">{props.name}</div>
+        <div className="title">{name}</div>
         <span className="arrowIcon">
           <FontAwesomeIcon icon={faArrowRight} />
         </span>

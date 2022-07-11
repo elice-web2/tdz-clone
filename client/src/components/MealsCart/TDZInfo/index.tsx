@@ -1,14 +1,20 @@
 import * as S from './style';
-function TDZInfo(props: { nutrient: string; gram: number }) {
+
+interface TDZInfoProps {
+  nutrient: string;
+  gram: number;
+}
+
+function TDZInfo({ nutrient, gram }: TDZInfoProps) {
   return (
     <>
-      <S.NutrientInfoBox color={props.nutrient}>
+      <S.NutrientInfoBox color={nutrient}>
         <div className="nutrient">
           <span className="circle"></span>
-          {props.nutrient}
+          {nutrient}
         </div>
         <div>
-          <span className="gram">{props.gram}</span>g
+          <span className="gram">{gram}</span>g
         </div>
       </S.NutrientInfoBox>
     </>

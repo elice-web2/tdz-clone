@@ -1,10 +1,14 @@
 import * as S from './style';
 import { useNavigate } from 'react-router-dom';
 
-function MealsCartModal(props: { setOpenModal: (value: boolean) => void }) {
+interface MealsCartModalProps {
+  setOpenModal: (value: boolean) => void;
+}
+
+function MealsCartModal({ setOpenModal }: MealsCartModalProps) {
   const navigate = useNavigate();
   const modalCloseHandler = () => {
-    props.setOpenModal(false);
+    setOpenModal(false);
   };
 
   return (
@@ -13,7 +17,7 @@ function MealsCartModal(props: { setOpenModal: (value: boolean) => void }) {
       <S.ModalContainer>
         <S.XBtn
           onClick={() => {
-            props.setOpenModal(false);
+            setOpenModal(false);
           }}
         >
           X
