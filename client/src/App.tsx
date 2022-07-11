@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Main from './pages/Main';
 import Home from './pages/Home';
+import MealsList from './pages/Meals/MealsList';
 import MealsSearch from './pages/Meals/MealsSearch';
 import MealsDetail from './pages/Meals/MealsDetail';
 import MealsCart from './pages/Meals/MealsCart';
@@ -10,8 +11,10 @@ import Signup from './pages/Signup';
 import ChartPage from './pages/ChartPage';
 import Mypage from './pages/Mypage/Mypage';
 import UserInfo from './pages/Mypage/UserInfo';
-import GoalUserInfo from './pages/mygoal/GoalUserInfo';
-import GoalCalories from './pages/mygoal/GoalCalories';
+import GoalUserInfo from './pages/Mygoal/GoalUserInfo';
+import GoalCalories from './pages/Mygoal/GoalCalories';
+import GoalNutrient from './pages/Mygoal/GoalNutrient';
+import CalendarStamp from './pages/CalendarStamp';
 
 function App() {
   return (
@@ -19,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/meals" element={<MealsList />} />
         <Route path="/meals/search" element={<MealsSearch />} />
         <Route path="/meals/cart" element={<MealsCart />} />
         <Route path="/meals/detail" element={<MealsDetail />} />
@@ -29,6 +33,8 @@ function App() {
         <Route path="/mypage/user_info" element={<UserInfo />} />
         <Route path="/mypage/goal_step1" element={<GoalUserInfo />} />
         <Route path="/mypage/goal_step2" element={<GoalCalories />} />
+        <Route path="/mypage/goal_step3" element={<GoalNutrient />} />
+        <Route path="/calendar" element={<CalendarStamp />} />
       </Routes>
     </BrowserRouter>
   );
