@@ -6,8 +6,8 @@ import { mealInfo } from '../db';
 class MealHistoryController {
   async getHistory(req: Request, res: Response, next) {
     try {
-      const user_id = req.params.id;
-      const date = new Date(req.params.date);
+      const user_id: string = req.currentUserId;
+      const date: Date = new Date(req.params.date);
 
       const newMealData = await mealhistoryService.getMealHistory(
         user_id,
@@ -29,16 +29,16 @@ class MealHistoryController {
         );
       }
       // req (request) 에서 데이터 가져오기
-      const user_id: string = req.params.id;
+      const user_id: string = req.currentUserId;
       const date: Date = new Date(req.body.date);
-      const meal_category: string = req.body.meal_category;
+      const category: string = req.body.category;
       const meals: [mealInfo] = req.body.meals;
 
       // db에 저장
       const newMealHistory = await mealhistoryService.addMealHistory({
         user_id,
         date,
-        meal_category,
+        category,
         meals,
       });
 
@@ -58,15 +58,15 @@ class MealHistoryController {
       }
 
       // req (request) 에서 데이터 가져오기
-      const mealhistory_id = req.params.mealhistory_id;
+      const mealhistory_id: string = req.params.mealhistory_id;
       const date: Date = new Date(req.body.date);
-      const meal_category: string = req.body.meal_category;
+      const category: string = req.body.category;
       const meals: [mealInfo] = req.body.meals;
 
       const toUpdate = {
         ...(mealhistory_id && { mealhistory_id }),
         ...(date && { date }),
-        ...(meal_category && { meal_category }),
+        ...(category && { category }),
         ...(meals && { meals }),
       };
 

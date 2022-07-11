@@ -21,6 +21,11 @@ class MealHistoryService {
     date: Date,
   ): Promise<MealHistoryData[]> {
     const meals = await this.mealhistoryModel.findByDate(user_id, date);
+
+    if (!meals) {
+      throw new Error('조회된 식단이 없습니다.');
+    }
+
     return meals;
   }
 
@@ -28,10 +33,22 @@ class MealHistoryService {
     mealhistory_id: string,
     toUpdate: Partial<MealHistoryInfo>,
   ): Promise<MealHistoryData> {
+    const mealhistory = await this.mealhistoryModel.findByMealHistoryId(
+      mealhistory_id,
+    );
+
+    if (!mealhistory) {
+      throw new Error('해당 식단은 존재하지 않습니다.');
+    }
+
     const updatedMeal = await this.mealhistoryModel.update({
       mealhistory_id,
       update: toUpdate,
     });
+
+    if (updatedMeal === null) {
+      throw new Error('식단이 수정되지 않았습니다.');
+    }
 
     return updatedMeal;
   }

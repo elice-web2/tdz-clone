@@ -353,3 +353,258 @@ TypeError: Cannot destructure property 'deletedCount' of '(intermediate value)' 
 >>>>>>> origin/dev
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
 
+[2022-7-11 17:47:38] POST:/mealhistory/2022-07-11
+ValidationError: mealhistory validation failed: user_id: Cast to ObjectId failed for value "2022-07-11" (type string) at path "user_id"
+    at model.Document.invalidate (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2782:32)
+    at model.$set (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:1349:12)
+    at model.$set (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:1058:16)
+    at model.Document (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:148:12)
+    at model.Model (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\model.js:106:12)
+    at new model (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\model.js:4911:15)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\model.js:3157:22
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\model.js:3193:7
+    at Array.forEach (<anonymous>)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\model.js:3192:15
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\helpers\promiseOrCallback.js:32:5
+    at new Promise (<anonymous>)
+    at promiseOrCallback (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\helpers\promiseOrCallback.js:31:10)
+    at Mongoose._promiseOrCallback (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\index.js:1149:10)
+    at Function.create (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\model.js:3127:23)
+    at MealHistoryModel.<anonymous> (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\db\models\mealhistory-model.ts:54:30)
+
+[2022-7-11 17:49:24] POST:/mealhistory/2022-07-11
+ValidationError: mealhistory validation failed: user_id: Cast to ObjectId failed for value "2022-07-11" (type string) at path "user_id"
+    at model.Document.invalidate (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2782:32)
+    at model.$set (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:1349:12)
+    at model.$set (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:1058:16)
+    at model.Document (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:148:12)
+    at model.Model (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\model.js:106:12)
+    at new model (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\model.js:4911:15)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\model.js:3157:22
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\model.js:3193:7
+    at Array.forEach (<anonymous>)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\model.js:3192:15
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\helpers\promiseOrCallback.js:32:5
+    at new Promise (<anonymous>)
+    at promiseOrCallback (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\helpers\promiseOrCallback.js:31:10)
+    at Mongoose._promiseOrCallback (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\index.js:1149:10)
+    at Function.create (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\model.js:3127:23)
+    at MealHistoryModel.<anonymous> (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\db\models\mealhistory-model.ts:54:30)
+
+[2022-7-11 17:50:53] POST:/mealhistory/2022-07-11
+ValidationError: mealhistory validation failed: user_id: Cast to ObjectId failed for value "2022-07-11" (type string) at path "user_id"
+    at model.Document.invalidate (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2782:32)
+    at model.$set (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:1349:12)
+    at model.$set (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:1058:16)
+    at model.Document (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:148:12)
+    at model.Model (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\model.js:106:12)
+    at new model (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\model.js:4911:15)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\model.js:3157:22
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\model.js:3193:7
+    at Array.forEach (<anonymous>)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\model.js:3192:15
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\helpers\promiseOrCallback.js:32:5
+    at new Promise (<anonymous>)
+    at promiseOrCallback (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\helpers\promiseOrCallback.js:31:10)
+    at Mongoose._promiseOrCallback (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\index.js:1149:10)
+    at Function.create (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\model.js:3127:23)
+    at MealHistoryModel.<anonymous> (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\db\models\mealhistory-model.ts:54:30)
+
+[2022-7-11 17:51:43] POST:/mealhistory/2022-07-11
+ValidationError: mealhistory validation failed: user_id: Cast to ObjectId failed for value "2022-07-11" (type string) at path "user_id"
+    at model.Document.invalidate (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2782:32)
+    at model.$set (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:1349:12)
+    at model.$set (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:1058:16)
+    at model.Document (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:148:12)
+    at model.Model (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\model.js:106:12)
+    at new model (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\model.js:4911:15)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\model.js:3157:22
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\model.js:3193:7
+    at Array.forEach (<anonymous>)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\model.js:3192:15
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\helpers\promiseOrCallback.js:32:5
+    at new Promise (<anonymous>)
+    at promiseOrCallback (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\helpers\promiseOrCallback.js:31:10)
+    at Mongoose._promiseOrCallback (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\index.js:1149:10)
+    at Function.create (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\model.js:3127:23)
+    at MealHistoryModel.<anonymous> (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\db\models\mealhistory-model.ts:54:30)
+
+[2022-7-11 17:53:51] POST:/mealhistory/
+ValidationError: mealhistory validation failed: user_id: Path `user_id` is required.
+    at model.Document.invalidate (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2782:32)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2574:17
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\schematype.js:1273:9
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+[2022-7-11 18:0:46] GET:/mealhistory/62cbe61b1e8dd7972459f0ab
+CastError: Cast to date failed for value "Invalid Date" (type Date) at path "date" for model "mealhistory"
+    at model.Query.exec (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\query.js:4498:21)
+    at model.Query.Query.then (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\query.js:4592:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-11 18:2:15] DELETE:/mealhistory/62cbe61b1e8dd7972459f0ab
+Error: 해당 식단은 존재하지 않습니다.
+    at MealHistoryService.<anonymous> (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:45:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-11 18:55:11] DELETE:/mealhistory/62cbe5691e8dd7972459f0a7
+Error: 해당 식단은 존재하지 않습니다.
+    at MealHistoryService.<anonymous> (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:45:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-11 18:55:24] DELETE:/mealhistory/62cbe61b1e8dd7972459f0ab
+Error: 해당 식단은 존재하지 않습니다.
+    at MealHistoryService.<anonymous> (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:45:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-11 18:55:35] DELETE:/mealhistory/62cbe61b1e8dd7972459f0ab
+Error: 해당 식단은 존재하지 않습니다.
+    at MealHistoryService.<anonymous> (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:45:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-11 19:13:58] DELETE:/mealhistory/62cbf7b94b80588a6c98c584
+Error: 해당 식단은 존재하지 않습니다.
+    at MealHistoryService.<anonymous> (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:53:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-11 19:14:8] DELETE:/mealhistory/62cbf7b94b80588a6c98c584
+Error: 해당 식단은 존재하지 않습니다.
+    at MealHistoryService.<anonymous> (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:53:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-11 19:14:45] DELETE:/mealhistory/62cbf7b94b80588a6c98c584
+Error: 해당 식단은 존재하지 않습니다.
+    at MealHistoryService.<anonymous> (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:53:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-11 19:14:53] DELETE:/mealhistory/62cbf7b94b80588a6c98c584
+Error: 해당 식단은 존재하지 않습니다.
+    at MealHistoryService.<anonymous> (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:53:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-11 19:17:13] PATCH:/mealhistory/62cbe55c1e8dd7972459f0a3
+Error: 해당 식단은 존재하지 않습니다.
+    at MealHistoryService.<anonymous> (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:36:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-11 19:29:39] DELETE:/mealhistory/62cbe5691e8dd7972459f0a7
+Error: 해당 식단은 존재하지 않습니다.
+    at MealHistoryService.<anonymous> (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:53:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-11 19:59:17] POST:/mealhistory/
+ValidationError: mealhistory validation failed: meals.0.fat: Path `fat` is required., meals.0.protein: Path `protein` is required., meals.1.transfat: Path `transfat` is required., meals.1.saturatedfatty: Path `saturatedfatty` is required., meals.1.cholesterol: Path `cholesterol` is required., meals.1.natruim: Path `natruim` is required., meals.1.sugars: Path `sugars` is required., meals.1.fat: Path `fat` is required., meals.1.protein: Path `protein` is required., meals.1.carb: Path `carb` is required., meals.1.kcal: Path `kcal` is required., meals.1.name: Path `name` is required., meals.1.code: Path `code` is required.
+    at model.Document.invalidate (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2782:32)
+    at EmbeddedDocument.invalidate (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\types\embedded.js:298:29)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2574:17
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\schematype.js:1273:9
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+[2022-7-11 19:59:26] POST:/mealhistory/
+SyntaxError: Unexpected token ] in JSON at position 459
+    at JSON.parse (<anonymous>)
+    at parse (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\body-parser\lib\types\json.js:89:19)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\body-parser\lib\read.js:128:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:199:9)
+    at invokeCallback (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\raw-body\index.js:231:16)
+    at done (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\raw-body\index.js:220:7)
+    at IncomingMessage.onEnd (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\raw-body\index.js:280:7)
+    at IncomingMessage.emit (node:events:402:35)
+    at IncomingMessage.emit (node:domain:475:12)
+    at endReadableNT (node:internal/streams/readable:1343:12)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+[2022-7-11 19:59:32] POST:/mealhistory/
+ValidationError: mealhistory validation failed: meals.0.fat: Path `fat` is required., meals.0.protein: Path `protein` is required.
+    at model.Document.invalidate (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2782:32)
+    at EmbeddedDocument.invalidate (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\types\embedded.js:298:29)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2574:17
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\schematype.js:1273:9
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+[2022-7-11 20:0:35] PATCH:/mealhistory/62cbf8ba4b80588a6c98c597
+SyntaxError: Unexpected string in JSON at position 34
+    at JSON.parse (<anonymous>)
+    at parse (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\body-parser\lib\types\json.js:89:19)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\body-parser\lib\read.js:128:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:199:9)
+    at invokeCallback (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\raw-body\index.js:231:16)
+    at done (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\raw-body\index.js:220:7)
+    at IncomingMessage.onEnd (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\raw-body\index.js:280:7)
+    at IncomingMessage.emit (node:events:402:35)
+    at IncomingMessage.emit (node:domain:475:12)
+    at endReadableNT (node:internal/streams/readable:1343:12)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+[2022-7-11 20:3:34] PATCH:/mealhistory/62cc035eab1be99e10a88299
+SyntaxError: Unexpected string in JSON at position 34
+    at JSON.parse (<anonymous>)
+    at parse (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\body-parser\lib\types\json.js:89:19)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\body-parser\lib\read.js:128:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:199:9)
+    at invokeCallback (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\raw-body\index.js:231:16)
+    at done (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\raw-body\index.js:220:7)
+    at IncomingMessage.onEnd (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\raw-body\index.js:280:7)
+    at IncomingMessage.emit (node:events:402:35)
+    at IncomingMessage.emit (node:domain:475:12)
+    at endReadableNT (node:internal/streams/readable:1343:12)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+[2022-7-11 20:4:7] PATCH:/mealhistory/62cc035eab1be99e10a88299
+CastError: Cast to date failed for value "Invalid Date" (type Date) at path "date"
+    at model.Query.exec (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\query.js:4498:21)
+    at model.Query.Query.then (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\query.js:4592:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-11 20:4:15] PATCH:/mealhistory/62cc035eab1be99e10a88299
+SyntaxError: Unexpected string in JSON at position 36
+    at JSON.parse (<anonymous>)
+    at parse (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\body-parser\lib\types\json.js:89:19)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\body-parser\lib\read.js:128:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:199:9)
+    at invokeCallback (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\raw-body\index.js:231:16)
+    at done (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\raw-body\index.js:220:7)
+    at IncomingMessage.onEnd (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\raw-body\index.js:280:7)
+    at IncomingMessage.emit (node:events:402:35)
+    at IncomingMessage.emit (node:domain:475:12)
+    at endReadableNT (node:internal/streams/readable:1343:12)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+[2022-7-11 20:4:19] PATCH:/mealhistory/62cc035eab1be99e10a88299
+CastError: Cast to date failed for value "Invalid Date" (type Date) at path "date"
+    at model.Query.exec (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\query.js:4498:21)
+    at model.Query.Query.then (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\query.js:4592:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-11 20:8:52] PATCH:/mealhistory/62cc035eab1be99e10a88299
+CastError: Cast to date failed for value "Invalid Date" (type Date) at path "date"
+    at model.Query.exec (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\query.js:4498:21)
+    at model.Query.Query.then (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\query.js:4592:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-11 20:9:10] PATCH:/mealhistory/62cc035eab1be99e10a88299
+CastError: Cast to date failed for value "Invalid Date" (type Date) at path "date"
+    at model.Query.exec (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\query.js:4498:21)
+    at model.Query.Query.then (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\query.js:4592:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
