@@ -1,22 +1,6 @@
 import styled from 'styled-components';
 
-function TDZInfo(props: { nutrient: string; gram: number }) {
-  return (
-    <>
-      <NutrientInfoBox color={props.nutrient}>
-        <div className="nutrient">
-          <span className="circle"></span>
-          {props.nutrient}
-        </div>
-        <div>
-          <span className="gram">{props.gram}</span>g
-        </div>
-      </NutrientInfoBox>
-    </>
-  );
-}
-
-const NutrientInfoBox = styled.div`
+export const NutrientInfoBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,5 +35,3 @@ const NutrientInfoBox = styled.div`
     font-weight: bold;
   }
 `;
-
-export default TDZInfo;
