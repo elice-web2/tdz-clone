@@ -8,7 +8,7 @@ const MealHistorySchema = new Schema(
       type: Date,
       required: true,
     },
-    meal_category: {
+    category: {
       type: String,
       required: true,
     },
