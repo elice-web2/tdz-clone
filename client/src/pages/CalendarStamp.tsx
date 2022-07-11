@@ -2,8 +2,7 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import Calendar from 'react-calendar';
 import '../assets/CalendarStamp.css';
-import moment from "moment";
-
+import dayjs from "dayjs";
 import Container from '../components/styles/Container';
 import Logo from '../components/common/Logo';
 import Navbar from '../components/common/Navbar';
@@ -34,7 +33,7 @@ const CalendarStamp = ()=> {
         // locale="en"
         formatDay={(locale, date) => date.toLocaleString("en", {day: "numeric"})}
         tileClassName={({ date, view }):any => {
-          if (marks.find((x) => x === moment(date).format("DD-MM-YYYY"))) {
+          if (marks.find((x) => x === dayjs(date).format("DD-MM-YYYY"))) {
             return "highlight";
           }
         }}
