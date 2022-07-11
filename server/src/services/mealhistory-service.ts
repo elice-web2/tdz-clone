@@ -1,9 +1,8 @@
+import { mealhistoryModel, MealHistoryModel } from '../db';
 import {
-  mealhistoryModel,
-  MealHistoryModel,
   MealHistoryInfo,
   MealHistoryData,
-} from '../db';
+} from '../customType/mealhistory.type';
 
 class MealHistoryService {
   constructor(private mealhistoryModel: MealHistoryModel) {}

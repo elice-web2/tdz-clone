@@ -1,45 +1,12 @@
 import { model } from 'mongoose';
 // import { MealSchema } from '../schemas/meal-schema';
 import { MealHistorySchema } from '../schemas/mealhistory-schema';
-
+import {
+  MealHistoryInfo,
+  MealHistoryData,
+  ToUpdate,
+} from '../../customType/mealhistory.type';
 const MealHistory = model<MealHistoryData>('mealhistory', MealHistorySchema);
-
-export interface mealInfo {
-  code: string;
-  name: String;
-  kcal: Number;
-  carb: Number;
-  protein: Number;
-  fat: Number;
-  sugars: Number;
-  natruim: Number;
-  cholesterol: Number;
-  saturatedfatty: Number;
-  transfat: Number;
-  updated_date: Date;
-}
-
-export interface MealHistoryInfo {
-  user_id: string;
-  category: string;
-  date: Date;
-  meals: [mealInfo];
-}
-
-export interface MealHistoryData {
-  _id: string;
-  user_id: string;
-  category: string;
-  date: Date;
-  meals: [mealInfo];
-}
-
-interface ToUpdate {
-  mealhistory_id: string;
-  update: {
-    [key: string]: string | number | Date | [mealInfo];
-  };
-}
 
 export class MealHistoryModel {
   async findByDate(
