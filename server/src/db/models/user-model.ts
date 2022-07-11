@@ -74,10 +74,10 @@ export class UserModel {
   //userId(ObjectId)를 찾아 그 항목을 수정
   async update({ userId, update }: ToUpdate): Promise<UserData> {
     const filter = { _id: userId };
-    const option = { returnOriginal: false };
+    const option = { new: true };
 
     const updateData = await User.findOneAndUpdate(filter, update, option);
-    console.log(updateData);
+
     return updateData;
   }
   //userId(ObjectId)를 찾아 삭제

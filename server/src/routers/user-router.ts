@@ -1,11 +1,6 @@
 import { Router } from 'express';
 // 폴더에서 import하면, 자동으로 폴더의 index.js에서 가져옴
-import {
-  errorHandler,
-  errorLogger,
-  loginRequired,
-  adminRequired,
-} from '../middlewares';
+import { loginRequired, adminRequired } from '../middlewares';
 import * as userController from '../controllers';
 import { userValidator } from '../validation/validator';
 // import { register,login,getUserlist,editUserData } from '../controller';
