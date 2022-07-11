@@ -6,8 +6,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {Object.entries(ROUTES).map(([_, route]) => (
-          <Route key={route.path} path={route.path} element={route.element} />
+        {Object.values(ROUTES).map(({ path, element }) => (
+          <Route key={path} path={path} element={element} />
         ))}
         <Route path={'/calendar'} element={<CalendarStamp />} />
       </Routes>

@@ -40,7 +40,6 @@ function NutrientDetail({ data }: { data: any }) {
           </div>
           <span>{data.지방합}g</span>
         </S.NutrientListItem>
-        S.
         <S.SubListItem>
           <div>
             <FontAwesomeIcon icon={faCircle} />
