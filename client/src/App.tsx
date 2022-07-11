@@ -10,9 +10,9 @@ import Signup from './pages/Signup';
 import ChartPage from './pages/ChartPage';
 import Mypage from './pages/Mypage/Mypage';
 import UserInfo from './pages/Mypage/UserInfo';
-import GoalUserInfo from './pages/Mygoal/GoalUserInfo';
-import GoalCalories from './pages/Mygoal/GoalCalories';
-import GoalNutrient from './pages/Mygoal/GoalNutrient';
+import GoalUserInfo from './pages/mygoal/GoalUserInfo';
+import GoalCalories from './pages/mygoal/GoalCalories';
+import GoalNutrient from './pages/mygoal/GoalNutrient';
 import CalendarStamp from './pages/CalendarStamp';
 
 function App() {
