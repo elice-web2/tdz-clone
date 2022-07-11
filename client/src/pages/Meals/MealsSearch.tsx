@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { useState, useRef } from 'react';
-import Container from '../../../components/styles/Container';
-import Navbar from '../../../components/common/Navbar';
+import Container from '../../components/styles/Container';
+import Navbar from '../../components/common/Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import SearchUlWrapper from './SearchUlWrapper';
+import SearchUlWrapper from '../../components/MealsSearch/SearchUlWrapper';
 
 const MealsSearch: React.FC = () => {
   const [isSearch, setIsSearch] = useState(true);

@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import Navbar from '../../../components/common/Navbar';
-import MealsCartModal from './MealsCartModal';
+import Navbar from '../../components/common/Navbar';
+import MealsCartModal from '../../components/MealsCart/MealsCartModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { TDZInfo } from './TDZInfo';
-import { MealsList } from './MealsList';
+import { TDZInfo } from '../../components/MealsCart/TDZInfo';
+import { MealsList } from '../../components/MealsCart/MealsList';
 
 const MealsCart: React.FC = () => {
   const [modal, setModal] = useState<boolean>(false);

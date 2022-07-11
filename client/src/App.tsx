@@ -2,9 +2,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Main from './pages/Main';
 import Home from './pages/Home';
-import MealsSearch from './pages/Meals/MealSearch/MealsSearch';
+import MealsSearch from './pages/Meals/MealsSearch';
 import MealsDetail from './pages/Meals/MealsDetail';
-import MealsCart from './pages/Meals/MealsCart/MealsCart';
+import MealsCart from './pages/Meals/MealsCart';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 import ChartPage from './pages/ChartPage';
