@@ -1,5 +1,5 @@
 import cors from 'cors';
-import express from 'express';
+import * as express from 'express';
 import cookieParser from 'cookie-parser';
 import {
   mealhistoryRouter,
