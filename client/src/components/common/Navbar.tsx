@@ -9,7 +9,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Container from '../styles/Container';
 
-const Navbar: React.FC = () => {
+function Navbar() {
   const navigate = useNavigate();
   return (
     <Container>
@@ -59,7 +59,7 @@ const Navbar: React.FC = () => {
       </NavContainer>
     </Container>
   );
-};
+}
 
 const NavContainer = styled.div`
   display: flex;

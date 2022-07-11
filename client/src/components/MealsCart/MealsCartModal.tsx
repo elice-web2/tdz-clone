@@ -1,10 +1,7 @@
 import styled from 'styled-components';
-
 import { useNavigate } from 'react-router-dom';
 
-const MealsCartModal: React.FC<{
-  setModal: (value: boolean) => void;
-}> = (props) => {
+function MealsCartModal(props: { setModal: (value: boolean) => void }) {
   const navigate = useNavigate();
   const modalCloseHandler = () => {
     props.setModal(false);
@@ -39,7 +36,7 @@ const MealsCartModal: React.FC<{
       </ModalContainer>
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   width: 100%;

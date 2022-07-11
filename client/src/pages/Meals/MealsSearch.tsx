@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import SearchUlWrapper from '../../components/MealsSearch/SearchUlWrapper';
 
-const MealsSearch: React.FC = () => {
+function MealsSearch() {
   const [isSearch, setIsSearch] = useState(true);
   const [inputValue, setInputValue] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
@@ -75,7 +75,7 @@ const MealsSearch: React.FC = () => {
       <Navbar />
     </Container>
   );
-};
+}
 
 const SearchContainer = styled.div`
   display: flex;

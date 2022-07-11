@@ -5,10 +5,10 @@ import Navbar from '../../components/common/Navbar';
 import MealsCartModal from '../../components/MealsCart/MealsCartModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { TDZInfo } from '../../components/MealsCart/TDZInfo';
-import { MealsList } from '../../components/MealsCart/MealsList';
+import TDZInfo from '../../components/MealsCart/TDZInfo';
+import MealsList from '../../components/MealsCart/MealsList';
 
-const MealsCart: React.FC = () => {
+function MealsCart() {
   const [modal, setModal] = useState<boolean>(false);
   const navigate = useNavigate();
   const clickHandler = () => {
@@ -56,7 +56,7 @@ const MealsCart: React.FC = () => {
       <Navbar />
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   position: relative;

@@ -6,7 +6,7 @@ import {
   faStar,
 } from '@fortawesome/free-solid-svg-icons';
 
-const ItemsList: React.FC<{ name: string }> = (props) => {
+function ItemsList(props: { name: string }) {
   return (
     <List>
       <NamedInfo>
@@ -24,7 +24,7 @@ const ItemsList: React.FC<{ name: string }> = (props) => {
       <QuanInfo>1인분</QuanInfo>
     </List>
   );
-};
+}
 
 const List = styled.li`
   width: 360px;

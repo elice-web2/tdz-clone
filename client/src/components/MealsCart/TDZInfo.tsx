@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-export const TDZInfo: React.FC<{ nutrient: string; gram: number }> = (
-  props,
-) => {
+function TDZInfo(props: { nutrient: string; gram: number }) {
   return (
     <>
       <NutrientInfoBox color={props.nutrient}>
@@ -16,7 +14,7 @@ export const TDZInfo: React.FC<{ nutrient: string; gram: number }> = (
       </NutrientInfoBox>
     </>
   );
-};
+}
 
 const NutrientInfoBox = styled.div`
   display: flex;
@@ -53,3 +51,5 @@ const NutrientInfoBox = styled.div`
     font-weight: bold;
   }
 `;
+
+export default TDZInfo;

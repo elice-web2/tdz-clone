@@ -19,7 +19,7 @@ interface testType {
   gramPerQuantity: number;
 }
 
-const MealsDetail: React.FC = () => {
+function MealsDetail() {
   const [count, setCount] = useState(0);
   const navigate = useNavigate();
 
@@ -117,7 +117,7 @@ const MealsDetail: React.FC = () => {
       <Navbar />
     </Container>
   );
-};
+}
 
 const MealsContainer = styled.div`
   min-height: 800px;

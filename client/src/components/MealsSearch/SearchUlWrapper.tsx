@@ -1,7 +1,7 @@
 import ItemsList from './ItemsList';
 import styled from 'styled-components';
 
-const SearchUlWrapper: React.FC<{ food: string[] }> = (props) => {
+function SearchUlWrapper(props: { food: string[] }) {
   return (
     <SearchListContainer>
       {props.food.map((el) => {
@@ -9,7 +9,7 @@ const SearchUlWrapper: React.FC<{ food: string[] }> = (props) => {
       })}
     </SearchListContainer>
   );
-};
+}
 
 const SearchListContainer = styled.ul`
   display: flex;

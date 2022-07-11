@@ -5,7 +5,7 @@ import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { faCommentDots } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
-const Main: React.FC = () => {
+function Main() {
   const navigate = useNavigate();
   return (
     <Container>
@@ -49,7 +49,7 @@ const Main: React.FC = () => {
       </LoginContainer>
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   position: relative;

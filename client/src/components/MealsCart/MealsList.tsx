@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-export const MealsList: React.FC<{ name: string; quantity: number }> = (
-  props,
-) => {
+function MealsList(props: { name: string; quantity: number }) {
   return (
     <li>
       <MealHeaderBox>
@@ -12,7 +10,7 @@ export const MealsList: React.FC<{ name: string; quantity: number }> = (
       <QuanText>{props.quantity}인분</QuanText>
     </li>
   );
-};
+}
 
 const MealHeaderBox = styled.div`
   display: flex;
@@ -38,3 +36,5 @@ const QuanText = styled.p`
   border-bottom: 1px solid gray;
   font-size: 16px;
 `;
+
+export default MealsList;

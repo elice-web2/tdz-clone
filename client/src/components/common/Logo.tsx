@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import Container from '../styles/Container';
 
-const Logo: React.FC = () => {
+function Logo() {
   const navigate = useNavigate();
   return (
     <Container>
@@ -17,7 +17,7 @@ const Logo: React.FC = () => {
       </LogoContainer>
     </Container>
   );
-};
+}
 
 const LogoContainer = styled.div`
   display: flex;
