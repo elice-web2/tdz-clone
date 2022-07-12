@@ -527,3 +527,112 @@ Error: 해당 이메일은 가입 내역이 없습니다. 다시 한 번 확인�
 >>>>>>> 8e79f4f97d94dc2fb565e56c05882f257e43191f
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
 
+[2022-7-13 0:17:39] GET:/api/meal/%EC%83%9D%EC%84%A0
+Error: 생선을 조회할 수 없습니다.
+    at MealService.findMeal (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\meal-service.ts:18:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async getMeal (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\controllers\meal-controller.ts:9:24)
+
+[2022-7-13 0:21:36] POST:/api/meal
+ValidationError: meals validation failed: code: Path `code` is required.
+    at model.Document.invalidate (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2782:32)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2574:17
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\schematype.js:1273:9
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+[2022-7-13 0:24:19] POST:/api/meal
+ValidationError: meals validation failed: code: Path `code` is required.
+    at model.Document.invalidate (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2782:32)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2574:17
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\schematype.js:1273:9
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+[2022-7-13 0:24:23] POST:/api/meal
+ValidationError: meals validation failed: code: Path `code` is required.
+    at model.Document.invalidate (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2782:32)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2574:17
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\schematype.js:1273:9
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+[2022-7-13 0:28:30] POST:/api/meal
+ValidationError: meals validation failed: code: Path `code` is required.
+    at model.Document.invalidate (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2782:32)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2574:17
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\schematype.js:1273:9
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+[2022-7-13 0:40:13] PATCH:/api/mealhistory/62ccee1a638f8b98a45466b4
+CastError: Cast to date failed for value "Invalid Date" (type Date) at path "date"
+    at model.Query.exec (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\query.js:4498:21)
+    at model.Query.Query.then (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\query.js:4592:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-13 0:42:44] PATCH:/api/mealhistory/62ccee1a638f8b98a45466b4
+CastError: Cast to date failed for value "Invalid Date" (type Date) at path "date"
+    at model.Query.exec (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\query.js:4498:21)
+    at model.Query.Query.then (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\query.js:4592:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-13 0:58:14] PATCH:/api/mealhistory/62cd9734e3ac1d86d04687ec
+CastError: Cast to date failed for value "Invalid Date" (type Date) at path "date"
+    at model.Query.exec (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\query.js:4498:21)
+    at model.Query.Query.then (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\query.js:4592:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-13 1:1:19] PATCH:/api/mealhistory/62cd9734e3ac1d86d04687ec
+CastError: Cast to date failed for value "Invalid Date" (type Date) at path "date"
+    at model.Query.exec (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\query.js:4498:21)
+    at model.Query.Query.then (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\query.js:4592:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-13 1:12:3] PATCH:/api/mealhistory/62cd9c43f0fc146db06749e8
+Error: headers의 Content-Type을 application/json으로 설정해주세요
+    at updateHistory (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\controllers\mealhistory-controller.ts:57:15)
+    at Layer.handle [as handle_request] (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\router\route.js:144:13)
+    at loginRequired (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\middlewares\login-required.ts:28:5)
+    at Layer.handle [as handle_request] (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\router\index.js:421:3)
+    at next (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\router\layer.js:95:5)
+
+[2022-7-13 1:12:46] GET:/api/meal/%EC%83%9D%EC%84%A0
+Error: 생선을 조회할 수 없습니다.
+    at MealService.findMeal (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\meal-service.ts:18:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async getMeal (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\controllers\meal-controller.ts:9:24)
+
+[2022-7-13 1:13:13] POST:/api/meal
+ValidationError: meals validation failed: code: Path `code` is required.
+    at model.Document.invalidate (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2782:32)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2574:17
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\schematype.js:1273:9
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+[2022-7-13 1:15:26] POST:/api/meal
+ValidationError: meals validation failed: code: Path `code` is required.
+    at model.Document.invalidate (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2782:32)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2574:17
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\schematype.js:1273:9
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+[2022-7-13 1:20:3] GET:/api/meal/%EB%A7%88%EB%9D%BC
+Error: 마라을 조회할 수 없습니다.
+    at MealService.findMeal (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\meal-service.ts:18:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async getMeal (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\controllers\meal-controller.ts:9:24)
+
+[2022-7-13 1:20:16] GET:/api/meal/%EB%A7%88%EB%9D%BC
+Error: 마라을 조회할 수 없습니다.
+    at MealService.findMeal (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\meal-service.ts:18:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async getMeal (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\controllers\meal-controller.ts:9:24)
+

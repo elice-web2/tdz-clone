@@ -16,7 +16,7 @@ class MealController {
 
   async addMealByUSer(req: Request, res: Response, next: NextFunction) {
     try {
-      const code = '';
+      const code: string = req.body.code;
       const name: string = req.body.name;
       const kcal: number = req.body.kcal;
       const carb: number = req.body.carb;

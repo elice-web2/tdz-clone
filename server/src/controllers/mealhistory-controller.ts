@@ -61,7 +61,7 @@ class MealHistoryController {
 
       // req (request) 에서 데이터 가져오기
       const mealhistory_id: string = req.params.mealhistory_id;
-      const date: Date = new Date(req.body.date);
+      const date: Date = req.body.date;
       const category: string = req.body.category;
       const meals: [mealInfo] = req.body.meals;
 
