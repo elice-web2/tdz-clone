@@ -30,7 +30,11 @@ export interface MealHistoryData {
 
 export interface ToUpdate {
   mealhistoryId: string;
-  update: {
-    [key: string]: string | number | Date | [mealInfo];
-  };
+  update: MealToUpdate;
+}
+
+export interface MealToUpdate {
+  date?: Date;
+  category?: string;
+  meals?: [mealInfo];
 }

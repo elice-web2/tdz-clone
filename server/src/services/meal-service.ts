@@ -77,7 +77,6 @@ class MealService {
 
     const meals = await this.mealModel.findByMealName(mealName);
 
-    console.log(meals);
     if (!meals) {
       throw new Error(`${mealName}을 조회할 수 없습니다.`);
     }
