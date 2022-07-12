@@ -5,13 +5,15 @@ import * as userController from '../controllers';
 import { userValidator } from '../validation/validator';
 // import { register,login,getUserlist,editUserData } from '../controller';
 
-const userRouter = Router();
+const userRouter: Router = Router();
 
 // 회원가입 api (아래는 /auth/signup이지만, 실제로는 /api/auth/signup로 요청해야 함.)
 userRouter.post(
   '/auth/signup',
   //userValidator.userSignup,
-  userController.signUp,
+  (req: Request, res: Response, next: NextFunction) => {
+    //dosomething
+  },
 );
 userRouter.post('/auth/login', userController.login);
 userRouter.get('/users/list', adminRequired, userController.userList);

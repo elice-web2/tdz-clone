@@ -56,12 +56,12 @@ interface ToUpdate {
 
 export class UserModel {
   //이메일로 유저를 찾음
-  async findByEmail(email: string): Promise<UserData> {
-    return await User.findOne({ email });
+  async findByEmail(email: string): Promise<UserData | null> {
+    return await User.findOne({ email }).lean();
   }
   //userId(ObjectId)로 유저를 찾음)
-  async findById(userId: string): Promise<UserData> {
-    return await User.findOne({ _id: userId });
+  async findById(userId: string): Promise<UserData | null> {
+    return await User.findOne({ _id: userId }).lean();
   }
   //userInfo Object를 받아 생성
   async create(userInfo: UserInfo): Promise<UserData> {
@@ -72,11 +72,15 @@ export class UserModel {
     return await User.find({});
   }
   //userId(ObjectId)를 찾아 그 항목을 수정
-  async update({ userId, update }: ToUpdate): Promise<UserData> {
+  async update({ userId, update }: ToUpdate): Promise<UserData | null> {
     const filter = { _id: userId };
     const option = { new: true };
 
-    const updateData = await User.findOneAndUpdate(filter, update, option);
+    const updateData = await User.findOneAndUpdate(
+      filter,
+      update,
+      option,
+    ).lean();
 
     return updateData;
   }

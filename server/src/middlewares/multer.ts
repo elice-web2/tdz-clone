@@ -1,12 +1,12 @@
-import express from 'express';
-import multer, { FileFilterCallback } from 'multer';
+import multer from 'multer';
 import multerS3 from 'multer-s3';
-import aws from 'aws-sdk';
-import path from 'path';
+import { S3 } from '@aws-sdk/client-s3';
 
-const s3: aws.S3 = new aws.S3({
-  accessKeyId: process.env.S3_ACCESS_KEY_ID,
-  secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+const s3 = new S3({
+  credentials: {
+    accessKeyId: process.env.S3_ACCESS_KEY_ID as string,
+    secretAccessKey: process.env.S3_SECRET_ACCESS_KEY as string,
+  },
   region: process.env.REGION,
 });
 
@@ -19,28 +19,16 @@ const upload = multer({
     s3: s3,
     bucket: bucket,
     key: function (req, file, cb) {
-      let extension = path.extname(file.originalname);
-      cb(null, Date.now().toString() + extension);
+      cb(
+        null,
+        'images/origin/' +
+          Date.now() +
+          '.' +
+          file.originalname.split('.').pop(),
+      );
     },
     acl: 'public-read-write',
   }),
 });
-
-// const upload = multer({
-//   storage: multerS3({
-//     s3,
-//     bucket: process.env.BUCKET,
-//     acl: 'public-read',
-//     key: function (req, file, cb) {
-//       cb(
-//         null,
-//         'images/origin/' +
-//           Date.now() +
-//           '.' +
-//           file.originalname.split('.').pop(),
-//       );
-//     },
-//   }),
-// });
 
 export { upload };

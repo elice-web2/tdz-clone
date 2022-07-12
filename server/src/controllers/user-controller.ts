@@ -13,11 +13,15 @@ const signUp = async (req: Request, res: Response, next: NextFunction) => {
       );
     }
     // req (request) 에서 데이터 가져오기
+
     const userInfo: UserInfo = req.body;
 
     // 위 데이터를 유저 db에 추가하기
     const newUser = await userService.addUser(userInfo);
 
+    //login_path
+    //role
+    //email -> response 나머지는 다 비운값
     res.status(201).json(newUser);
   } catch (error) {
     next(error);
@@ -76,7 +80,7 @@ const userList = async function (
 // 사용자 정보 조회
 const user = async function (req: Request, res: Response, next: NextFunction) {
   try {
-    const userId = req.currentUserId;
+    const userId: string = req.currentUserId;
     const currentUserInfo = await userService.getUserData(userId);
 
     res.status(200).json(currentUserInfo);
@@ -86,6 +90,8 @@ const user = async function (req: Request, res: Response, next: NextFunction) {
 };
 
 // 사용자 정보 수정
+// 닉네임, 사진, 각오
+// 영양소, 모드, 활동량
 const userUpdate = async function (
   req: Request,
   res: Response,
