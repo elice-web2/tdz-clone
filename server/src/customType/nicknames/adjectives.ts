@@ -1,4 +1,4 @@
-module.exports = [
+const adjectives = [
   '존재하지 않는',
   '민첩한',
   '야망 있는',
@@ -278,3 +278,5 @@ module.exports = [
   '소설 쓰는',
   '휴가 간',
 ];
+
+export { adjectives };

@@ -1,4 +1,4 @@
-module.exports = [
+const animals = [
   '쿼카',
   '악어',
   '기린',
@@ -173,3 +173,5 @@ module.exports = [
   '바실리스크',
   '와이번',
 ];
+
+export { animals };

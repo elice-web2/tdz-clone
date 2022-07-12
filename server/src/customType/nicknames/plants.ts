@@ -1,4 +1,4 @@
-module.exports = [
+const plants = [
   '가락지나물',
   '가리야스',
   '가막살나무',
@@ -99,3 +99,5 @@ module.exports = [
   '꾸지나무',
   '꾸지뽕나무',
 ];
+
+export { plants };

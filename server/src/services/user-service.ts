@@ -1,11 +1,11 @@
 import { UserModel, userModel } from '../db';
 import {
   UserData,
-  UserInfo,
   LoginInfo,
   UserInfoRequired,
   InfoToUpdate,
 } from '../customType/user.type';
+import { getRandomNickname } from '../middlewares';
 
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
@@ -29,10 +29,12 @@ class UserService {
     }
     // 우선 비밀번호 해쉬화(암호화)
     const hashedPassword = await bcrypt.hash(password, 10);
+    const nickname: string = getRandomNickname();
 
     const newUserInfo = {
       email,
       password: hashedPassword,
+      nickname,
     };
 
     // db에 저장
