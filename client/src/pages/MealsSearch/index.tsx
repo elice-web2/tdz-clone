@@ -4,14 +4,11 @@ import Container from '../../components/styles/Container';
 import Navbar from '../../components/common/Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import SearchUlWrapper from '../../components/MealsSearch/SearchUlWrapper';
-import NoSearched from '../../components/MealsCart/NoSearched';
-
-const searchedArr: string[] = ['진라면', '비빔면', '신라면'];
-const bookMarkArr: string[] = ['밥', '된장찌개'];
+import MealsSearchedList from '../../components/MealsSearch/MealsSearchedList';
+import MealsBookMarkList from '../../components/MealsSearch/MealsBookMarkList';
 
 function MealsSearch() {
-  const [isSearch, setIsSearch] = useState(false);
+  const [isSearch, setIsSearch] = useState(true);
   const [inputValue, setInputValue] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -45,7 +42,15 @@ function MealsSearch() {
             }}
           ></S.SearchInput>
         </S.SearchBox>
-        <S.SearchBtn type="submit">검색</S.SearchBtn>
+        <S.SearchBtn
+          onClick={() => {
+            if (inputRef.current) {
+              setInputValue(inputRef.current.value);
+            }
+          }}
+        >
+          검색
+        </S.SearchBtn>
       </S.SearchContainer>
       <S.ButtonContainer>
         <S.SearchTabBtn
@@ -69,9 +74,9 @@ function MealsSearch() {
         </S.BookMarkTabBtn>
       </S.ButtonContainer>
       {isSearch ? (
-        <SearchUlWrapper food={searchedArr}></SearchUlWrapper>
+        <MealsSearchedList inputValue={inputValue}></MealsSearchedList>
       ) : (
-        <SearchUlWrapper food={bookMarkArr}></SearchUlWrapper>
+        <MealsBookMarkList></MealsBookMarkList>
       )}
       <Navbar />
     </Container>

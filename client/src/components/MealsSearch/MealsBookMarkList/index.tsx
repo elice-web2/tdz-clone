@@ -1,13 +1,8 @@
 import * as S from './style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { useAppDispatch, useAppSelector } from '../../../hooks';
-import NoSearched from '../../MealsCart/NoSearched';
+import { useAppSelector } from '../../../hooks';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import { addBookMark } from '../../../slices/bookMarkSlice';
-import { set } from 'immer/dist/internal';
-
 interface testDBObjType {
   code: string;
   name: string;
@@ -103,59 +98,41 @@ const testDB: testDBObjType[] = [
   },
 ];
 
-interface MealsSearchedListProps {
-  inputValue: string;
-}
-
-function MealsSearchedList({ inputValue }: MealsSearchedListProps) {
+function MealsBookMarkList() {
+  const bookMarkArr = useAppSelector(({ bookMark }) => bookMark.value);
+  //meal_id로 db에 조회해서 얻은 변환된 데이터Arr
+  const filteredDB = testDB.filter((el, idx) => {
+    return bookMarkArr.findIndex((item) => item.meal_id === el.code) === idx;
+  });
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-
-  let filteredArr: any = [];
-  if (inputValue !== '') {
-    filteredArr = testDB.filter((food) => food.name.includes(inputValue));
-  }
 
   return (
     <S.SearchListContainer>
-      {filteredArr.length === 0 ? (
-        <NoSearched></NoSearched>
-      ) : (
-        filteredArr.map((food: testDBObjType) => {
-          return (
-            <S.List key={food.code}>
-              <S.NamedInfo>
-                <div className="title">{food.name}</div>
-                <span
-                  className="arrowIcon"
-                  onClick={() => {
-                    navigate(`/meals/detail/${food.code}`);
-                  }}
-                >
-                  <FontAwesomeIcon icon={faArrowRight} />
-                </span>
-                <span className="plusIcon">
-                  <FontAwesomeIcon icon={faPlus} />
-                </span>
-                <span
-                  className="starIcon"
-                  onClick={() => {
-                    dispatch(
-                      addBookMark({
-                        meal_id: food.code,
-                      }),
-                    );
-                  }}
-                >
-                  <img src={require('../../../assets/blackStar.png')}></img>
-                </span>
-              </S.NamedInfo>
-              <S.QuanInfo>1인분</S.QuanInfo>
-            </S.List>
-          );
-        })
-      )}
+      {filteredDB.map((food) => {
+        return (
+          <S.List key={food.code}>
+            <S.NamedInfo>
+              <div className="title">{food.name}</div>
+              <span
+                className="arrowIcon"
+                onClick={() => {
+                  navigate(`/meals/detail/${food.code}`);
+                }}
+              >
+                <FontAwesomeIcon icon={faArrowRight} />
+              </span>
+              <span className="plusIcon">
+                <FontAwesomeIcon icon={faPlus} />
+              </span>
+              <span className="starIcon">
+                <img src={require('../../../assets/YellowStar.png')}></img>
+              </span>
+            </S.NamedInfo>
+            <S.QuanInfo>1인분</S.QuanInfo>
+          </S.List>
+        );
+      })}
     </S.SearchListContainer>
   );
 }
-export default MealsSearchedList;
+export default MealsBookMarkList;

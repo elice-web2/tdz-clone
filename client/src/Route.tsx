@@ -35,7 +35,7 @@ export const ROUTES = {
     element: <MealsCart />,
   },
   MealsDetail: {
-    path: '/meals/detail',
+    path: '/meals/detail/:code',
     element: <MealsDetail />,
   },
   Signin: {
