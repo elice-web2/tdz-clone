@@ -360,3 +360,23 @@ Error: 해당 이메일은 가입 내역이 없습니다. 다시 한 번 확인�
     at fulfilled (/Users/kai/Documents/Workspace/Web/TDZ/server/src/services/user-service.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
 
+[2022-7-13 0:4:2] POST:/api/auth/signup
+ValidationError: users validation failed: nickname: Path `nickname` is required., nutrient: Path `nutrient` is required., activity: Path `activity` is required., mode: Path `mode` is required., bmi: Path `bmi` is required., goal_weight: Path `goal_weight` is required., current_weight: Path `current_weight` is required., height: Path `height` is required., age: Path `age` is required., gender: Path `gender` is required.
+    at model.Document.invalidate (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/mongoose/lib/document.js:2782:32)
+    at /Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/mongoose/lib/document.js:2574:17
+    at /Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/mongoose/lib/schematype.js:1273:9
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+[2022-7-13 0:5:23] POST:/api/auth/signup
+ValidationError: users validation failed: gender: Path `gender` is required., age: Path `age` is required., height: Path `height` is required., current_weight: Path `current_weight` is required., goal_weight: Path `goal_weight` is required., bmi: Path `bmi` is required., mode: Path `mode` is required., activity: Path `activity` is required., nutrient: Path `nutrient` is required., nickname: Path `nickname` is required.
+    at model.Document.invalidate (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/mongoose/lib/document.js:2782:32)
+    at /Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/mongoose/lib/document.js:2574:17
+    at /Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/mongoose/lib/schematype.js:1273:9
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+[2022-7-13 2:14:28] POST:/api/auth/login
+Error: 해당 이메일은 가입 내역이 없습니다. 다시 한 번 확인해 주세요.
+    at UserService.getUserToken (/Users/kai/Documents/Workspace/Web/TDZ/server/src/services/user-service.ts:50:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async login (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/user-controller.ts:43:23)
+

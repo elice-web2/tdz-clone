@@ -16,26 +16,9 @@ class UserService {
   }
 
   // 회원가입
-  async addUser(userInfo: UserInfo): Promise<UserData> {
+  async addUser(userInfo: LoginInfo): Promise<UserData> {
     // 객체 destructuring
-    const {
-      email,
-      password,
-      login_path,
-      role,
-      gender,
-      age,
-      height,
-      current_weight,
-      goal_weight,
-      bmi,
-      mode,
-      activity,
-      nutrient,
-      profile_image,
-      nickname,
-      comment,
-    } = userInfo;
+    const { email, password } = userInfo;
 
     // 이메일 중복 확인
     const user = await this.userModel.findByEmail(email);
@@ -50,20 +33,6 @@ class UserService {
     const newUserInfo = {
       email,
       password: hashedPassword,
-      login_path,
-      role,
-      gender,
-      age,
-      height,
-      current_weight,
-      goal_weight,
-      bmi,
-      mode,
-      activity,
-      nutrient,
-      profile_image,
-      nickname,
-      comment,
     };
 
     // db에 저장
