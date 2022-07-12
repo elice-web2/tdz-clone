@@ -1,7 +1,7 @@
 import is from '@sindresorhus/is';
 import { Request, Response, NextFunction } from 'express';
 import { userService } from '../services';
-import { UserInfo, Nutrient, UserData } from '../db';
+import { UserInfo, Nutrient, UserData } from '../customType/user.type';
 
 //회원 가입을 위한 function
 const signUp = async (req: Request, res: Response, next: NextFunction) => {
@@ -80,7 +80,7 @@ const userList = async function (
 // 사용자 정보 조회
 const user = async function (req: Request, res: Response, next: NextFunction) {
   try {
-    const userId: string = req.currentUserId;
+    const userId: string = req.currentUserId!;
     const currentUserInfo = await userService.getUserData(userId);
 
     res.status(200).json(currentUserInfo);
@@ -107,7 +107,7 @@ const userUpdate = async function (
     }
 
     // params로부터 id를 가져옴
-    const userId = req.currentUserId;
+    const userId: string = req.currentUserId!;
 
     // body data 로부터 업데이트할 사용자 정보를 추출함.
     const email: string = req.body.email;
@@ -176,7 +176,7 @@ const deleteUser = async function (
 ) {
   try {
     // params로부터 id를 가져옴
-    const userId = req.currentUserId;
+    const userId: string = req.currentUserId!;
 
     const deleteResult = await userService.deleteUserData(userId);
 

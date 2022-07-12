@@ -1,58 +1,8 @@
 import { model } from 'mongoose';
 import { UserSchema } from '../schemas/user-schema';
+import { UserData, UserInfo, ToUpdate } from '../../customType/user.type';
 
 const User = model<UserData>('users', UserSchema);
-
-export interface Nutrient {
-  kcal: number;
-  carb: number;
-  protein: number;
-  fat: number;
-}
-export interface UserInfo {
-  email: string;
-  password: string;
-  login_path: string;
-  role: string;
-  gender: string;
-  age: number;
-  height: number;
-  current_weight: number;
-  goal_weight: number;
-  bmi: number;
-  mode: string;
-  activity: string;
-  nutrient: Nutrient;
-  profile_image: string;
-  nickname: string;
-  comment: string;
-}
-export interface UserData {
-  _id: string;
-  email: string;
-  password: string;
-  login_path: string;
-  role: string;
-  gender: string;
-  age: number;
-  height: number;
-  current_weight: number;
-  goal_weight: number;
-  bmi: number;
-  mode: string;
-  activity: string;
-  nutrient: Nutrient;
-  profile_image: string;
-  nickname: string;
-  comment: string;
-}
-
-interface ToUpdate {
-  userId: string;
-  update: {
-    [key: string]: string | number | Nutrient;
-  };
-}
 
 export class UserModel {
   //이메일로 유저를 찾음

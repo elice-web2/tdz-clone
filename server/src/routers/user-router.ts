@@ -11,9 +11,7 @@ const userRouter: Router = Router();
 userRouter.post(
   '/auth/signup',
   //userValidator.userSignup,
-  (req: Request, res: Response, next: NextFunction) => {
-    //dosomething
-  },
+  userController.signUp,
 );
 userRouter.post('/auth/login', userController.login);
 userRouter.get('/users/list', adminRequired, userController.userList);

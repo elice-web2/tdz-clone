@@ -16,6 +16,6 @@ import { UserModel } from '../db/models/user-model';
 
 declare module 'express' {
   interface Request {
-    currentUserId: string;
+    currentUserId?: string;
   }
 }
