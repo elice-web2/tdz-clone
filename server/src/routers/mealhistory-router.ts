@@ -23,6 +23,7 @@ mealhistoryRouter.patch(
 // 식단 삭제
 mealhistoryRouter.delete(
   '/:mealhistory_id',
+  loginRequired,
   mealhistoryController.deletHistory,
 );
 
