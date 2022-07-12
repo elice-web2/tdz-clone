@@ -88,12 +88,12 @@ async function postSignupData(usersInfo: postSignupParam) {
 }
 // 로그인 post API 통신 함수
 async function postLoginData(loginInfo: postLoginParam) {
-  await api.post('/auth/login', loginInfo);
+  await api.post('/api/auth/login', loginInfo);
 }
 // 회원정보 get API 통신 함수
 async function getUsersInfoData() {
-  const resp = await api.get('/users');
-  return resp.data;
+  const resp = await api.get('/api/users');
+  return resp;
 }
 
 // 비동기로 데이터를 불러와 액션을 생성하고 싶을 경우 예시
@@ -107,14 +107,14 @@ export const postSignUpAsync = createAsyncThunk(
 export const postLoginAsync = createAsyncThunk(
   'usersInfo/postLoginData',
   async (loginInfo: postLoginParam) => {
-    return await postLoginData(loginInfo);
+    await postLoginData(loginInfo);
   },
 );
 export const getUsersInfoAsync = createAsyncThunk(
   'usersInfo/getUsersInfoData',
   async () => {
     const usersInfo = await getUsersInfoData();
-    return usersInfo;
+    return usersInfo?.data;
   },
 );
 
@@ -127,7 +127,7 @@ export const UsersInfoSlice = createSlice({
       .addCase(postSignUpAsync.fulfilled, (state, action) => {
         state.value = { ...state.value, ...action.payload };
       })
-      .addCase(postLoginAsync.fulfilled, (state) => {
+      .addCase(postLoginAsync.fulfilled, (state, action) => {
         state.value.isLogin = true;
       })
       .addCase(getUsersInfoAsync.fulfilled, (state, action) => {
