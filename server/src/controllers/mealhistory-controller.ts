@@ -6,7 +6,7 @@ import { mealInfo } from '../customType/mealhistory.type';
 class MealHistoryController {
   async getHistory(req: Request, res: Response, next: NextFunction) {
     try {
-      const user_id: string = req.currentUserId;
+      const user_id: string = req.currentUserId!;
       const date: Date = new Date(req.params.date);
 
       const newMealData = await mealhistoryService.getMealHistory(
@@ -28,8 +28,10 @@ class MealHistoryController {
           'headers의 Content-Type을 application/json으로 설정해주세요',
         );
       }
+
       // req (request) 에서 데이터 가져오기
-      const user_id: string = req.currentUserId;
+
+      const user_id = req.currentUserId;
       const date: Date = new Date(req.body.date);
       const category: string = req.body.category;
       const meals: [mealInfo] = req.body.meals;
