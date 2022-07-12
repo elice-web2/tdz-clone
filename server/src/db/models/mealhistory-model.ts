@@ -1,5 +1,4 @@
 import { model } from 'mongoose';
-// import { MealSchema } from '../schemas/meal-schema';
 import { MealHistorySchema } from '../schemas/mealhistory-schema';
 import {
   MealHistoryInfo,
@@ -10,16 +9,16 @@ const MealHistory = model<MealHistoryData>('mealhistory', MealHistorySchema);
 
 export class MealHistoryModel {
   async findByDate(
-    user_id: string,
+    userId: string,
     date: Date,
   ): Promise<MealHistoryData[] | null> {
-    return await MealHistory.find({ user_id, date }).lean();
+    return await MealHistory.find({ userId, date }).lean();
   }
 
   async findByMealHistoryId(
-    mealhistory_id: string,
+    mealhistoryId: string,
   ): Promise<MealHistoryData | null> {
-    return await MealHistory.findOne({ _id: mealhistory_id }).lean();
+    return await MealHistory.findOne({ _id: mealhistoryId }).lean();
   }
 
   async create(mealhistoryInfo: MealHistoryInfo): Promise<MealHistoryData> {
@@ -27,22 +26,21 @@ export class MealHistoryModel {
   }
 
   async update({
-    mealhistory_id,
+    mealhistoryId,
     update,
   }: ToUpdate): Promise<MealHistoryData | null> {
-    const filter = { _id: mealhistory_id };
+    const filter = { _id: mealhistoryId };
     const option = { new: true };
     const updatedmealhistory = await MealHistory.findOneAndUpdate(
       filter,
       update,
       option,
     );
-    console.log('update', updatedmealhistory);
     return updatedmealhistory;
   }
 
-  async delete(mealhistory_id: string): Promise<{ deletedCount?: number }> {
-    return await MealHistory.deleteOne({ _id: mealhistory_id });
+  async delete(mealhistoryId: string): Promise<{ deletedCount?: number }> {
+    return await MealHistory.deleteOne({ _id: mealhistoryId });
   }
 }
 

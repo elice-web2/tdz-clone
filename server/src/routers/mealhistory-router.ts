@@ -15,14 +15,14 @@ mealhistoryRouter.post('/', loginRequired, mealhistoryController.createHistory);
 
 // 식단 수정
 mealhistoryRouter.patch(
-  '/:mealhistory_id',
+  '/:mealhistoryId',
   loginRequired,
   mealhistoryController.updateHistory,
 );
 
 // 식단 삭제
 mealhistoryRouter.delete(
-  '/:mealhistory_id',
+  '/:mealhistoryId',
   loginRequired,
   mealhistoryController.deletHistory,
 );

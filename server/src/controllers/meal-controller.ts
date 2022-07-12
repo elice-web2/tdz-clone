@@ -4,9 +4,9 @@ import { mealService } from '../services';
 class MealController {
   async getMeal(req: Request, res: Response, next: NextFunction) {
     try {
-      const meal_name = req.params.meal_name;
+      const mealName = req.params.mealName;
 
-      const MealData = await mealService.findMeal(meal_name);
+      const MealData = await mealService.findMeal(mealName);
 
       res.status(200).json(MealData);
     } catch (error) {

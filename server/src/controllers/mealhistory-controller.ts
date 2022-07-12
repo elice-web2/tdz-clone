@@ -6,13 +6,10 @@ import { mealInfo } from '../customType/mealhistory.type';
 class MealHistoryController {
   async getHistory(req: Request, res: Response, next: NextFunction) {
     try {
-      const user_id: string = req.currentUserId!;
+      const userId: string = req.currentUserId!;
       const date: Date = new Date(req.params.date);
 
-      const newMealData = await mealhistoryService.getMealHistory(
-        user_id,
-        date,
-      );
+      const newMealData = await mealhistoryService.getMealHistory(userId, date);
 
       res.status(200).json(newMealData);
     } catch (error) {
@@ -31,14 +28,14 @@ class MealHistoryController {
 
       // req (request) 에서 데이터 가져오기
 
-      const user_id = req.currentUserId;
+      const userId = req.currentUserId;
       const date: Date = new Date(req.body.date);
       const category: string = req.body.category;
       const meals: [mealInfo] = req.body.meals;
 
       // db에 저장
       const newMealHistory = await mealhistoryService.addMealHistory({
-        user_id,
+        userId,
         date,
         category,
         meals,
@@ -60,20 +57,20 @@ class MealHistoryController {
       }
 
       // req (request) 에서 데이터 가져오기
-      const mealhistory_id: string = req.params.mealhistory_id;
+      const mealhistoryId: string = req.params.mealhistoryId;
       const date: Date = req.body.date;
       const category: string = req.body.category;
       const meals: [mealInfo] = req.body.meals;
 
       const toUpdate = {
-        ...(mealhistory_id && { mealhistory_id }),
+        ...(mealhistoryId && { mealhistoryId }),
         ...(date && { date }),
         ...(category && { category }),
         ...(meals && { meals }),
       };
 
       const updatedHistory = await mealhistoryService.setHistory(
-        mealhistory_id,
+        mealhistoryId,
         toUpdate,
       );
 
@@ -85,9 +82,9 @@ class MealHistoryController {
 
   async deletHistory(req: Request, res: Response, next: NextFunction) {
     try {
-      const mealhistory_id = req.params.mealhistory_id;
+      const mealhistoryId = req.params.mealhistoryId;
       const deleteResult = await mealhistoryService.deleteMealHistory(
-        mealhistory_id,
+        mealhistoryId,
       );
       res.status(200).json(deleteResult);
     } catch (error) {

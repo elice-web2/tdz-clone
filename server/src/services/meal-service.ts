@@ -1,37 +1,36 @@
 import { mealModel, MealModel } from '../db';
 import { MealData, MealInfo } from '../customType/meal.type';
-import request from 'request';
 import axios from 'axios';
 
 class MealService {
   constructor(private mealModel: MealModel) {}
 
-  async findMeal(meal_name: string): Promise<MealData[]> {
-    const meals = await this.mealModel.findByMealName(meal_name);
+  async findMeal(mealName: string): Promise<MealData[]> {
+    const meals = await this.mealModel.findByMealName(mealName);
 
     // 검색 시 음식이 존재하지 않으면
     if (Array.isArray(meals) && meals.length === 0) {
-      const add_meals = await this.addMeal(meal_name);
+      const addMeals = await this.addMeal(mealName);
 
       // DB 저장 후에도 값이 없으면
-      if (Array.isArray(add_meals) && add_meals.length === 0) {
-        throw new Error(`${meal_name}을 조회할 수 없습니다.`);
-      } else return add_meals;
+      if (Array.isArray(addMeals) && addMeals.length === 0) {
+        throw new Error(`${mealName}을 조회할 수 없습니다.`);
+      } else return addMeals;
     }
 
     if (!meals) {
-      throw new Error(`${meal_name}을 조회할 수 없습니다.`);
+      throw new Error(`${mealName}을 조회할 수 없습니다.`);
     }
 
     return meals;
   }
 
-  async addMeal(meal_name: string): Promise<MealData[]> {
+  async addMeal(mealName: string): Promise<MealData[]> {
     // api 요청
     const { data, statusText } = await axios.get(
       `http://openapi.foodsafetykorea.go.kr/api/${
         process.env.APIKEY
-      }/I2790/json/1/20/DESC_KOR=${encodeURI(meal_name)}`,
+      }/I2790/json/1/20/DESC_KOR=${encodeURI(mealName)}`,
     );
 
     if (statusText !== 'OK') {
@@ -76,11 +75,11 @@ class MealService {
       await mealModel.create(mealInfo);
     }
 
-    const meals = await this.mealModel.findByMealName(meal_name);
+    const meals = await this.mealModel.findByMealName(mealName);
 
     console.log(meals);
     if (!meals) {
-      throw new Error(`${meal_name}을 조회할 수 없습니다.`);
+      throw new Error(`${mealName}을 조회할 수 없습니다.`);
     }
     return meals;
   }

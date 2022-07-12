@@ -14,7 +14,7 @@ export interface mealInfo {
 }
 
 export interface MealHistoryInfo {
-  user_id?: string;
+  userId?: string;
   category: string;
   date: Date;
   meals: [mealInfo];
@@ -22,14 +22,14 @@ export interface MealHistoryInfo {
 
 export interface MealHistoryData {
   _id: string;
-  user_id: string;
+  userId: string;
   category: string;
   date: Date;
   meals: [mealInfo];
 }
 
 export interface ToUpdate {
-  mealhistory_id: string;
+  mealhistoryId: string;
   update: {
     [key: string]: string | number | Date | [mealInfo];
   };

@@ -3,7 +3,7 @@ import { MealSchema } from './meal-schema';
 
 const MealHistorySchema = new Schema(
   {
-    user_id: { type: Schema.Types.ObjectId, ref: 'users', required: true },
+    userId: { type: Schema.Types.ObjectId, ref: 'users', required: true },
     date: {
       type: Date,
       required: true,

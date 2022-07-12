@@ -5,32 +5,36 @@ const Meal = model<MealData>('meals', MealSchema);
 
 export class MealModel {
   // 음식 이름 찾기
-  async findByMealName(meal_name: string): Promise<MealData[]> {
+  async findByMealName(mealName: string): Promise<MealData[]> {
     // const regex = (pattern) => new RegExp(`.*${pattern}.*`);
     // const name  = regex(meal_name);
     // if(!name){
     //   throw new Error(`${meal_name}을 조회할 수 없습니다.`);
     // }
     // return await Meal.find({ name: { $regex: name } }).lean();
-    return await Meal.find({ name: meal_name }).lean();
+    return await Meal.find({ name: mealName }).lean();
   }
 
   async create(mealInfo: MealInfo): Promise<MealData> {
     return await Meal.create(mealInfo);
   }
 
+  /*
   async update(
     currentMeal: MealInfo,
     updateMeal: MealInfo,
   ): Promise<MealData | null> {
     return await Meal.findOneAndUpdate({ currentMeal }, { updateMeal }).lean();
   }
+  */
 
+  /*
   async deleteByName(
     meal_name: string,
   ): Promise<{ deletedCount: number } | null> {
     return await Meal.findOneAndDelete({ meal_name }).lean();
   }
+  */
 }
 
 const mealModel = new MealModel();
