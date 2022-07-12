@@ -8,8 +8,8 @@ interface SearchUlWrapperProps {
 function SearchUlWrapper({ food }: SearchUlWrapperProps) {
   return (
     <S.SearchListContainer>
-      {food.map((el) => {
-        return <MealsSearchedList name={el}></MealsSearchedList>;
+      {food.map((el, idx) => {
+        return <MealsSearchedList name={el} key={idx}></MealsSearchedList>;
       })}
     </S.SearchListContainer>
   );

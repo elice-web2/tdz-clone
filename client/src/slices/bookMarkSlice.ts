@@ -12,7 +12,7 @@ interface BookMarkInfoState {
 }
 
 const initialState: BookMarkState = {
-  value: [],
+  value: [{ user_id: '1', meal_id: '01', date: new Date() }],
 };
 
 //get으로 유저의 즐겨찾기 배열을 받아오자.
