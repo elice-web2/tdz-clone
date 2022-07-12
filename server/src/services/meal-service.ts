@@ -1,6 +1,7 @@
 import { mealModel, MealModel } from '../db';
 import { MealData, MealInfo } from '../customType/meal.type';
 import request from 'request';
+import axios from 'axios';
 
 class MealService {
   constructor(private mealModel: MealModel) {}
@@ -8,9 +9,14 @@ class MealService {
   async findMeal(meal_name: string): Promise<MealData[]> {
     const meals = await this.mealModel.findByMealName(meal_name);
 
+    // 검색 시 음식이 존재하지 않으면
     if (Array.isArray(meals) && meals.length === 0) {
-      const add_meals = this.addMeal(meal_name);
-      return add_meals;
+      const add_meals = await this.addMeal(meal_name);
+
+      // DB 저장 후에도 값이 없으면
+      if (Array.isArray(add_meals) && add_meals.length === 0) {
+        throw new Error(`${meal_name}을 조회할 수 없습니다.`);
+      } else return add_meals;
     }
 
     if (!meals) {
@@ -22,63 +28,57 @@ class MealService {
 
   async addMeal(meal_name: string): Promise<MealData[]> {
     // api 요청
-    // const mealDatas = this.getApi(meal_name);
-    const data: MealData[] = [];
-    let mealDatas;
-    const options = {
-      method: 'GET',
-      url:
-        `http://openapi.foodsafetykorea.go.kr/api/${process.env.APIKEY}/I2790/json/1/20/DESC_KOR=` +
-        encodeURI(meal_name),
-      headers: {},
-    };
+    const { data, statusText } = await axios.get(
+      `http://openapi.foodsafetykorea.go.kr/api/${
+        process.env.APIKEY
+      }/I2790/json/1/20/DESC_KOR=${encodeURI(meal_name)}`,
+    );
 
-    request(options, async function (err, httpResponse, body) {
-      if (err) throw new Error(err);
+    if (statusText !== 'OK') {
+      throw new Error(
+        `Could not get the meal data from the remote source: openapi.foodsafetykorea.go.kr`,
+      );
+    }
 
-      if (!body) throw new Error('검색 결과가 존재하지 않습니다.');
+    const mealDataList = data.I2790.row;
 
-      const apiData = await JSON.parse(body);
-      mealDatas = apiData.I2790.row;
-      console.log('mealDatas', mealDatas);
-      for (let i = 0; i < mealDatas.length; i++) {
-        const meal = mealDatas[i];
+    for (let i = 0; i < mealDataList.length; i++) {
+      const meal = mealDataList[i];
 
-        const code = meal.FOOD_CD;
-        const name = meal.DESC_KOR;
-        const kcal = Number(meal.NUTR_CONT1);
-        const carb = Number(meal.NUTR_CONT2);
-        const protein = Number(meal.NUTR_CONT3);
-        const fat = Number(meal.NUTR_CONT4);
-        const sugars = Number(meal.NUTR_CONT5);
-        const natruim = Number(meal.NUTR_CONT6);
-        const cholesterol = Number(meal.NUTR_CONT7);
-        const saturatedfatty = Number(meal.NUTR_CONT8);
-        const transfat = Number(meal.NUTR_CONT9);
-        const updated_date = new Date();
+      const code = meal.FOOD_CD;
+      const name = meal.DESC_KOR;
+      const kcal = Number(meal.NUTR_CONT1);
+      const carb = Number(meal.NUTR_CONT2);
+      const protein = Number(meal.NUTR_CONT3);
+      const fat = Number(meal.NUTR_CONT4);
+      const sugars = Number(meal.NUTR_CONT5);
+      const natruim = Number(meal.NUTR_CONT6);
+      const cholesterol = Number(meal.NUTR_CONT7);
+      const saturatedfatty = Number(meal.NUTR_CONT8);
+      const transfat = Number(meal.NUTR_CONT9);
+      const updated_date = new Date();
 
-        const mealInfo = {
-          code,
-          name,
-          kcal,
-          carb,
-          protein,
-          fat,
-          sugars,
-          natruim,
-          cholesterol,
-          saturatedfatty,
-          transfat,
-          updated_date,
-        };
+      const mealInfo = {
+        code,
+        name,
+        kcal,
+        carb,
+        protein,
+        fat,
+        sugars,
+        natruim,
+        cholesterol,
+        saturatedfatty,
+        transfat,
+        updated_date,
+      };
 
-        const mealData = await mealModel.create(mealInfo);
-        data.push(mealData);
-      }
-    });
+      await mealModel.create(mealInfo);
+    }
 
     const meals = await this.mealModel.findByMealName(meal_name);
 
+    console.log(meals);
     if (!meals) {
       throw new Error(`${meal_name}을 조회할 수 없습니다.`);
     }
