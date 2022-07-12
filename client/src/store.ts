@@ -1,9 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import bookMarkSlice from './slices/bookMarkSlice';
 import counterReducer from './slices/counterSlice';
+import mealsSlice from './slices/mealsSlice';
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
+    meal: mealsSlice,
+    bookMark: bookMarkSlice,
   },
 });
 

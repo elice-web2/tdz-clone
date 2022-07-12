@@ -5,12 +5,13 @@ import Navbar from '../../components/common/Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import SearchUlWrapper from '../../components/MealsSearch/SearchUlWrapper';
+import NoSearched from '../../components/MealsCart/NoSearched';
 
 const searchedArr: string[] = ['진라면', '비빔면', '신라면'];
 const bookMarkArr: string[] = ['밥', '된장찌개'];
 
 function MealsSearch() {
-  const [isSearch, setIsSearch] = useState(true);
+  const [isSearch, setIsSearch] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -72,7 +73,6 @@ function MealsSearch() {
       ) : (
         <SearchUlWrapper food={bookMarkArr}></SearchUlWrapper>
       )}
-
       <Navbar />
     </Container>
   );

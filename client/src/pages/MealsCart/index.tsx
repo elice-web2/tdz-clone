@@ -52,7 +52,6 @@ function MealsCart() {
 
         <S.RecordBtn onClick={clickHandler}>기록 하기</S.RecordBtn>
       </S.BtnContainer>
-
       <Navbar />
     </S.Container>
   );
