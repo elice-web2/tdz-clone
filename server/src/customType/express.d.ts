@@ -8,14 +8,14 @@ import { UserModel } from '../db/models/user-model';
 //   }
 // }
 
-declare module 'express' {
-  interface Request {
-    currentUserId?: string;
-  }
-}
-
 // declare namespace Express {
 //   export interface Request {
 //     currentUserId?: string;
 //   }
 // }
+
+declare module 'express' {
+  interface Request {
+    currentUserId?: string;
+  }
+}
