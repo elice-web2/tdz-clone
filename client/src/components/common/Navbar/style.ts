@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 export const NavContainer = styled.div`
+  position: absolute;
+  bottom: 0;
+  max-width: 420px;
   display: flex;
   height: 60px;
   background-color: ${({ theme }) => theme.mainColor.lighter};

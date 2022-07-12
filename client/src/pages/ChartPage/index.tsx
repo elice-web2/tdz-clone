@@ -22,6 +22,7 @@ import NutrientDetail from '../../components/chart/NutrientDetail';
 import WeightChart from '../../components/chart/WeightChart';
 import CalorieChart from '../../components/chart/CalorieChart';
 import NutrientAverage from '../../components/chart/NutrientAverage';
+import { ScrollContainer } from '../../components/styles/ScrollContainer';
 
 // ChartJS를 react 에서 쓸 수 있도록 하는 코드
 ChartJS.register(
@@ -70,45 +71,47 @@ function ChartPage() {
     <Container>
       <Logo />
 
-      <S.Wrapper>
-        {/* 일간,월간,주간 필터 UI */}
-        <S.FilterContainer>
-          <S.Filter
-            onClick={() => onClickFilter('DAILY')}
-            isSelected={filter === 'DAILY'}
-          >
-            일간
-          </S.Filter>
-          <S.Filter
-            onClick={() => onClickFilter('WEEKLY')}
-            isSelected={filter === 'WEEKLY'}
-          >
-            주간
-          </S.Filter>
-          <S.Filter
-            onClick={() => onClickFilter('MONTHLY')}
-            isSelected={filter === 'MONTHLY'}
-          >
-            월간
-          </S.Filter>
-        </S.FilterContainer>
-        {/* 날짜 변경 UI */}
-        <S.PeriodContainer>
-          <FontAwesomeIcon icon={faAngleLeft} />
-          <p>
-            {/* 필터에 따라 날짜를 보여주고 왼쪽 오른쪽 버튼 클릭 시 날짜를 변경 가능하게 해야함 */}
-            {dayjs().add(-1, 'week').format('YY-MM-DD')} ~{' '}
-            {dayjs().add(-1, 'day').format('YY-MM-DD')}
-          </p>
-          <FontAwesomeIcon icon={faAngleRight} />
-        </S.PeriodContainer>
+      <ScrollContainer minusHeight={120}>
+        <S.Wrapper>
+          {/* 일간,월간,주간 필터 UI */}
+          <S.FilterContainer>
+            <S.Filter
+              onClick={() => onClickFilter('DAILY')}
+              isSelected={filter === 'DAILY'}
+            >
+              일간
+            </S.Filter>
+            <S.Filter
+              onClick={() => onClickFilter('WEEKLY')}
+              isSelected={filter === 'WEEKLY'}
+            >
+              주간
+            </S.Filter>
+            <S.Filter
+              onClick={() => onClickFilter('MONTHLY')}
+              isSelected={filter === 'MONTHLY'}
+            >
+              월간
+            </S.Filter>
+          </S.FilterContainer>
+          {/* 날짜 변경 UI */}
+          <S.PeriodContainer>
+            <FontAwesomeIcon icon={faAngleLeft} />
+            <p>
+              {/* 필터에 따라 날짜를 보여주고 왼쪽 오른쪽 버튼 클릭 시 날짜를 변경 가능하게 해야함 */}
+              {dayjs().add(-1, 'week').format('YY-MM-DD')} ~{' '}
+              {dayjs().add(-1, 'day').format('YY-MM-DD')}
+            </p>
+            <FontAwesomeIcon icon={faAngleRight} />
+          </S.PeriodContainer>
 
-        <WeightChart data={DUMMY_DATA_DAILY} />
-        <CalorieChart data={DUMMY_DATA_DAILY} />
-        <NutrientAverage data={DUMMY_DATA_DAILY} />
-      </S.Wrapper>
+          <WeightChart data={DUMMY_DATA_DAILY} />
+          <CalorieChart data={DUMMY_DATA_DAILY} />
+          <NutrientAverage data={DUMMY_DATA_DAILY} />
+        </S.Wrapper>
 
-      <NutrientDetail data={DUMMY_DATA_DAILY} />
+        <NutrientDetail data={DUMMY_DATA_DAILY} />
+      </ScrollContainer>
 
       <Navbar />
     </Container>
