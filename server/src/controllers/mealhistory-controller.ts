@@ -95,7 +95,7 @@ class MealHistoryController {
     }
   }
 
-  async deletHistory(req: Request, res: Response, next: NextFunction) {
+  async deleteHistory(req: Request, res: Response, next: NextFunction) {
     try {
       const mealhistoryId = req.params.mealhistoryId;
       const deleteResult = await mealhistoryService.deleteMealHistory(

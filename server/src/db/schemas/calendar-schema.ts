@@ -1,3 +1,4 @@
+import { boolean } from 'joi';
 import { Schema } from 'mongoose';
 
 const CalendarSchema = new Schema({
@@ -11,7 +12,8 @@ const CalendarSchema = new Schema({
     required: true,
   },
   isSuccess: {
-    type: Date,
+    type: Schema.Types.Boolean,
+    default: false,
     required: true,
   },
   currentKcal: {

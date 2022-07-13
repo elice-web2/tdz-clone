@@ -27,7 +27,7 @@ mealhistoryRouter.patch(
 mealhistoryRouter.delete(
   '/:mealhistoryId',
   loginRequired,
-  mealhistoryController.deletHistory,
+  mealhistoryController.deleteHistory,
 );
 
 export { mealhistoryRouter };
