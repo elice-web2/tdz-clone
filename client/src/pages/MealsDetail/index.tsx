@@ -1,47 +1,52 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import * as S from './style';
 import Container from '../../components/styles/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faStar } from '@fortawesome/free-solid-svg-icons';
 import Navbar from '../../components/common/Navbar';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import * as api from '../../api';
 
-interface testType {
-  name: string;
-  kcal: number;
-  carbon: number;
-  protein: number;
+interface GetMealDataObj {
+  carb: number;
+  cholesterol: number;
+  code: string;
+  createdAt: string;
   fat: number;
-  natrium: number;
-  transFat: number;
-  col: number;
-  saturatedFat: number;
-  gramPerQuantity: number;
+  kcal: number;
+  name: string;
+  natruim: number;
+  protein: number;
+  saturatedfatty: number;
+  sugars: number;
+  transfat: number;
+  updatedAt: string;
+  updated_date: string;
+  __v: number;
+  _id: string;
 }
 
 function MealsDetail() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
+  const [foodInfo, setFoodInfo] = useState<GetMealDataObj | null>(null);
   const navigate = useNavigate();
+  const params = useParams();
+  const selectRef = useRef<HTMLSelectElement>(null);
+
+  useEffect(() => {
+    api.get(`/api/meal/${params.name}`).then((res: any) => {
+      setFoodInfo(res.data[0]);
+    });
+  }, [foodInfo]);
 
   const plusHandler = () => {
     setCount((cur) => cur + 1);
   };
 
   const minusHandler = () => {
-    setCount((cur) => cur - 1);
-  };
-
-  const obj: testType = {
-    name: '진라면',
-    kcal: 700,
-    carbon: 100,
-    protein: 20,
-    fat: 20,
-    natrium: 100,
-    transFat: 100,
-    col: 5,
-    saturatedFat: 10,
-    gramPerQuantity: 200,
+    if (count !== 1) {
+      setCount((cur) => cur - 1);
+    }
   };
 
   return (
@@ -62,47 +67,47 @@ function MealsDetail() {
               <FontAwesomeIcon icon={faStar} />
             </div>
           </S.IconBox>
-          <S.Title>{obj.name}</S.Title>
+          <S.Title>{foodInfo?.name}</S.Title>
           <S.MainNutrientBox>
             <div className="info-text">
               <p>칼로리</p>
-              <p>{obj.kcal}kcal</p>
+              <p>{foodInfo?.kcal}kcal</p>
             </div>
             <div className="info-text">
               <p>탄수화물</p>
-              <p>{obj.carbon}g</p>
+              <p>{foodInfo?.carb}g</p>
             </div>
             <div className="info-text">
               <p>단백질</p>
-              <p>{obj.protein}g</p>
+              <p>{foodInfo?.protein}g</p>
             </div>
             <div className="info-text">
               <p>지방</p>
-              <p>{obj.fat}g</p>
+              <p>{foodInfo?.fat}g</p>
             </div>
           </S.MainNutrientBox>
           <S.SubNutrientBox>
             <div className="sub-content">
               <p>나트륨</p>
-              <p>{obj.natrium}mg</p>
+              <p>{foodInfo?.natruim}mg</p>
             </div>
             <div className="sub-content">
               <p>콜레스테롤</p>
-              <p>{obj.col}mg</p>
+              <p>{foodInfo?.cholesterol}mg</p>
             </div>
 
             <div className="sub-content">
               <p>트랜스지방</p>
-              <p>{obj.transFat}g</p>
+              <p>{foodInfo?.transfat}g</p>
             </div>
             <div className="sub-content">
               <p>포화지방</p>
-              <p>{obj.saturatedFat}g</p>
+              <p>{foodInfo?.saturatedfatty}g</p>
             </div>
           </S.SubNutrientBox>
           <S.SelectBox>
-            <select>
-              <option value="quantity">1개({obj.gramPerQuantity}g)</option>
+            <select ref={selectRef}>
+              <option value="quantity">1개(1g)</option>
               <option value="gram">g</option>
             </select>
             <div className="countBtnBox">

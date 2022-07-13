@@ -48,7 +48,7 @@ function MealsSearchedList({ inputValue, result }: MealsSearchedListProps) {
                 <span
                   className="arrowIcon"
                   onClick={() => {
-                    navigate(`/meals/detail/${food.code}`);
+                    navigate(`/meals/detail/${food.name}`);
                   }}
                 >
                   <FontAwesomeIcon icon={faArrowRight} />
