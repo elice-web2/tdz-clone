@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import * as S from './style';
 import Container from '../../components/styles/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -20,6 +20,7 @@ interface GetMealDataObj {
   saturatedfatty: number;
   sugars: number;
   transfat: number;
+  servingSize: number;
   updatedAt: string;
   updated_date: string;
   __v: number;
@@ -28,7 +29,13 @@ interface GetMealDataObj {
 
 function MealsDetail() {
   const [count, setCount] = useState(1);
-  const [foodInfo, setFoodInfo] = useState<GetMealDataObj | null>(null);
+  const [foodInfo, setFoodInfo] = useState<GetMealDataObj | null | undefined>(
+    null,
+  );
+  const [firstInfo, setFirstInfo] = useState<GetMealDataObj | null | undefined>(
+    null,
+  );
+  const [selected, setSelected] = useState('quantity');
   const navigate = useNavigate();
   const params = useParams();
   const selectRef = useRef<HTMLSelectElement>(null);
@@ -36,8 +43,32 @@ function MealsDetail() {
   useEffect(() => {
     api.get(`/api/meal/${params.name}`).then((res: any) => {
       setFoodInfo(res.data[0]);
+      setFirstInfo(res.data[0]);
     });
-  }, [foodInfo]);
+  }, []);
+
+  function calcInfo(info: GetMealDataObj) {
+    if (firstInfo) {
+      info.kcal = Number((firstInfo?.kcal * count).toFixed(2));
+      info.carb = Number((firstInfo?.carb * count).toFixed(2));
+      info.protein = Number((firstInfo?.protein * count).toFixed(2));
+      info.fat = Number((firstInfo?.fat * count).toFixed(2));
+      info.natruim = Number((firstInfo?.natruim * count).toFixed(2));
+      info.cholesterol = Number((firstInfo?.cholesterol * count).toFixed(2));
+      info.transfat = Number((firstInfo?.transfat * count).toFixed(2));
+      info.saturatedfatty = Number(
+        (firstInfo?.saturatedfatty * count).toFixed(2),
+      );
+      return info;
+    }
+  }
+
+  useEffect(() => {
+    setFoodInfo((cur: any) => {
+      const newObj = { ...cur };
+      return calcInfo(newObj);
+    });
+  }, [count]);
 
   const plusHandler = () => {
     setCount((cur) => cur + 1);
@@ -107,7 +138,7 @@ function MealsDetail() {
           </S.SubNutrientBox>
           <S.SelectBox>
             <select ref={selectRef}>
-              <option value="quantity">1개(1g)</option>
+              <option value="quantity">1개 ({foodInfo?.servingSize}g)</option>
               <option value="gram">g</option>
             </select>
             <div className="countBtnBox">

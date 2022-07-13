@@ -77,6 +77,9 @@ export const SelectBox = styled.div`
     height: 40px;
     border-radius: 5px;
     cursor: pointer;
+    option {
+      text-align: center;
+    }
   }
   .countBtnBox {
     display: flex;

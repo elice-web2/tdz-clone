@@ -21,6 +21,7 @@ interface MealsSearchProps {
   saturatedfatty: number;
   sugars: number;
   transfat: number;
+  servingSize: number;
   updatedAt: string;
   updated_date: string;
   __v: number;
