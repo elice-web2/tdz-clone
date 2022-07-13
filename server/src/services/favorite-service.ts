@@ -28,6 +28,7 @@ class FavoriteService {
     return favorites;
   }
 
+  //즐겨찾기 하나 삭제
   async deleteOnFavorite(
     favoriteId: string,
   ): Promise<{ deletedCount?: number }> {

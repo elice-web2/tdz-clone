@@ -22,9 +22,17 @@ export class FavoriteModel {
     return await Favorite.find({});
   }
 
+  //즐겨찾기 하나 삭제
   async deleteOneFavorite(
     favoriteId: string,
   ): Promise<{ deletedCount?: number }> {
     return await Favorite.deleteOne({ _id: favoriteId });
+  }
+
+  //즐겨찾기 전체 삭제
+  async deleteFavoritesByUser(
+    userId: string,
+  ): Promise<{ deletedCount?: number }> {
+    return await Favorite.deleteMany({ _id: userId });
   }
 }
