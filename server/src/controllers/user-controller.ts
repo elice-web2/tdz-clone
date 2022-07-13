@@ -65,7 +65,10 @@ const logout = async function (
 ) {
   //쿠키에 있는 jwt 토큰이 들어 있는 쿠키를 비워줌
   try {
-    res.clearCookie('token').redirect('/');
+    res.clearCookie('token').json({
+      success: true,
+      data: '성공적으로 로그아웃 되었습니다.',
+    });
   } catch (error) {
     next(error);
   }
@@ -360,4 +363,4 @@ const deleteUser = async function (
 //   }
 // });
 
-export { signUp, login, userList, user, userUpdate, deleteUser };
+export { signUp, login, logout, userList, user, userUpdate, deleteUser };
