@@ -28,6 +28,11 @@ class FavoriteService {
     return favorites;
   }
 
+  //즐겨찾기 하나 조회
+  async getFavorite(favoriteId: string) {
+    return await this.favoriteModel.findById(favoriteId);
+  }
+
   //즐겨찾기 하나 삭제
   async deleteOneFavorite(
     favoriteId: string,
