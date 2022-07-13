@@ -263,3 +263,9 @@ Error: 해당 이메일은 가입 내역이 없습니다. 다시 한 번 확인�
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
     at async login (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\user-controller.ts:43:23)
 
+[2022-7-14 0:23:36] GET:/api/meal/%ED%94%BC%EC%9E%90
+Error: 피자을 조회할 수 없습니다.
+    at MealService.findMeal (C:\Users\Administrator\Desktop\project\TDZ\server\src\services\meal-service.ts:17:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async getMeal (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\meal-controller.ts:9:24)
+

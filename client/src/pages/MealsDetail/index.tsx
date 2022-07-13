@@ -21,7 +21,8 @@ interface GetMealDataObj {
   transfat: number;
   saturatedfatty: number;
   servingSize: number;
-  quantity?: number;
+  quantity: number;
+  totalGram: number;
 }
 
 function MealsDetail() {
@@ -65,6 +66,7 @@ function MealsDetail() {
         saturatedfatty,
         servingSize,
         quantity: 1,
+        totalGram: servingSize,
       };
       console.log(nutrient);
       setFoodInfo(nutrient);
@@ -85,6 +87,7 @@ function MealsDetail() {
         (firstInfo?.saturatedfatty * count).toFixed(2),
       );
       info.quantity = count;
+      info.totalGram = Math.floor(firstInfo?.servingSize * count);
     }
     return info;
   }
@@ -111,6 +114,7 @@ function MealsDetail() {
       nutrientInfoPerGram.saturatedfatty = Number(
         firstInfo?.saturatedfatty / firstInfo?.servingSize,
       );
+
       info.kcal = Number((nutrientInfoPerGram.kcal * count).toFixed(2));
       info.carb = Number((nutrientInfoPerGram.carb * count).toFixed(2));
       info.protein = Number((nutrientInfoPerGram.protein * count).toFixed(2));
@@ -120,6 +124,8 @@ function MealsDetail() {
       info.saturatedfatty = Number(
         (nutrientInfoPerGram.saturatedfatty * count).toFixed(2),
       );
+      info.quantity = Number((count / firstInfo?.servingSize).toFixed(1));
+      info.totalGram = count;
       return info;
     }
   }

@@ -11,23 +11,18 @@ import { useAppSelector } from '../../hooks';
 import * as api from '../../api';
 
 interface GetMealDataObj {
-  carb: number;
-  cholesterol: number;
   code: string;
-  createdAt: string;
-  fat: number;
-  kcal: number;
   name: string;
-  natruim: number;
+  kcal: number;
+  carb: number;
   protein: number;
-  saturatedfatty: number;
-  sugars: number;
+  fat: number;
+  natruim: number;
+  cholesterol: number;
   transfat: number;
+  saturatedfatty: number;
   servingSize: number;
-  updatedAt: string;
-  updated_date: string;
-  __v: number;
-  _id: string;
+  quantity?: number;
 }
 
 function MealsCart() {
@@ -63,7 +58,13 @@ function MealsCart() {
 
       <S.MealsListContainer>
         {result.map((el) => {
-          return <MealsCartList name={el.name} quantity={1}></MealsCartList>;
+          return (
+            <MealsCartList
+              name={el.name}
+              quantity={el.quantity}
+              totalGram={el.totalGram}
+            ></MealsCartList>
+          );
         })}
       </S.MealsListContainer>
 

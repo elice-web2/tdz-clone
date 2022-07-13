@@ -17,7 +17,8 @@ interface MealInfoState {
   transfat: number;
   saturatedfatty: number;
   servingSize: number;
-  quantity?: number;
+  quantity: number;
+  totalGram: number;
 }
 
 interface PostMealsDataParam {
