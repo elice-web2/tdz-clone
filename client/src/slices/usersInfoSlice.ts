@@ -5,23 +5,23 @@ import * as api from '../api';
 interface UsersInfo {
   // 유저 정보
   email: string;
-  loginPath: string;
+  login_path: string;
   gender: string;
   role: string;
   age: number;
   height: number;
-  currentWeight: number;
-  goalWeight: number;
+  current_weight: number;
+  goal_weight: number;
   bmi: number;
   mode: string;
   activity: string;
   nutrient: {
-    nutrientKcal: number;
-    nutrientCarb: number;
-    nutrientProtein: number;
-    nutrientFat: number;
+    kcal: number;
+    carb: number;
+    protein: number;
+    fat: number;
   };
-  profileImage: string;
+  profile_image: string;
   nickname: string;
   comment: string;
   // 로그인 여부
@@ -34,23 +34,23 @@ export interface UsersInfoState {
 const initialState: UsersInfoState = {
   value: {
     email: '',
-    loginPath: '',
+    login_path: '',
     gender: '',
     role: '',
     age: 0,
     height: 0,
-    currentWeight: 0,
-    goalWeight: 0,
+    current_weight: 0,
+    goal_weight: 0,
     bmi: 0,
     mode: '',
     activity: '',
     nutrient: {
-      nutrientKcal: 0,
-      nutrientCarb: 0,
-      nutrientProtein: 0,
-      nutrientFat: 0,
+      kcal: 0,
+      carb: 0,
+      protein: 0,
+      fat: 0,
     },
-    profileImage: '',
+    profile_image: '',
     nickname: '',
     comment: '',
     isLogin: false,

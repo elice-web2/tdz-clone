@@ -45,6 +45,8 @@ export const ButtonContainer = styled.div`
     font-size: 16px;
     font-weight: 700;
     color: white;
+
+    cursor: pointer;
   }
 `;
 
