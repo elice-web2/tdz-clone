@@ -191,6 +191,9 @@ const deleteUser = async function (
     // params로부터 id를 가져옴
     const userId: string = req.currentUserId!;
 
+    const deleteResult = await userService.deleteUserData(userId);
+
+    res.status(200).json(deleteResult);
     const deletedResult = await userService.deleteUserData(userId);
 
     if (!deletedResult) {
