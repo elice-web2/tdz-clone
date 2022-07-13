@@ -86,7 +86,7 @@ export const SelectBox = styled.div`
     align-items: center;
 
     input {
-      width: 40px;
+      width: 50px;
       height: 40px;
       padding: 0;
       border: none;
