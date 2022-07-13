@@ -1,16 +1,43 @@
 import * as S from './style';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Container from '../../components/styles/Container';
 import Navbar from '../../components/common/Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import MealsSearchedList from '../../components/MealsSearch/MealsSearchedList';
 import MealsBookMarkList from '../../components/MealsSearch/MealsBookMarkList';
+import * as api from '../../api';
+
+interface MealsSearchProps {
+  carb: number;
+  cholesterol: number;
+  code: string;
+  createdAt: string;
+  fat: number;
+  kcal: number;
+  name: string;
+  natruim: number;
+  protein: number;
+  saturatedfatty: number;
+  sugars: number;
+  transfat: number;
+  updatedAt: string;
+  updated_date: string;
+  __v: number;
+  _id: string;
+}
 
 function MealsSearch() {
   const [isSearch, setIsSearch] = useState(true);
   const [inputValue, setInputValue] = useState('');
+  const [searchedResult, setSearchedResult] = useState<MealsSearchProps[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (!inputValue) {
+      setSearchedResult([]);
+    }
+  }, [inputValue]);
 
   return (
     <Container>
@@ -46,6 +73,9 @@ function MealsSearch() {
           onClick={() => {
             if (inputRef.current) {
               setInputValue(inputRef.current.value);
+              api.get(`/api/meal/${inputValue}`).then((res: any) => {
+                setSearchedResult(res.data);
+              });
             }
           }}
         >
@@ -74,7 +104,10 @@ function MealsSearch() {
         </S.BookMarkTabBtn>
       </S.ButtonContainer>
       {isSearch ? (
-        <MealsSearchedList inputValue={inputValue}></MealsSearchedList>
+        <MealsSearchedList
+          inputValue={inputValue}
+          result={searchedResult}
+        ></MealsSearchedList>
       ) : (
         <MealsBookMarkList></MealsBookMarkList>
       )}

@@ -1,127 +1,46 @@
 import * as S from './style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { useAppDispatch } from '../../../hooks';
 import NoSearched from '../../MealsCart/NoSearched';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import { addBookMark } from '../../../slices/bookMarkSlice';
-import { set } from 'immer/dist/internal';
 
-interface testDBObjType {
-  code: string;
-  name: string;
-  kcal: number;
+import { addBookMark } from '../../../slices/bookMarkSlice';
+
+interface GetMealDataObj {
   carb: number;
-  protein: number;
-  fat: number;
-  sugars: number;
-  natruim: number;
   cholesterol: number;
+  code: string;
+  createdAt: string;
+  fat: number;
+  kcal: number;
+  name: string;
+  natruim: number;
+  protein: number;
   saturatedfatty: number;
+  sugars: number;
   transfat: number;
+  updatedAt: string;
+  updated_date: string;
+  __v: number;
+  _id: string;
 }
 
-const testDB: testDBObjType[] = [
-  {
-    code: '01',
-    name: '라면',
-    kcal: 462.39,
-    carb: 89.7,
-    protein: 6.8,
-    fat: 8.5,
-    sugars: 6.3,
-    natruim: 3206.03,
-    cholesterol: 0,
-    saturatedfatty: 1.2,
-    transfat: 0,
-  },
-  {
-    code: '02',
-    name: '비빔라면',
-    kcal: 462.39,
-    carb: 89.7,
-    protein: 6.8,
-    fat: 8.5,
-    sugars: 6.3,
-    natruim: 3206.03,
-    cholesterol: 0,
-    saturatedfatty: 1.2,
-    transfat: 0,
-  },
-  {
-    code: '03',
-    name: '라면볶이',
-    kcal: 462.39,
-    carb: 89.7,
-    protein: 6.8,
-    fat: 8.5,
-    sugars: 6.3,
-    natruim: 3206.03,
-    cholesterol: 0,
-    saturatedfatty: 1.2,
-    transfat: 0,
-  },
-  {
-    code: '04',
-    name: '신라면',
-    kcal: 462.39,
-    carb: 89.7,
-    protein: 6.8,
-    fat: 8.5,
-    sugars: 6.3,
-    natruim: 3206.03,
-    cholesterol: 0,
-    saturatedfatty: 1.2,
-    transfat: 0,
-  },
-  {
-    code: '05',
-    name: '밥',
-    kcal: 462.39,
-    carb: 89.7,
-    protein: 6.8,
-    fat: 8.5,
-    sugars: 6.3,
-    natruim: 3206.03,
-    cholesterol: 0,
-    saturatedfatty: 1.2,
-    transfat: 0,
-  },
-  {
-    code: '06',
-    name: '치킨',
-    kcal: 462.39,
-    carb: 89.7,
-    protein: 6.8,
-    fat: 8.5,
-    sugars: 6.3,
-    natruim: 3206.03,
-    cholesterol: 0,
-    saturatedfatty: 1.2,
-    transfat: 0,
-  },
-];
-
 interface MealsSearchedListProps {
+  result: GetMealDataObj[];
   inputValue: string;
 }
 
-function MealsSearchedList({ inputValue }: MealsSearchedListProps) {
+function MealsSearchedList({ inputValue, result }: MealsSearchedListProps) {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  let filteredArr: any = [];
-  if (inputValue !== '') {
-    filteredArr = testDB.filter((food) => food.name.includes(inputValue));
-  }
-
   return (
     <S.SearchListContainer>
-      {filteredArr.length === 0 ? (
+      {result.length === 0 || !inputValue ? (
         <NoSearched></NoSearched>
       ) : (
-        filteredArr.map((food: testDBObjType) => {
+        result.map((food: GetMealDataObj) => {
           return (
             <S.List key={food.code}>
               <S.NamedInfo>
