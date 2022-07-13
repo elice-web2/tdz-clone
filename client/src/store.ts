@@ -1,13 +1,21 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import bookMarkSlice from './slices/bookMarkSlice';
 import counterReducer from './slices/counterSlice';
+<<<<<<< HEAD
 import mealsSlice from './slices/mealsSlice';
+=======
+import usersInfoReducer from './slices/usersInfoSlice';
+>>>>>>> 3033a9960d7a998f9f3b5760eef6261f83cc8309
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
+<<<<<<< HEAD
     meal: mealsSlice,
     bookMark: bookMarkSlice,
+=======
+    usersInfo: usersInfoReducer,
+>>>>>>> 3033a9960d7a998f9f3b5760eef6261f83cc8309
   },
 });
 
