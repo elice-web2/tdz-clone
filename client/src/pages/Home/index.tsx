@@ -24,29 +24,37 @@ interface mealsData {
 
 function Home() {
   const navigate = useNavigate();
-  const [meals, setMeals] = useState<mealsData[]>([]);
+  const [nutrientsSum, setNutrientsSum] = useState({
+    kcal: 0,
+    protein: 0,
+    fat: 0,
+    carb: 0,
+  });
   const dispatch = useAppDispatch();
   const { current_weight, nutrient } = useAppSelector(
     ({ usersInfo }) => usersInfo.value,
   );
 
-  const getMealsHistoryByDate = async (date: string) => {
+  const setNutrientsSumByDate = async (date: string) => {
     // 기준 날짜 state 주입 필요
-    const data = await Api.get(
-      `/api/mealhistory/${dayjs(date).format('YYYY-MM-DD')}`,
-    );
-    setMeals(data?.data.map((data: any) => data.meals).flat());
-  };
+    const data = (
+      await Api.get(`/api/mealhistory/${dayjs(date).format('YYYY-MM-DD')}`)
+    )?.data;
 
-  const nutrientSum = meals.reduce(
-    (acc, meal) => ({
-      kcal: acc.kcal + meal.kcal,
-      protein: acc.protein + meal.protein,
-      fat: acc.fat + meal.fat,
-      carb: acc.carb + meal.carb,
-    }),
-    { kcal: 0, protein: 0, fat: 0, carb: 0 },
-  );
+    const nutrientArray: mealsData[] = data
+      .map((data: any) => data.meals)
+      .flat();
+    const nutrientSum = nutrientArray.reduce(
+      (acc, meal) => ({
+        kcal: acc.kcal + meal.kcal,
+        protein: acc.protein + meal.protein,
+        fat: acc.fat + meal.fat,
+        carb: acc.carb + meal.carb,
+      }),
+      { kcal: 0, protein: 0, fat: 0, carb: 0 },
+    );
+    setNutrientsSum(nutrientSum);
+  };
 
   const onClickAddMealButton = () => {
     navigate('/meals/search');
@@ -54,7 +62,7 @@ function Home() {
 
   useEffect(() => {
     // 로그인 기능이 완전하지 않아 이 컴포넌트에서 임시로 로그인한 후 유저정보를 가져옴
-    // 로그인 기능 완료되면 getMealsHistoryByDate 함수만 쓰면 됨
+    // 로그인 기능 완료되면 setNutrientsSumByDate 함수만 쓰면 됨
     // 그 후 유저의 일자별 식단을 조회해서 영양소의 합을 구함
     new Promise((resolve) => {
       resolve(
@@ -67,7 +75,7 @@ function Home() {
         dispatch(getUsersInfoAsync());
       })
       .then(() => {
-        getMealsHistoryByDate('2022-07-13');
+        setNutrientsSumByDate('2022-07-13');
       });
   }, []);
 
@@ -78,11 +86,11 @@ function Home() {
       <S.DonutContainer>
         {/* 목표 칼로리 / 현재 칼로리 * 100 백분율 계산해서 기입 필요 */}
         <DonutProgressbar
-          percentage={calculatePercentage(nutrientSum.kcal, nutrient.kcal)}
+          percentage={calculatePercentage(nutrientsSum.kcal, nutrient.kcal)}
         >
           <S.CalorieContainer>
             {/* 현재 칼로리 */}
-            <p>{nutrientSum.kcal} kcal</p>
+            <p>{nutrientsSum.kcal} kcal</p>
             {/* 목표 칼로리  */}
             <p>/ {nutrient.kcal} kcal</p>
           </S.CalorieContainer>
@@ -91,19 +99,19 @@ function Home() {
       <S.NutrientContainer>
         <Progressbar
           title={'탄수화물'}
-          currentValue={nutrientSum.carb}
+          currentValue={nutrientsSum.carb}
           goalValue={nutrient.carb}
           color="#FAA0A0"
         />
         <Progressbar
           title={'단백질'}
-          currentValue={nutrientSum.protein}
+          currentValue={nutrientsSum.protein}
           goalValue={nutrient.protein}
           color="#00D287"
         />
         <Progressbar
           title={'지방'}
-          currentValue={nutrientSum.fat}
+          currentValue={nutrientsSum.fat}
           goalValue={nutrient.fat}
           color="#FAF461"
         />
