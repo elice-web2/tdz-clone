@@ -43,18 +43,22 @@ class MealHistoryController {
 
       // req (request) 에서 데이터 가져오기
 
-      const userId = req.currentUserId;
+      const userId = req.currentUserId!;
       const date: Date = new Date(req.body.date);
       const category: string = req.body.category;
       const meals: [mealInfo] = req.body.meals;
 
       // db에 저장
-      const newMealHistory = await mealhistoryService.addMealHistory({
-        userId,
+      const newMealHistory = await mealhistoryService.addMealHistory(
         date,
-        category,
-        meals,
-      });
+        userId,
+        {
+          userId,
+          date,
+          category,
+          meals,
+        },
+      );
 
       res.status(201).json(newMealHistory);
     } catch (error) {
