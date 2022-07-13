@@ -10,18 +10,18 @@ interface UsersInfo {
   role: string;
   age: number;
   height: number;
-  current_weight: number;
-  goal_weight: number;
+  currentWeight: number;
+  goalWeight: number;
   bmi: number;
   mode: string;
   activity: string;
   nutrient: {
-    kcal: number;
-    carb: number;
-    protein: number;
-    fat: number;
+    nutrientKcal: number;
+    nutrientCarb: number;
+    nutrientProtein: number;
+    nutrientFat: number;
   };
-  profile_image: string;
+  profileImage: string;
   nickname: string;
   comment: string;
   // 로그인 여부
@@ -34,30 +34,30 @@ export interface UsersInfoState {
 const initialState: UsersInfoState = {
   value: {
     email: '',
-    login_path: '',
+    loginPath: '',
     gender: '',
     role: '',
     age: 0,
     height: 0,
-    current_weight: 0,
-    goal_weight: 0,
+    currentWeight: 0,
+    goalWeight: 0,
     bmi: 0,
     mode: '',
     activity: '',
     nutrient: {
-      kcal: 0,
-      carb: 0,
-      protein: 0,
-      fat: 0,
+      nutrientKcal: 0,
+      nutrientCarb: 0,
+      nutrientProtein: 0,
+      nutrientFat: 0,
     },
-    profile_image: '',
+    profileImage: '',
     nickname: '',
     comment: '',
-    isLogin: Boolean(localStorage.getItem('login')),
+    isLogin: false,
   },
 };
 // Slice 작성 예시
-
+// 회원가입 post 요청 데이터 매개변수
 // 로그인 요청 데이터 타입지정
 interface postLoginSignup {
   email: string;
@@ -65,7 +65,7 @@ interface postLoginSignup {
 }
 // 회원가입 post API 통신 함수
 async function postSignupData(usersInfo: postLoginSignup) {
-  const resp = await api.post('/api/auth/signup ', usersInfo);
+  const resp = await api.post('/auth/signup ', usersInfo);
   return resp.data;
 }
 // 로그인 post API 통신 함수
