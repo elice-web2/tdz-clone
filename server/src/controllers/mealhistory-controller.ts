@@ -1,10 +1,10 @@
 import is from '@sindresorhus/is';
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import { mealhistoryService } from '../services';
 import { mealInfo } from '../db';
 
 class MealHistoryController {
-  async getHistory(req: Request, res: Response, next) {
+  async getHistory(req: Request, res: Response, next: NextFunction) {
     try {
       const user_id = req.params.id;
       const date = new Date(req.params.date);
@@ -20,7 +20,7 @@ class MealHistoryController {
     }
   }
 
-  async createHistory(req: Request, res: Response, next) {
+  async createHistory(req: Request, res: Response, next: NextFunction) {
     try {
       // application/json 설정을 프론트에서 안 하면, body가 비어 있게 됨.
       if (is.emptyObject(req.body)) {
@@ -48,7 +48,7 @@ class MealHistoryController {
     }
   }
 
-  async updateHistory(req: Request, res: Response, next) {
+  async updateHistory(req: Request, res: Response, next: NextFunction) {
     try {
       // application/json 설정을 프론트에서 안 하면, body가 비어 있게 됨.
       if (is.emptyObject(req.body)) {
@@ -81,7 +81,7 @@ class MealHistoryController {
     }
   }
 
-  async deletHistory(req: Request, res: Response, next) {
+  async deletHistory(req: Request, res: Response, next: NextFunction) {
     try {
       const mealhistory_id = req.params.mealhistory_id;
       const deleteResult = await mealhistoryService.deleteMealHistory(
