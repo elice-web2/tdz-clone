@@ -99,11 +99,28 @@ class MealHistoryController {
     }
   }
 
-  async deleteHistory(req: Request, res: Response, next: NextFunction) {
+  async deleteHistoryByMealHistoryId(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) {
     try {
       const mealhistoryId = req.params.mealhistoryId;
-      const deleteResult = await mealhistoryService.deleteMealHistory(
-        mealhistoryId,
+      const deleteResult =
+        await mealhistoryService.deleteMealHistoryByMealHistoryId(
+          mealhistoryId,
+        );
+      res.status(200).json(deleteResult);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async deleteHistoryByUserId(req: Request, res: Response, next: NextFunction) {
+    try {
+      const userId = req.currentUserId!;
+      const deleteResult = await mealhistoryService.deleteMealHistoryByUserId(
+        userId,
       );
       res.status(200).json(deleteResult);
     } catch (error) {

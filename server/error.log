@@ -813,3 +813,15 @@ CastError: Cast to date failed for value "Invalid Date" (type Date) at path "dat
     at model.Query.Query.then (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\query.js:4592:15)
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
 
+[2022-7-14 1:23:27] DELETE:/api/mealhistory/62ceeec5b78baa7d9028f57f
+Error: 해당 식단은 존재하지 않습니다.
+    at MealHistoryService.deleteMealHistoryByMealHistoryId (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:117:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async deleteHistoryByMealHistoryId (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\controllers\mealhistory-controller.ts:110:9)
+
+[2022-7-14 1:25:31] DELETE:/api/mealhistory
+Error: 식단 삭제에 실패하였습니다
+    at MealHistoryService.deleteMealHistoryByUserId (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:139:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async deleteHistoryByUserId (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\controllers\mealhistory-controller.ts:122:28)
+
