@@ -15,4 +15,14 @@ class FavoriteService {
   async getAllFavorites(): Promise<FavoriteData[]> {
     return await this.favoriteModel.findAll();
   }
+
+  //사용자별 즐겨찾기 조회
+  async getFavoritesByUser(userId: string): Promise<FavoriteData[]> {
+    const favorites = await this.favoriteModel.findByUser(userId);
+    if (!favorites) {
+      return {} as Promise<FavoriteData[]>;
+    }
+
+    return favorites;
+  }
 }

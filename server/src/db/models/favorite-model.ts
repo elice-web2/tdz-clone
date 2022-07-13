@@ -10,7 +10,7 @@ export class FavoriteModel {
     return await Favorite.findOne({ _id: favoriteId }).lean();
   }
   //즐겨찾기 유저별로 반환
-  async findByUser(userId: string): Promise<FavoriteData | null> {
+  async findByUser(userId: string): Promise<FavoriteData[] | null> {
     return await Favorite.findOne({ user_id: userId }).lean();
   }
   //favoriteInfo Object를 받아 생성
