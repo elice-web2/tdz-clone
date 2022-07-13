@@ -10,4 +10,9 @@ class FavoriteService {
   async addFavorite(favoriteInfo: FavoriteInfo): Promise<FavoriteData> {
     return await this.favoriteModel.create(favoriteInfo);
   }
+
+  //즐겨찾기 전체 조회
+  async getAllFavorites(): Promise<FavoriteData[]> {
+    return await this.favoriteModel.findAll();
+  }
 }
