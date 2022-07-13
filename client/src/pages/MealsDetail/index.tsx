@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import * as S from './style';
 import Container from '../../components/styles/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,6 +6,8 @@ import { faArrowLeft, faStar } from '@fortawesome/free-solid-svg-icons';
 import Navbar from '../../components/common/Navbar';
 import { useNavigate, useParams } from 'react-router-dom';
 import * as api from '../../api';
+import { addMeals } from '../../slices/mealsSlice';
+import { useAppDispatch } from '../../hooks';
 
 interface GetMealDataObj {
   carb: number;
@@ -39,6 +41,7 @@ function MealsDetail() {
   const navigate = useNavigate();
   const params = useParams();
   const selectRef = useRef<HTMLSelectElement>(null);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     api.get(`/api/meal/${params.name}`).then((res: any) => {
@@ -230,7 +233,14 @@ function MealsDetail() {
               </button>
             </div>
           </S.SelectBox>
-          <S.AddBtn>식단 추가</S.AddBtn>
+          <S.AddBtn
+            onClick={() => {
+              foodInfo && dispatch(addMeals(foodInfo));
+              navigate('/meals/cart');
+            }}
+          >
+            식단 추가
+          </S.AddBtn>
         </S.MealsInfoBox>
       </S.MealsContainer>
       <Navbar />

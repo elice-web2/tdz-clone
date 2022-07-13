@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as S from './style';
 import Navbar from '../../components/common/Navbar';
@@ -7,13 +7,43 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import TDZInfo from '../../components/MealsCart/TDZInfo';
 import MealsCartList from '../../components/MealsCart/MealsCartList';
+import { useAppSelector } from '../../hooks';
+
+interface GetMealDataObj {
+  carb: number;
+  cholesterol: number;
+  code: string;
+  createdAt: string;
+  fat: number;
+  kcal: number;
+  name: string;
+  natruim: number;
+  protein: number;
+  saturatedfatty: number;
+  sugars: number;
+  transfat: number;
+  servingSize: number;
+  updatedAt: string;
+  updated_date: string;
+  __v: number;
+  _id: string;
+}
 
 function MealsCart() {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const navigate = useNavigate();
-  const clickHandler = () => {
+  const result = useAppSelector(({ meal }) => meal.value);
+  console.log('밖', result);
+
+  function clickHandler() {
     setOpenModal(true);
-  };
+  }
+
+  function calcQuantity(obj: GetMealDataObj) {
+    const kcal = obj.kcal;
+    const servingSize = obj.servingSize;
+  }
+
   return (
     <S.Container>
       {openModal && <MealsCartModal setOpenModal={setOpenModal} />}
@@ -36,9 +66,15 @@ function MealsCart() {
       </S.NutrientInfoContainer>
 
       <S.MealsListContainer>
-        <MealsCartList name={'쌀밥'} quantity={1}></MealsCartList>
-        <MealsCartList name={'너구리'} quantity={2}></MealsCartList>
-        <MealsCartList name={'너구리'} quantity={2}></MealsCartList>
+        {result.map((el) => {
+          return (
+            <MealsCartList
+              key={el.code}
+              name={el.name}
+              quantity={el.kcal}
+            ></MealsCartList>
+          );
+        })}
       </S.MealsListContainer>
 
       <S.BtnContainer>
@@ -52,7 +88,7 @@ function MealsCart() {
 
         <S.RecordBtn onClick={clickHandler}>기록 하기</S.RecordBtn>
       </S.BtnContainer>
-      <Navbar />
+      {/* <Navbar /> */}
     </S.Container>
   );
 }

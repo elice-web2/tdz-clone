@@ -111,7 +111,8 @@ export const SelectBox = styled.div`
     }
   }
 `;
-export const AddBtn = styled.button`
+
+export const AddBtn = styled.button<any>`
   position: absolute;
   bottom: 30px;
   left: 150px;

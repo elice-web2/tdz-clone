@@ -2,7 +2,7 @@ import * as S from './style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useAppDispatch } from '../../../hooks';
-import NoSearched from '../../MealsCart/NoSearched';
+import NoSearched from '../NoSearched';
 import { useNavigate } from 'react-router-dom';
 
 import { addBookMark } from '../../../slices/bookMarkSlice';

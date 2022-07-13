@@ -231,3 +231,11 @@ Error: 진라면을 조회할 수 없습니다.
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
     at async getMeal (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\meal-controller.ts:9:24)
 
+[2022-7-13 19:56:7] GET:/api/meal/search
+TypeError: Cannot read properties of undefined (reading 'length')
+    at MealService.addMeal (C:\Users\Administrator\Desktop\project\TDZ\server\src\services\meal-service.ts:44:38)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async MealService.findMeal (C:\Users\Administrator\Desktop\project\TDZ\server\src\services\meal-service.ts:13:24)
+    at async getMeal (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\meal-controller.ts:9:24)
+

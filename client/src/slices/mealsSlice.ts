@@ -6,19 +6,23 @@ export interface MealsState {
 }
 
 interface MealInfoState {
-  id: string;
-  code: string;
-  name: string;
-  kcal: number;
   carb: number;
-  protein: number;
-  fat: number;
-  sugars: number;
-  natrium: number;
   cholesterol: number;
+  code: string;
+  createdAt: string;
+  fat: number;
+  kcal: number;
+  name: string;
+  natruim: number;
+  protein: number;
   saturatedfatty: number;
+  sugars: number;
   transfat: number;
-  updated_date: Date;
+  servingSize: number;
+  updatedAt: string;
+  updated_date: string;
+  __v: number;
+  _id: string;
 }
 
 interface PostMealsDataParam {
@@ -55,7 +59,7 @@ export const mealsSlice = createSlice({
       state.value.push(action.payload);
     },
     deleteMeals: (state, action: PayloadAction<string>) => {
-      state.value.filter((meal) => meal.id !== action.payload);
+      state.value.filter((meal) => meal.code !== action.payload);
     },
   },
   extraReducers: (builder) => {
