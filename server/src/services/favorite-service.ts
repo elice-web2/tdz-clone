@@ -1,5 +1,6 @@
 import { FavoriteModel, favoriteModel } from '../db';
 import { FavoriteInfo, FavoriteData } from '../customType/favorite.type';
+import { mealService } from './meal-service';
 
 class FavoriteService {
   constructor(private favoriteModel: FavoriteModel) {
@@ -29,8 +30,23 @@ class FavoriteService {
   }
 
   //즐겨찾기 하나 조회
-  async getFavorite(favoriteId: string) {
+  async getFavorite(favoriteId: string): Promise<FavoriteData | null> {
     return await this.favoriteModel.findById(favoriteId);
+  }
+
+  //유저의 즐겨찾기 내에서 해당 식단이 있는지 검색
+  async findMealInFavorites(
+    favoriteInfo: FavoriteInfo,
+  ): Promise<FavoriteData | null> {
+    const findMealInFavorites = await this.favoriteModel.findByMealId(
+      favoriteInfo,
+    );
+
+    if (!findMealInFavorites) {
+      return null;
+    }
+
+    return findMealInFavorites;
   }
 
   //즐겨찾기 하나 삭제

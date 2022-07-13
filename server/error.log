@@ -793,3 +793,70 @@ ValidationError: mealhistory validation failed: meals.0.servingSize: Path `servi
     at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\schematype.js:1273:9
     at processTicksAndRejections (node:internal/process/task_queues:78:11)
 
+[2022-7-14 0:6:46] POST:/api/favorites
+ValidationError: meals validation failed: name: Path `name` is required., kcal: Path `kcal` is required., carb: Path `carb` is required., protein: Path `protein` is required., fat: Path `fat` is required., sugars: Path `sugars` is required., natruim: Path `natruim` is required., cholesterol: Path `cholesterol` is required., saturatedfatty: Path `saturatedfatty` is required., transfat: Path `transfat` is required., servingSize: Path `servingSize` is required.
+    at model.Document.invalidate (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/mongoose/lib/document.js:2782:32)
+    at /Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/mongoose/lib/document.js:2574:17
+    at /Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/mongoose/lib/schematype.js:1273:9
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+[2022-7-14 0:7:14] POST:/api/favorites
+Error: all() must be used after where() when called with these arguments
+    at model.Query.Query._ensurePath (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/mquery/lib/mquery.js:3180:11)
+    at model.Query.Query.<computed> [as all] (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/mquery/lib/mquery.js:560:12)
+    at FavoriteModel.findByMealId (/Users/kai/Documents/Workspace/Web/TDZ/server/src/db/models/favorite-model.ts:28:34)
+    at FavoriteService.findMealInFavorites (/Users/kai/Documents/Workspace/Web/TDZ/server/src/services/favorite-service.ts:41:58)
+    at add (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/favorite-controller.ts:17:47)
+    at Layer.handle [as handle_request] (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/route.js:144:13)
+    at loginRequired (/Users/kai/Documents/Workspace/Web/TDZ/server/src/middlewares/login-required.ts:30:5)
+    at Layer.handle [as handle_request] (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/index.js:346:12)
+    at next (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/index.js:175:3)
+
+[2022-7-14 0:12:1] POST:/api/favorites
+ValidationError: favorites validation failed: user_id: Path `user_id` is required.
+    at model.Document.invalidate (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/mongoose/lib/document.js:2782:32)
+    at /Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/mongoose/lib/document.js:2574:17
+    at /Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/mongoose/lib/schematype.js:1273:9
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+[2022-7-14 0:28:30] POST:/api/favorites
+Error: 이미 즐겨찾기에 등록된 식단입니다
+    at add (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/favorite-controller.ts:20:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-14 0:31:51] POST:/api/favorites
+Error: 이미 즐겨찾기에 등록된 식단입니다
+    at add (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/favorite-controller.ts:20:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-14 0:32:33] POST:/api/favorites
+Error: 이미 즐겨찾기에 등록된 식단입니다
+    at add (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/favorite-controller.ts:20:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-14 0:33:18] POST:/api/favorites
+ValidationError: favorites validation failed: user_id: Path `user_id` is required.
+    at model.Document.invalidate (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/mongoose/lib/document.js:2782:32)
+    at /Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/mongoose/lib/document.js:2574:17
+    at /Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/mongoose/lib/schematype.js:1273:9
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+[2022-7-14 0:36:37] POST:/api/favorites
+ValidationError: favorites validation failed: meal_id: Path `meal_id` is required., user_id: Path `user_id` is required.
+    at model.Document.invalidate (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/mongoose/lib/document.js:2782:32)
+    at /Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/mongoose/lib/document.js:2574:17
+    at /Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/mongoose/lib/schematype.js:1273:9
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+[2022-7-14 0:39:42] POST:/api/favorites
+Error: 이미 즐겨찾기에 등록된 식단입니다
+    at add (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/favorite-controller.ts:28:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+

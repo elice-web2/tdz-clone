@@ -22,6 +22,15 @@ export class FavoriteModel {
     return await Favorite.find({});
   }
 
+  async findByMealId(favoriteInfo: FavoriteInfo): Promise<FavoriteData | null> {
+    return await Favorite.findOne({
+      $and: [
+        { user_id: favoriteInfo.user_id },
+        { meal_id: favoriteInfo.meal_id },
+      ],
+    });
+  }
+
   //즐겨찾기 하나 삭제
   async deleteOneFavorite(
     favoriteId: string,
