@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as S from './style';
 import Navbar from '../../components/common/Navbar';
@@ -27,6 +27,7 @@ interface GetMealDataObj {
 
 function MealsCart() {
   const [openModal, setOpenModal] = useState<boolean>(false);
+
   const navigate = useNavigate();
   const result = useAppSelector(({ meal }) => meal.value);
   console.log('밖', result);
@@ -47,7 +48,7 @@ function MealsCart() {
         </S.IconBox>
         <S.TotalKcalBox>
           <h1>총 칼로리</h1>
-          <p>1344 kcal</p>
+          kcal
         </S.TotalKcalBox>
         <S.TdzBox>
           <TDZInfo nutrient={'탄수화물'} gram={400} />
@@ -63,6 +64,7 @@ function MealsCart() {
               name={el.name}
               quantity={el.quantity}
               totalGram={el.totalGram}
+              code={el.code}
             ></MealsCartList>
           );
         })}

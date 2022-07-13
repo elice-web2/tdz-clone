@@ -11,8 +11,11 @@ export const MealTitle = styled.h2`
   font-size: 20px;
   font-weight: bold;
 `;
+interface ButtonProps {
+  onClick: () => void;
+}
 
-export const MealDeleteBtn = styled.button`
+export const MealDeleteBtn = styled.button<ButtonProps>`
   border: none;
   background: none;
   font-size: 20px;
