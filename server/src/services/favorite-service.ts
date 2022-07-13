@@ -29,7 +29,7 @@ class FavoriteService {
   }
 
   //즐겨찾기 하나 삭제
-  async deleteOnFavorite(
+  async deleteOneFavorite(
     favoriteId: string,
   ): Promise<{ deletedCount?: number }> {
     const favorite = await this.favoriteModel.findById(favoriteId);
@@ -41,5 +41,10 @@ class FavoriteService {
     }
 
     return await this.favoriteModel.deleteOneFavorite(favoriteId);
+  }
+
+  //유저별 즐겨찾기 전체 삭제
+  async deleteAllFavorites(userId: string): Promise<{ deletedCount?: number }> {
+    return await this.favoriteModel.deleteFavoritesByUser(userId);
   }
 }
