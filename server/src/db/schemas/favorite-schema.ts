@@ -1,6 +1,6 @@
 import { Schema } from 'mongoose';
 
-const Favorite = new Schema(
+const FavoriteSchmea = new Schema(
   {
     user_id: {
       type: Schema.Types.ObjectId,
@@ -22,3 +22,5 @@ const Favorite = new Schema(
     timestamps: true,
   },
 );
+
+export { FavoriteSchmea };
