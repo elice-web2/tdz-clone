@@ -2,12 +2,12 @@ import * as S from './style';
 
 interface MealsCartListProps {
   name: string;
-  quantity: number;
+  quantity: Promise<number> | any;
 }
 
 function MealsCartList({ name, quantity }: MealsCartListProps) {
   return (
-    <li>
+    <li key={name}>
       <S.MealHeaderBox>
         <S.MealTitle>{name}</S.MealTitle>
         <S.MealDeleteBtn>X</S.MealDeleteBtn>

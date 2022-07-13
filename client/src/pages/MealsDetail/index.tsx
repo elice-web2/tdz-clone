@@ -10,43 +10,65 @@ import { addMeals } from '../../slices/mealsSlice';
 import { useAppDispatch } from '../../hooks';
 
 interface GetMealDataObj {
-  carb: number;
-  cholesterol: number;
   code: string;
-  createdAt: string;
-  fat: number;
-  kcal: number;
   name: string;
-  natruim: number;
+  kcal: number;
+  carb: number;
   protein: number;
-  saturatedfatty: number;
-  sugars: number;
+  fat: number;
+  natruim: number;
+  cholesterol: number;
   transfat: number;
+  saturatedfatty: number;
   servingSize: number;
-  updatedAt: string;
-  updated_date: string;
-  __v: number;
-  _id: string;
+  quantity?: number;
 }
 
 function MealsDetail() {
   const [count, setCount] = useState(1);
-  const [foodInfo, setFoodInfo] = useState<GetMealDataObj | null | undefined>(
-    null,
-  );
-  const [firstInfo, setFirstInfo] = useState<GetMealDataObj | null | undefined>(
-    null,
-  );
   const [selected, setSelected] = useState('quantity');
+  const [foodInfo, setFoodInfo] = useState<GetMealDataObj>();
+  const [firstInfo, setFirstInfo] = useState<GetMealDataObj>();
+
   const navigate = useNavigate();
   const params = useParams();
   const selectRef = useRef<HTMLSelectElement>(null);
   const dispatch = useAppDispatch();
 
+  //DB에서 음식 정보 받아오기
   useEffect(() => {
     api.get(`/api/meal/${params.name}`).then((res: any) => {
-      setFoodInfo(res.data[0]);
-      setFirstInfo(res.data[0]);
+      const {
+        code,
+        name,
+        kcal,
+        carb,
+        protein,
+        fat,
+        natruim,
+        cholesterol,
+        transfat,
+        saturatedfatty,
+        servingSize,
+      } = res.data[0];
+
+      const nutrient = {
+        code,
+        name,
+        kcal,
+        carb,
+        protein,
+        fat,
+        natruim,
+        cholesterol,
+        transfat,
+        saturatedfatty,
+        servingSize,
+        quantity: 1,
+      };
+      console.log(nutrient);
+      setFoodInfo(nutrient);
+      setFirstInfo(nutrient);
     });
   }, []);
 
@@ -62,33 +84,32 @@ function MealsDetail() {
       info.saturatedfatty = Number(
         (firstInfo?.saturatedfatty * count).toFixed(2),
       );
-      return info;
+      info.quantity = count;
     }
+    return info;
   }
 
   function calcInfoByGram(info: GetMealDataObj) {
     if (firstInfo) {
       const nutrientInfoPerGram = { ...firstInfo };
       nutrientInfoPerGram.kcal = Number(
-        (firstInfo?.kcal / firstInfo?.servingSize).toFixed(2),
+        firstInfo?.kcal / firstInfo?.servingSize,
       );
       nutrientInfoPerGram.carb = Number(
-        (firstInfo?.carb / firstInfo?.servingSize).toFixed(2),
+        firstInfo?.carb / firstInfo?.servingSize,
       );
       nutrientInfoPerGram.protein = Number(
-        (firstInfo?.protein / firstInfo?.servingSize).toFixed(2),
+        firstInfo?.protein / firstInfo?.servingSize,
       );
-      nutrientInfoPerGram.fat = Number(
-        (firstInfo?.fat / firstInfo?.servingSize).toFixed(2),
-      );
+      nutrientInfoPerGram.fat = Number(firstInfo?.fat / firstInfo?.servingSize);
       nutrientInfoPerGram.natruim = Number(
-        (firstInfo?.natruim / firstInfo?.servingSize).toFixed(2),
+        firstInfo?.natruim / firstInfo?.servingSize,
       );
       nutrientInfoPerGram.transfat = Number(
-        (firstInfo?.transfat / firstInfo?.servingSize).toFixed(2),
+        firstInfo?.transfat / firstInfo?.servingSize,
       );
       nutrientInfoPerGram.saturatedfatty = Number(
-        (firstInfo?.saturatedfatty / firstInfo?.servingSize).toFixed(2),
+        firstInfo?.saturatedfatty / firstInfo?.servingSize,
       );
       info.kcal = Number((nutrientInfoPerGram.kcal * count).toFixed(2));
       info.carb = Number((nutrientInfoPerGram.carb * count).toFixed(2));
@@ -118,12 +139,12 @@ function MealsDetail() {
   }, [count]);
 
   useEffect(() => {
-    if (selected !== 'quantity') {
+    if (selected === 'quantity') {
+      setCount(1);
+    } else {
       if (firstInfo) {
         setCount(firstInfo?.servingSize);
       }
-    } else {
-      setCount(1);
     }
   }, [selected]);
 
@@ -134,16 +155,6 @@ function MealsDetail() {
   function minusHandler() {
     if (count !== 1) {
       setCount((cur) => cur - 1);
-    }
-  }
-
-  function gramMinusHandler() {
-    setCount((cur) => cur - 1);
-  }
-
-  function gramPlusHandler() {
-    if (count !== 1) {
-      setCount((cur) => cur + 1);
     }
   }
 
@@ -216,21 +227,15 @@ function MealsDetail() {
               <option value="gram">g</option>
             </select>
             <div className="countBtnBox">
-              <button
-                onClick={
-                  selected === 'quantity' ? minusHandler : gramMinusHandler
-                }
-              >
-                -
-              </button>
-              <input type="number" value={count}></input>
-              <button
-                onClick={
-                  selected === 'quantity' ? plusHandler : gramPlusHandler
-                }
-              >
-                +
-              </button>
+              <button onClick={minusHandler}>-</button>
+              <input
+                type="number"
+                value={count}
+                onChange={(e) => {
+                  setCount(parseInt(e.target.value));
+                }}
+              ></input>
+              <button onClick={plusHandler}>+</button>
             </div>
           </S.SelectBox>
           <S.AddBtn

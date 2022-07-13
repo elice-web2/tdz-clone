@@ -8,6 +8,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import TDZInfo from '../../components/MealsCart/TDZInfo';
 import MealsCartList from '../../components/MealsCart/MealsCartList';
 import { useAppSelector } from '../../hooks';
+import * as api from '../../api';
 
 interface GetMealDataObj {
   carb: number;
@@ -39,11 +40,6 @@ function MealsCart() {
     setOpenModal(true);
   }
 
-  function calcQuantity(obj: GetMealDataObj) {
-    const kcal = obj.kcal;
-    const servingSize = obj.servingSize;
-  }
-
   return (
     <S.Container>
       {openModal && <MealsCartModal setOpenModal={setOpenModal} />}
@@ -67,13 +63,7 @@ function MealsCart() {
 
       <S.MealsListContainer>
         {result.map((el) => {
-          return (
-            <MealsCartList
-              key={el.code}
-              name={el.name}
-              quantity={el.kcal}
-            ></MealsCartList>
-          );
+          return <MealsCartList name={el.name} quantity={1}></MealsCartList>;
         })}
       </S.MealsListContainer>
 

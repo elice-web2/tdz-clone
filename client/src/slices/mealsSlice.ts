@@ -6,23 +6,18 @@ export interface MealsState {
 }
 
 interface MealInfoState {
-  carb: number;
-  cholesterol: number;
   code: string;
-  createdAt: string;
-  fat: number;
   kcal: number;
   name: string;
-  natruim: number;
+  carb: number;
   protein: number;
-  saturatedfatty: number;
-  sugars: number;
+  fat: number;
+  natruim: number;
+  cholesterol: number;
   transfat: number;
+  saturatedfatty: number;
   servingSize: number;
-  updatedAt: string;
-  updated_date: string;
-  __v: number;
-  _id: string;
+  quantity?: number;
 }
 
 interface PostMealsDataParam {

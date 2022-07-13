@@ -239,3 +239,27 @@ TypeError: Cannot read properties of undefined (reading 'length')
     at async MealService.findMeal (C:\Users\Administrator\Desktop\project\TDZ\server\src\services\meal-service.ts:13:24)
     at async getMeal (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\meal-controller.ts:9:24)
 
+[2022-7-13 23:31:21] POST:/api/auth/login
+Error: 해당 이메일은 가입 내역이 없습니다. 다시 한 번 확인해 주세요.
+    at UserService.getUserToken (C:\Users\Administrator\Desktop\project\TDZ\server\src\services\user-service.ts:52:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async login (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\user-controller.ts:43:23)
+
+[2022-7-13 23:31:31] POST:/api/auth/login
+Error: 해당 이메일은 가입 내역이 없습니다. 다시 한 번 확인해 주세요.
+    at UserService.getUserToken (C:\Users\Administrator\Desktop\project\TDZ\server\src\services\user-service.ts:52:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async login (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\user-controller.ts:43:23)
+
+[2022-7-13 23:32:10] POST:/api/auth/login
+Error: 해당 이메일은 가입 내역이 없습니다. 다시 한 번 확인해 주세요.
+    at UserService.getUserToken (C:\Users\Administrator\Desktop\project\TDZ\server\src\services\user-service.ts:52:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async login (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\user-controller.ts:43:23)
+
+[2022-7-13 23:34:21] POST:/api/auth/login
+Error: 해당 이메일은 가입 내역이 없습니다. 다시 한 번 확인해 주세요.
+    at UserService.getUserToken (C:\Users\Administrator\Desktop\project\TDZ\server\src\services\user-service.ts:52:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async login (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\user-controller.ts:43:23)
+
