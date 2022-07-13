@@ -31,6 +31,7 @@ function Home() {
   );
 
   const getMealsHistoryByDate = async (date: string) => {
+    // 기준 날짜 state 주입 필요
     const data = await Api.get(
       `/api/mealhistory/${dayjs(date).format('YYYY-MM-DD')}`,
     );
@@ -66,7 +67,7 @@ function Home() {
         dispatch(getUsersInfoAsync());
       })
       .then(() => {
-        getMealsHistoryByDate('2022-07-15');
+        getMealsHistoryByDate('2022-07-13');
       });
   }, []);
 
@@ -90,26 +91,24 @@ function Home() {
       <S.NutrientContainer>
         <Progressbar
           title={'탄수화물'}
-          percent={calculatePercentage(nutrientSum.carb, nutrient.carb)}
-          currentValue={`${nutrientSum.carb}g`}
-          goalValue={`${nutrient.carb}g`}
+          currentValue={nutrientSum.carb}
+          goalValue={nutrient.carb}
           color="#FAA0A0"
         />
         <Progressbar
           title={'단백질'}
-          percent={calculatePercentage(nutrientSum.protein, nutrient.protein)}
-          currentValue={`${nutrientSum.protein}g`}
-          goalValue={`${nutrient.protein}g`}
+          currentValue={nutrientSum.protein}
+          goalValue={nutrient.protein}
           color="#00D287"
         />
         <Progressbar
           title={'지방'}
-          percent={calculatePercentage(nutrientSum.fat, nutrient.fat)}
-          currentValue={`${nutrientSum.fat}g`}
-          goalValue={`${nutrient.fat}g`}
+          currentValue={nutrientSum.fat}
+          goalValue={nutrient.fat}
           color="#FAF461"
         />
       </S.NutrientContainer>
+
       <S.ResponsiveContainer>
         <S.Span>오늘의 몸무게를 기록하세요!</S.Span>
         <S.WeightContainer>
