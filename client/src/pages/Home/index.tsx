@@ -1,6 +1,4 @@
 import Container from '../../components/styles/Container';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen } from '@fortawesome/free-solid-svg-icons';
 import DateNavigation from '../../components/common/DateNavigation';
 import Logo from '../../components/common/Logo';
 import Navbar from '../../components/common/Navbar';
@@ -14,6 +12,7 @@ import dayjs from 'dayjs';
 import { getUsersInfoAsync, postLoginAsync } from '../../slices/usersInfoSlice';
 import { useNavigate } from 'react-router-dom';
 import { calculatePercentage } from '../../utils';
+import ManageWeight from '../../components/home/ManageWeight';
 
 interface mealsData {
   kcal: number;
@@ -24,16 +23,14 @@ interface mealsData {
 
 function Home() {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const { nutrient } = useAppSelector(({ usersInfo }) => usersInfo.value);
   const [nutrientsSum, setNutrientsSum] = useState({
     kcal: 0,
     protein: 0,
     fat: 0,
     carb: 0,
   });
-  const dispatch = useAppDispatch();
-  const { current_weight, nutrient } = useAppSelector(
-    ({ usersInfo }) => usersInfo.value,
-  );
 
   const setNutrientsSumByDate = async (date: string) => {
     // 기준 날짜 state 주입 필요
@@ -118,11 +115,7 @@ function Home() {
       </S.NutrientContainer>
 
       <S.ResponsiveContainer>
-        <S.Span>오늘의 몸무게를 기록하세요!</S.Span>
-        <S.WeightContainer>
-          <p>{current_weight}kg</p>
-          <FontAwesomeIcon icon={faPen} />
-        </S.WeightContainer>
+        <ManageWeight />
         <S.ButtonContainer onClick={onClickAddMealButton}>
           <button>식단 추가하기</button>
         </S.ButtonContainer>
