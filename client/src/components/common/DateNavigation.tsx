@@ -5,13 +5,18 @@ import {
   faAngleDown,
 } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 function DateNavigation() {
+  const navigate = useNavigate();
+  const clickCalendarHandler = () => {
+    navigate('/calendar');
+  };
   return (
     <Wrapper>
       <FontAwesomeIcon icon={faAngleLeft} />
 
-      <DateContainer>
+      <DateContainer onClick={clickCalendarHandler}>
         <p>오늘</p>
         <FontAwesomeIcon icon={faAngleDown} />
       </DateContainer>
@@ -43,6 +48,8 @@ const Wrapper = styled.div`
 const DateContainer = styled.div`
   display: flex;
   align-items: center;
+
+  cursor: pointer;
 
   svg {
     padding: 0;
