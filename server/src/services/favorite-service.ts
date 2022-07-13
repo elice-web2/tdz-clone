@@ -1,4 +1,4 @@
-import { FavoriteModel } from '../db';
+import { FavoriteModel, favoriteModel } from '../db';
 import { FavoriteInfo, FavoriteData } from '../customType/favorite.type';
 
 class FavoriteService {
@@ -48,3 +48,7 @@ class FavoriteService {
     return await this.favoriteModel.deleteFavoritesByUser(userId);
   }
 }
+
+const favoriteService = new FavoriteService(favoriteModel);
+
+export { favoriteService };

@@ -36,3 +36,7 @@ export class FavoriteModel {
     return await Favorite.deleteMany({ _id: userId });
   }
 }
+
+const favoriteModel = new FavoriteModel();
+
+export { favoriteModel };
