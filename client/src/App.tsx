@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from './hooks';
 import CalendarStamp from './pages/CalendarStamp';
 import { ROUTES, ROUTES_NOT_LOGIN } from './Route';
-import { loggedIn } from './slices/usersInfoSlice';
+import { loggedIn, getUsersInfoAsync } from './slices/usersInfoSlice';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -13,7 +13,18 @@ function App() {
     if (localStorage.getItem('login')) {
       dispatch(loggedIn());
     }
-  });
+  }, []);
+
+  useEffect(() => {
+    const checkLogin = async () => {
+      if (localStorage.getItem('login')) {
+        dispatch(loggedIn());
+        await dispatch(getUsersInfoAsync());
+      }
+    };
+    checkLogin();
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>
