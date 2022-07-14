@@ -53,42 +53,29 @@ const initialState: UsersInfoState = {
     profile_image: '',
     nickname: '',
     comment: '',
-    isLogin: false,
+    isLogin: Boolean(localStorage.getItem('login')),
   },
 };
 // Slice 작성 예시
-// 회원가입 post 요청 데이터 매개변수
-interface postSignupParam {
-  email: string;
-  password: string;
-  gender: string;
-  age: number;
-  height: number;
-  current_weight: number;
-  goal_weight: number;
-  bmi: number;
-  mode: string;
-  activity: string;
-  nutrient: {
-    kcal: number;
-    carb: number;
-    protein: number;
-    fat: number;
-  };
-}
+
 // 로그인 요청 데이터 타입지정
-interface postLoginParam {
+interface postLoginSignup {
   email: string;
   password: string;
 }
 // 회원가입 post API 통신 함수
-async function postSignupData(usersInfo: postSignupParam) {
-  const resp = await api.post('/auth/signup ', usersInfo);
+async function postSignupData(usersInfo: postLoginSignup) {
+  const resp = await api.post('/api/auth/signup ', usersInfo);
   return resp.data;
 }
 // 로그인 post API 통신 함수
-async function postLoginData(loginInfo: postLoginParam) {
+async function postLoginData(loginInfo: postLoginSignup) {
   await api.post('/api/auth/login', loginInfo);
+}
+// 로그아웃 get API 통신 함수
+async function getLogOut() {
+  const resp = await api.get('/api/auth/logout');
+  return resp;
 }
 // 회원정보 get API 통신 함수
 async function getUsersInfoData() {
@@ -99,15 +86,22 @@ async function getUsersInfoData() {
 // 비동기로 데이터를 불러와 액션을 생성하고 싶을 경우 예시
 export const postSignUpAsync = createAsyncThunk(
   'usersInfo/postSignupData',
-  async (usersInfo: postSignupParam) => {
+  async (usersInfo: postLoginSignup) => {
     return await postSignupData(usersInfo);
   },
 );
 //
 export const postLoginAsync = createAsyncThunk(
   'usersInfo/postLoginData',
-  async (loginInfo: postLoginParam) => {
+  async (loginInfo: postLoginSignup) => {
     await postLoginData(loginInfo);
+  },
+);
+export const getLogOutAsync = createAsyncThunk(
+  'usersInfo/getLogOut',
+  async () => {
+    const usersInfo = await getLogOut();
+    return usersInfo?.data;
   },
 );
 export const getUsersInfoAsync = createAsyncThunk(
@@ -121,19 +115,28 @@ export const getUsersInfoAsync = createAsyncThunk(
 export const UsersInfoSlice = createSlice({
   name: 'usersInfo',
   initialState,
-  reducers: {},
+  reducers: {
+    loggedIn: (state) => {
+      state.value.isLogin = true;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(postSignUpAsync.fulfilled, (state, action) => {
         state.value = { ...state.value, ...action.payload };
       })
-      .addCase(postLoginAsync.fulfilled, (state, action) => {
+      .addCase(postLoginAsync.fulfilled, (state) => {
         state.value.isLogin = true;
+      })
+      .addCase(getLogOutAsync.fulfilled, (state) => {
+        state.value.isLogin = false;
       })
       .addCase(getUsersInfoAsync.fulfilled, (state, action) => {
         state.value = { ...state.value, ...action.payload };
       });
   },
 });
+
+export const { loggedIn } = UsersInfoSlice.actions;
 
 export default UsersInfoSlice.reducer;

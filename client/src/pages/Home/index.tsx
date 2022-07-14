@@ -6,10 +6,9 @@ import Progressbar from '../../components/home/Progressbar';
 import DonutProgressbar from '../../components/home/DonutProgressbar';
 import * as S from './style';
 import * as Api from '../../api';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppSelector } from '../../hooks';
 import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
-import { getUsersInfoAsync, postLoginAsync } from '../../slices/usersInfoSlice';
 import { useNavigate } from 'react-router-dom';
 import { calculatePercentage } from '../../utils';
 import ManageWeight from '../../components/home/ManageWeight';
@@ -23,7 +22,7 @@ interface mealsData {
 
 function Home() {
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
+  const date = useAppSelector(({ date }) => date.value);
   const { nutrient } = useAppSelector(({ usersInfo }) => usersInfo.value);
   const [nutrientsSum, setNutrientsSum] = useState({
     kcal: 0,
@@ -58,23 +57,8 @@ function Home() {
   };
 
   useEffect(() => {
-    // 로그인 기능이 완전하지 않아 이 컴포넌트에서 임시로 로그인한 후 유저정보를 가져옴
-    // 로그인 기능 완료되면 setNutrientsSumByDate 함수만 쓰면 됨
-    // 그 후 유저의 일자별 식단을 조회해서 영양소의 합을 구함
-    new Promise((resolve) => {
-      resolve(
-        dispatch(
-          postLoginAsync({ email: 'test4@gmail.com', password: '1234' }),
-        ),
-      );
-    })
-      .then(() => {
-        dispatch(getUsersInfoAsync());
-      })
-      .then(() => {
-        setNutrientsSumByDate('2022-07-13');
-      });
-  }, []);
+    setNutrientsSumByDate(date);
+  }, [date]);
 
   return (
     <Container>
