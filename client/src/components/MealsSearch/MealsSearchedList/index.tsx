@@ -7,10 +7,10 @@ import { useNavigate } from 'react-router-dom';
 import { addMeals } from '../../../slices/mealsSlice';
 import { addBookMark } from '../../../slices/bookMarkSlice';
 
-interface GetMealDataObj {
-  name: string;
+interface MealInfo {
   code: string;
   kcal: number;
+  name: string;
   carb: number;
   protein: number;
   fat: number;
@@ -21,10 +21,12 @@ interface GetMealDataObj {
   servingSize: number;
   quantity: number;
   totalGram: number;
+  sugars: number;
+  updated_date: string;
 }
 
 interface MealsSearchedListProps {
-  result: GetMealDataObj[];
+  result: MealInfo[];
   inputValue: string;
 }
 
@@ -37,7 +39,7 @@ function MealsSearchedList({ inputValue, result }: MealsSearchedListProps) {
       {result.length === 0 || !inputValue ? (
         <NoSearched></NoSearched>
       ) : (
-        result.map((food: GetMealDataObj) => {
+        result.map((food: MealInfo) => {
           return (
             <S.List key={food.code}>
               <S.NamedInfo>

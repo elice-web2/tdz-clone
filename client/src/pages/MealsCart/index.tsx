@@ -11,10 +11,10 @@ import { useAppSelector } from '../../hooks';
 import * as api from '../../api';
 import Container from '../../components/styles/Container';
 
-interface GetMealDataObj {
+interface MealInfo {
   code: string;
-  name: string;
   kcal: number;
+  name: string;
   carb: number;
   protein: number;
   fat: number;
@@ -23,7 +23,10 @@ interface GetMealDataObj {
   transfat: number;
   saturatedfatty: number;
   servingSize: number;
-  quantity?: number;
+  quantity: number;
+  totalGram: number;
+  sugars: number;
+  updated_date: string;
 }
 
 interface TestType {

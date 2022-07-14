@@ -10,7 +10,7 @@ interface MealsCartModalProps {
 
 type selectedType = 'morning' | 'lunch' | 'dinner' | 'snack' | '';
 
-interface MealInfoState {
+interface MealInfo {
   code: string;
   kcal: number;
   name: string;
@@ -24,12 +24,14 @@ interface MealInfoState {
   servingSize: number;
   quantity: number;
   totalGram: number;
+  sugars: number;
+  updated_date: string;
 }
 
 interface postDataType {
   date: string;
   category: string;
-  meals: MealInfoState[];
+  meals: MealInfo[];
 }
 
 function MealsCartModal({ setOpenModal }: MealsCartModalProps) {
@@ -41,7 +43,7 @@ function MealsCartModal({ setOpenModal }: MealsCartModalProps) {
   const postResultObj = {
     date: '2022-05-01',
     meals,
-    category: '아침',
+    category: '간식',
   };
   console.log('보낼내용', postResultObj);
 
@@ -111,7 +113,8 @@ function MealsCartModal({ setOpenModal }: MealsCartModalProps) {
         <S.CompleteBtn
           onClick={() => {
             dispatch(postMealsDataAsync(postResultObj));
-            navigate('/meals');
+            console.log(dispatch(postMealsDataAsync(postResultObj)));
+            // navigate('/meals');
           }}
         >
           완료

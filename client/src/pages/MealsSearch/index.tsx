@@ -7,11 +7,10 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import MealsSearchedList from '../../components/MealsSearch/MealsSearchedList';
 import MealsBookMarkList from '../../components/MealsSearch/MealsBookMarkList';
 import * as api from '../../api';
-
-interface MealsSearchProps {
-  name: string;
+interface MealInfo {
   code: string;
   kcal: number;
+  name: string;
   carb: number;
   protein: number;
   fat: number;
@@ -22,12 +21,14 @@ interface MealsSearchProps {
   servingSize: number;
   quantity: number;
   totalGram: number;
+  sugars: number;
+  updated_date: string;
 }
 
 function MealsSearch() {
   const [isSearch, setIsSearch] = useState(true);
   const [inputValue, setInputValue] = useState('');
-  const [searchedResult, setSearchedResult] = useState<MealsSearchProps[]>([]);
+  const [searchedResult, setSearchedResult] = useState<MealInfo[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
