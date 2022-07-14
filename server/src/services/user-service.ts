@@ -1,11 +1,11 @@
 import { UserModel, userModel } from '../db';
 import {
   UserData,
-  UserInfo,
   LoginInfo,
   UserInfoRequired,
   InfoToUpdate,
 } from '../customType/user.type';
+import { getRandomNickname } from '../middlewares';
 
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
@@ -16,26 +16,9 @@ class UserService {
   }
 
   // 회원가입
-  async addUser(userInfo: UserInfo): Promise<UserData> {
+  async addUser(userInfo: LoginInfo): Promise<UserData> {
     // 객체 destructuring
-    const {
-      email,
-      password,
-      login_path,
-      role,
-      gender,
-      age,
-      height,
-      current_weight,
-      goal_weight,
-      bmi,
-      mode,
-      activity,
-      nutrient,
-      profile_image,
-      nickname,
-      comment,
-    } = userInfo;
+    const { email, password } = userInfo;
 
     // 이메일 중복 확인
     const user = await this.userModel.findByEmail(email);
@@ -46,24 +29,12 @@ class UserService {
     }
     // 우선 비밀번호 해쉬화(암호화)
     const hashedPassword = await bcrypt.hash(password, 10);
+    const nickname: string = getRandomNickname();
 
     const newUserInfo = {
       email,
       password: hashedPassword,
-      login_path,
-      role,
-      gender,
-      age,
-      height,
-      current_weight,
-      goal_weight,
-      bmi,
-      mode,
-      activity,
-      nutrient,
-      profile_image,
       nickname,
-      comment,
     };
 
     // db에 저장
@@ -123,6 +94,17 @@ class UserService {
     return userInfo;
   }
 
+  //이메일 중복 확인
+  async checkEmail(email: string) {
+    const user = await this.userModel.findByEmail(email);
+    if (user) {
+      throw new Error(
+        '이 이메일은 현재 사용중입니다. 다른 이메일을 입력해 주세요.',
+      );
+    }
+    return;
+  }
+
   // 유저정보 수정, 현재 비밀번호가 있어야 수정 가능함.
   async setUser(
     userInfoRequired: UserInfoRequired,
@@ -178,6 +160,27 @@ class UserService {
   }
 
   //영양정보 등 운동 관련 정보 업데이트
+  async setGoal(userId: string, toUpdate: InfoToUpdate): Promise<UserData> {
+    // 우선 해당 id의 유저가 db에 있는지 확인
+    const user = await this.userModel.findById(userId);
+
+    // db에서 찾지 못한 경우, 에러 메시지 반환
+    if (!user) {
+      throw new Error('가입 내역이 없습니다. 다시 한 번 확인해 주세요.');
+    }
+
+    // 업데이트 진행
+    let updatedUser = await this.userModel.update({
+      userId,
+      update: toUpdate,
+    });
+
+    if (!updatedUser) {
+      updatedUser = {} as UserData;
+    }
+
+    return updatedUser;
+  }
 
   //사용자삭제
   async deleteUserData(userId: string): Promise<{ deletedCount?: number }> {

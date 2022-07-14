@@ -3,11 +3,14 @@ import { mealhistoryController } from '../controllers';
 import { errorHandler, loginRequired } from '../middlewares';
 const mealhistoryRouter = Router();
 
+// 유저별 식단 조회
+mealhistoryRouter.get('/', loginRequired, mealhistoryController.getHistoryById);
+
 // 날짜별 식단 조회
 mealhistoryRouter.get(
   '/:date',
   loginRequired,
-  mealhistoryController.getHistory,
+  mealhistoryController.getHistoryByDate,
 );
 
 // 식단 등록
@@ -20,11 +23,18 @@ mealhistoryRouter.patch(
   mealhistoryController.updateHistory,
 );
 
-// 식단 삭제
+// 식단 아이디로 삭제
 mealhistoryRouter.delete(
   '/:mealhistoryId',
   loginRequired,
-  mealhistoryController.deletHistory,
+  mealhistoryController.deleteHistoryByMealHistoryId,
+);
+
+// 유저별 식단 삭제
+mealhistoryRouter.delete(
+  '/',
+  loginRequired,
+  mealhistoryController.deleteHistoryByUserId,
 );
 
 export { mealhistoryRouter };
