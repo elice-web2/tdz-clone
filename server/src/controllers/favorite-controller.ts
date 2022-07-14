@@ -22,8 +22,6 @@ const add = async (req: Request, res: Response, next: NextFunction) => {
 
     const isMealExist = await favoriteService.findMealInFavorites(favoriteInfo);
 
-    console.log(isMealExist);
-
     if (isMealExist) {
       throw new Error('이미 즐겨찾기에 등록된 식단입니다');
     }
@@ -51,16 +49,32 @@ const allFavoriteList = async (
   }
 };
 
-// //회원별 즐겨찾기 조회
-// const favoriteList = async (
-//   req: Request,
-//   res: Response,
-//   next: NextFunction,
-// ) => {
-//   try {
-//   } catch (error) {
-//     next;
-//   }
-// };
+//회원별 즐겨찾기 조회
+const favoriteList = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const userId: string = req.currentUserId!;
 
-export { add, allFavoriteList };
+    const favorites = await favoriteService.getFavoritesByUser(userId);
+
+    res.status(200).json(favorites);
+  } catch (error) {
+    next;
+  }
+};
+
+const favorite = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const favorite_id: string = req.params.favorite_id;
+
+    const oneFavorite = await favoriteService.getFavorite(favorite_id);
+    res.status(200).json(oneFavorite);
+  } catch (error) {
+    next;
+  }
+};
+
+export { add, allFavoriteList, favoriteList, favorite };

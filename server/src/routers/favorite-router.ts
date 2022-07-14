@@ -6,6 +6,12 @@ import * as favoriteController from '../controllers';
 const favoriteRouter: Router = Router();
 
 favoriteRouter.post('/', loginRequired, favoriteController.add);
-favoriteRouter.get('/list', adminRequired, favoriteController.allFavoriteList);
+favoriteRouter.get(
+  '/all-list',
+  adminRequired,
+  favoriteController.allFavoriteList,
+);
+favoriteRouter.get('/list', loginRequired, favoriteController.favoriteList);
+favoriteRouter.get('/:favorite_id', loginRequired, favoriteController.favorite);
 
 export { favoriteRouter };
