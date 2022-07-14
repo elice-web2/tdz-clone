@@ -41,7 +41,14 @@ function MealsSearchedList({ inputValue, result }: MealsSearchedListProps) {
           return (
             <S.List key={food.code}>
               <S.NamedInfo>
-                <div className="title">{food.name}</div>
+                <div
+                  className="title"
+                  onClick={() => {
+                    navigate(`/meals/detail/${food.name}`);
+                  }}
+                >
+                  {food.name}
+                </div>
                 <span
                   className="arrowIcon"
                   onClick={() => {

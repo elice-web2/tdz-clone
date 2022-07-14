@@ -76,7 +76,12 @@ function MealsCart() {
 
       <S.NutrientInfoContainer>
         <S.IconBox>
-          <div className="arrow-icon">
+          <div
+            className="arrow-icon"
+            onClick={() => {
+              navigate('/meals/search');
+            }}
+          >
             <FontAwesomeIcon icon={faArrowLeft} />
           </div>
         </S.IconBox>
