@@ -19,8 +19,8 @@ function Signin() {
       await dispatch(getUsersInfoAsync());
       localStorage.setItem('login', 'true');
       navigate('/home');
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      console.log(error.message);
     }
   };
 

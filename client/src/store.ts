@@ -3,6 +3,7 @@ import bookMarkSlice from './slices/bookMarkSlice';
 import counterReducer from './slices/counterSlice';
 import mealsSlice from './slices/mealsSlice';
 import usersInfoReducer from './slices/usersInfoSlice';
+import dateReducer from './slices/dateSlice';
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     meal: mealsSlice,
     bookMark: bookMarkSlice,
     usersInfo: usersInfoReducer,
+    date: dateReducer,
   },
 });
 
