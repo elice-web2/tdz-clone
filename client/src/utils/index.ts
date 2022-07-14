@@ -1,1 +1,1 @@
-export * from './calculateTDZPercent';
+export * from './calculatePercentage';
