@@ -6,6 +6,7 @@ import {
   mealhistoryRouter,
   mealRouter,
   favoriteRouter,
+  calendarRouter,
 } from './routers';
 import { errorLogger, errorHandler } from './middlewares';
 
@@ -37,6 +38,7 @@ app.use('/api', userRouter);
 app.use('/api/mealhistory', mealhistoryRouter);
 app.use('/api/meal', mealRouter);
 app.use('/api/favorites', favoriteRouter);
+app.use('/api/calendar', calendarRouter);
 
 // 미들웨어 (에러를 error.log 파일에 기록 및, 에러를 프론트엔드에 전달)
 app.use(errorLogger);

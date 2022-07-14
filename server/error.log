@@ -171,7 +171,6 @@ TypeError: Cannot destructure property 'deletedCount' of '(intermediate value)' 
     at fulfilled (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
 
-<<<<<<< HEAD
 [2022-7-11 17:47:38] POST:/mealhistory/2022-07-11
 ValidationError: mealhistory validation failed: user_id: Cast to ObjectId failed for value "2022-07-11" (type string) at path "user_id"
     at model.Document.invalidate (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2782:32)
@@ -518,16 +517,13 @@ TypeError: Cannot read properties of undefined (reading 'I2790')
     at MealService.<anonymous> (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\meal-service.ts:12:30)
     at Generator.next (<anonymous>)
     at fulfilled (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\meal-service.ts:5:58)
-=======
 [2022-7-11 19:13:23] POST:/api/auth/login
 Error: 해당 이메일은 가입 내역이 없습니다. 다시 한 번 확인해 주세요.
     at UserService.<anonymous> (/Users/kai/Documents/Workspace/Web/TDZ/server/src/services/user-service.ts:88:13)
     at Generator.next (<anonymous>)
     at fulfilled (/Users/kai/Documents/Workspace/Web/TDZ/server/src/services/user-service.ts:5:58)
->>>>>>> 8e79f4f97d94dc2fb565e56c05882f257e43191f
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
 
-<<<<<<< HEAD
 [2022-7-13 0:4:2] POST:/api/auth/signup
 ValidationError: users validation failed: nickname: Path `nickname` is required., nutrient: Path `nutrient` is required., activity: Path `activity` is required., mode: Path `mode` is required., bmi: Path `bmi` is required., goal_weight: Path `goal_weight` is required., current_weight: Path `current_weight` is required., height: Path `height` is required., age: Path `age` is required., gender: Path `gender` is required.
     at model.Document.invalidate (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/mongoose/lib/document.js:2782:32)
@@ -547,7 +543,6 @@ Error: 해당 이메일은 가입 내역이 없습니다. 다시 한 번 확인�
     at UserService.getUserToken (/Users/kai/Documents/Workspace/Web/TDZ/server/src/services/user-service.ts:50:13)
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
     at async login (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/user-controller.ts:43:23)
-=======
 [2022-7-13 0:17:39] GET:/api/meal/%EC%83%9D%EC%84%A0
 Error: 생선을 조회할 수 없습니다.
     at MealService.findMeal (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\meal-service.ts:18:15)
@@ -686,7 +681,6 @@ Error: 바나을 조회할 수 없습니다.
     at MealService.findMeal (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\meal-service.ts:17:15)
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
     at async getMeal (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\controllers\meal-controller.ts:9:24)
->>>>>>> origin/dev
 
 [2022-7-13 10:51:52] POST:/api/mealhistory
 ValidationError: mealhistory validation failed: meals.0.carb: Path `carb` is required., meals.0.kcal: Path `kcal` is required., meals.0.name: Path `name` is required.
@@ -880,4 +874,35 @@ Error: 즐겨찾기 전체 삭제가 실패했습니다.
 Error: 즐겨찾기 전체 삭제가 실패했습니다.
     at deleteAllFavorites (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/favorite-controller.ts:113:13)
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[2022-7-13 23:31:55] PATCH:/api/calendar/62cecfe60031a49e685ec4a7
+SyntaxError: Unexpected token ] in JSON at position 3
+    at JSON.parse (<anonymous>)
+    at parse (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\body-parser\lib\types\json.js:89:19)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\body-parser\lib\read.js:128:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:199:9)
+    at invokeCallback (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\raw-body\index.js:231:16)
+    at done (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\raw-body\index.js:220:7)
+    at IncomingMessage.onEnd (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\raw-body\index.js:280:7)
+    at IncomingMessage.emit (node:events:402:35)
+    at IncomingMessage.emit (node:domain:475:12)
+    at endReadableNT (node:internal/streams/readable:1343:12)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+[2022-7-13 23:32:0] PATCH:/api/calendar/62cecfe60031a49e685ec4a7
+CastError: Cast to date failed for value "Invalid Date" (type Date) at path "date"
+    at model.Query.exec (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\query.js:4498:21)
+    at model.Query.Query.then (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\query.js:4592:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-14 1:23:27] DELETE:/api/mealhistory/62ceeec5b78baa7d9028f57f
+Error: 해당 식단은 존재하지 않습니다.
+    at MealHistoryService.deleteMealHistoryByMealHistoryId (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:117:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async deleteHistoryByMealHistoryId (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\controllers\mealhistory-controller.ts:110:9)
+
+[2022-7-14 1:25:31] DELETE:/api/mealhistory
+Error: 식단 삭제에 실패하였습니다
+    at MealHistoryService.deleteMealHistoryByUserId (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:139:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async deleteHistoryByUserId (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\controllers\mealhistory-controller.ts:122:28)
 
