@@ -6,13 +6,9 @@ const Meal = model<MealData>('meals', MealSchema);
 export class MealModel {
   // 음식 이름 찾기
   async findByMealName(mealName: string): Promise<MealData[]> {
-    // const regex = (pattern) => new RegExp(`.*${pattern}.*`);
-    // const name  = regex(mealName);
-    // if(!name){
-    //   throw new Error(`${mealName}을 조회할 수 없습니다.`);
-    // }
-    // return await Meal.find({ name: { $regex: name } }).lean();
-    return await Meal.find({ name: mealName }).lean();
+    const regex = new RegExp(`.*${mealName}.*`);
+    return await Meal.find({ name: { $regex: regex } }).lean();
+    // return await Meal.find({ name: mealName }).lean();
   }
 
   async create(mealInfo: MealInfo): Promise<MealData> {
