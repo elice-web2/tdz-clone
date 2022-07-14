@@ -13,5 +13,10 @@ favoriteRouter.get(
 );
 favoriteRouter.get('/list', loginRequired, favoriteController.favoriteList);
 favoriteRouter.get('/:favorite_id', loginRequired, favoriteController.favorite);
+favoriteRouter.delete(
+  '/:favorite_id',
+  loginRequired,
+  favoriteController.deleteFavorite,
+);
 
 export { favoriteRouter };

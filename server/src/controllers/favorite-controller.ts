@@ -62,7 +62,7 @@ const favoriteList = async (
 
     res.status(200).json(favorites);
   } catch (error) {
-    next;
+    next(error);
   }
 };
 
@@ -73,8 +73,28 @@ const favorite = async (req: Request, res: Response, next: NextFunction) => {
     const oneFavorite = await favoriteService.getFavorite(favorite_id);
     res.status(200).json(oneFavorite);
   } catch (error) {
-    next;
+    next(error);
   }
 };
 
-export { add, allFavoriteList, favoriteList, favorite };
+const deleteFavorite = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const favorite_id: string = req.params.favorite_id;
+
+    const deleteFavorite = await favoriteService.deleteOneFavorite(favorite_id);
+
+    if (!deleteFavorite) {
+      throw new Error('즐겨찾기 개별 삭제가 실패했습니다.');
+    }
+
+    res.status(200).json(deleteFavorite);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export { add, allFavoriteList, favoriteList, favorite, deleteFavorite };
