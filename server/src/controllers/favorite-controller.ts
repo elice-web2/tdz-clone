@@ -30,20 +30,37 @@ const add = async (req: Request, res: Response, next: NextFunction) => {
 
     const newFavorite = await favoriteService.addFavorite(favoriteInfo);
 
-    res.status(200).json(newFavorite);
+    res.status(201).json(newFavorite);
   } catch (error) {
     next(error);
   }
 };
 
-const allFavorites = async (
+//존재하는 모든 즐겨찾기 조회
+const allFavoriteList = async (
   req: Request,
   res: Response,
   next: NextFunction,
 ) => {
   try {
+    const favorites = await favoriteService.getAllFavorites();
+
+    res.status(200).json(favorites);
   } catch (error) {
     next(error);
   }
 };
-export { add };
+
+// //회원별 즐겨찾기 조회
+// const favoriteList = async (
+//   req: Request,
+//   res: Response,
+//   next: NextFunction,
+// ) => {
+//   try {
+//   } catch (error) {
+//     next;
+//   }
+// };
+
+export { add, allFavoriteList };
