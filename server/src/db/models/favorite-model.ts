@@ -14,7 +14,7 @@ export class FavoriteModel {
   }
   //즐겨찾기 유저별로 반환
   async findByUser(userId: string): Promise<FavoriteData[] | null> {
-    return await Favorite.find({ user_id: userId }).lean();
+    return await Favorite.find({ user_id: userId }).populate('meal_id').lean();
   }
   //favoriteInfo Object를 받아 생성
   async create(favoriteInfo: FavoriteInfo): Promise<FavoriteData> {
@@ -22,7 +22,7 @@ export class FavoriteModel {
   }
   //모든 목록 조회
   async findAll(): Promise<FavoriteData[]> {
-    return await Favorite.find({});
+    return await Favorite.find({}).populate('meal_id');
   }
 
   async findByMealId(favoriteInfo: FavoriteInfo): Promise<FavoriteData | null> {
