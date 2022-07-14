@@ -4,26 +4,23 @@ import { faArrowRight, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useAppDispatch } from '../../../hooks';
 import NoSearched from '../NoSearched';
 import { useNavigate } from 'react-router-dom';
-
+import { addMeals } from '../../../slices/mealsSlice';
 import { addBookMark } from '../../../slices/bookMarkSlice';
 
 interface GetMealDataObj {
-  carb: number;
-  cholesterol: number;
-  code: string;
-  createdAt: string;
-  fat: number;
-  kcal: number;
   name: string;
-  natruim: number;
+  code: string;
+  kcal: number;
+  carb: number;
   protein: number;
-  saturatedfatty: number;
-  sugars: number;
+  fat: number;
+  natruim: number;
+  cholesterol: number;
   transfat: number;
-  updatedAt: string;
-  updated_date: string;
-  __v: number;
-  _id: string;
+  saturatedfatty: number;
+  servingSize: number;
+  quantity: number;
+  totalGram: number;
 }
 
 interface MealsSearchedListProps {
@@ -53,7 +50,13 @@ function MealsSearchedList({ inputValue, result }: MealsSearchedListProps) {
                 >
                   <FontAwesomeIcon icon={faArrowRight} />
                 </span>
-                <span className="plusIcon">
+                <span
+                  className="plusIcon"
+                  onClick={() => {
+                    dispatch(addMeals(food));
+                    navigate('/meals/cart');
+                  }}
+                >
                   <FontAwesomeIcon icon={faPlus} />
                 </span>
                 <span
