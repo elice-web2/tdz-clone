@@ -1,0 +1,31 @@
+import is from '@sindresorhus/is';
+import { Request, Response, NextFunction } from 'express';
+import { chartService } from '../services';
+import { FromToInfo } from '../customType/chart.type';
+
+const oneDay = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    //날짜 계산...
+    const todayStr: string = String(req.query.date);
+    const today: Date = new Date(todayStr);
+    const tommorrow: Date = new Date(todayStr);
+    tommorrow.setDate(today.getDate() + 1);
+    const tommorowStr: string = tommorrow.toISOString().slice(0, 10);
+    console.log(todayStr);
+    console.log(tommorowStr);
+    //2022-07-10
+    const fromToInfo: FromToInfo = {
+      user_id: req.currentUserId!,
+      from: todayStr,
+      to: tommorowStr,
+    };
+
+    const dateData = await chartService.getOneDayChart(fromToInfo);
+
+    res.status(200).json(dateData);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export { oneDay };

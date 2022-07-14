@@ -1019,3 +1019,41 @@ Error: 도토리을 조회할 수 없습니다.
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
     at async getMeal (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\controllers\meal-controller.ts:9:24)
 
+[2022-7-15 3:31:45] GET:/api/chart/daily?date=%272022-07-14%27
+Error: headers의 Content-Type을 application/json으로 설정해주세요
+    at oneDay (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/chart-controller.ts:10:13)
+    at Layer.handle [as handle_request] (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/route.js:144:13)
+    at loginRequired (/Users/kai/Documents/Workspace/Web/TDZ/server/src/middlewares/login-required.ts:30:5)
+    at Layer.handle [as handle_request] (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/index.js:346:12)
+    at next (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/index.js:175:3)
+    at router (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/index.js:328:13)
+    at /Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/index.js:286:9
+
+[2022-7-15 3:41:37] GET:/api/chart/daily?date=2022-07-14
+Error: Function not implemented.
+    at ISODate (/Users/kai/Documents/Workspace/Web/TDZ/server/src/db/models/calendar-model.ts:65:9)
+    at CalendarModel.findByDate (/Users/kai/Documents/Workspace/Web/TDZ/server/src/db/models/calendar-model.ts:47:19)
+    at ChartService.getOneDayChart (/Users/kai/Documents/Workspace/Web/TDZ/server/src/services/chart-service.ts:25:37)
+    at oneDay (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/chart-controller.ts:23:41)
+    at Layer.handle [as handle_request] (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/route.js:144:13)
+    at loginRequired (/Users/kai/Documents/Workspace/Web/TDZ/server/src/middlewares/login-required.ts:30:5)
+    at Layer.handle [as handle_request] (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/index.js:346:12)
+    at next (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/index.js:175:3)
+    at router (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/index.js:47:12)
+

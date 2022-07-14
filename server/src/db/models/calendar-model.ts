@@ -5,6 +5,7 @@ import {
   CalendarInfo,
   ToUpdate,
 } from '../../customType/calendar.type';
+import { DayInfo, FromToInfo } from '../../customType/chart.type';
 
 const Calendar = model<CalendarData>('calendars', CalendarSchema);
 
@@ -35,8 +36,33 @@ export class CalendarModel {
   async delete(userId: string): Promise<{ deletedCount?: number }> {
     return await Calendar.deleteMany({ userId });
   }
+
+  //유저의 기간별 조회
+  async findByDate(fromToInfo: FromToInfo): Promise<CalendarData[] | null> {
+    console.log(fromToInfo.user_id);
+    console.log(new Date(fromToInfo.from));
+    return await Calendar.find({
+      $and: [
+        { userId: fromToInfo.user_id },
+        {
+          date: {
+            $gte: new Date(fromToInfo.from),
+            $lt: new Date(fromToInfo.to),
+          },
+        },
+      ],
+    });
+  }
+
+  //유저의 주간별 조회
+  // findByWeek;
+
+  //유저의 월별 조회
 }
 
 const calendarModel = new CalendarModel();
 
 export { calendarModel };
+function ISODate(arg0: string): Date | undefined {
+  throw new Error('Function not implemented.');
+}
