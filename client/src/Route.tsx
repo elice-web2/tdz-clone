@@ -73,32 +73,32 @@ export const ROUTES = {
   },
 };
 
-const aaa = <Navigate replace to="/signin" />;
+const loginPage = <Navigate replace to="/signin" />;
 
 export const ROUTES_NOT_LOGIN = {
   Main: {
     path: '/',
-    element: aaa,
+    element: <Main />,
   },
   Home: {
     path: '/home',
-    element: aaa,
+    element: loginPage,
   },
   Meals: {
     path: '/meals',
-    element: aaa,
+    element: loginPage,
   },
   MealsSearch: {
     path: '/meals/search',
-    element: aaa,
+    element: loginPage,
   },
   MealsCart: {
     path: '/meals/cart',
-    element: aaa,
+    element: loginPage,
   },
   MealsDetail: {
     path: '/meals/detail',
-    element: aaa,
+    element: loginPage,
   },
   Signin: {
     path: '/signin',
@@ -110,26 +110,26 @@ export const ROUTES_NOT_LOGIN = {
   },
   ChartPage: {
     path: '/chart',
-    element: aaa,
+    element: loginPage,
   },
   Mypage: {
     path: '/mypage',
-    element: aaa,
+    element: loginPage,
   },
   UserInfo: {
     path: '/mypage/user_info',
-    element: aaa,
+    element: loginPage,
   },
   MypageGoalStep_1: {
     path: '/mypage/goal_step1',
-    element: aaa,
+    element: loginPage,
   },
   MypageGoalStep_2: {
     path: '/mypage/goal_step2',
-    element: aaa,
+    element: loginPage,
   },
   MypageGoalStep_3: {
     path: '/mypage/goal_step3',
-    element: aaa,
+    element: loginPage,
   },
 };

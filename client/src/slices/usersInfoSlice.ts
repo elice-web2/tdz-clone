@@ -65,12 +65,17 @@ interface postLoginSignup {
 }
 // 회원가입 post API 통신 함수
 async function postSignupData(usersInfo: postLoginSignup) {
-  const resp = await api.post('/auth/signup ', usersInfo);
+  const resp = await api.post('/api/auth/signup ', usersInfo);
   return resp.data;
 }
 // 로그인 post API 통신 함수
 async function postLoginData(loginInfo: postLoginSignup) {
   await api.post('/api/auth/login', loginInfo);
+}
+// 로그아웃 get API 통신 함수
+async function getLogOut() {
+  const resp = await api.get('/api/auth/logout');
+  return resp;
 }
 // 회원정보 get API 통신 함수
 async function getUsersInfoData() {
@@ -92,6 +97,13 @@ export const postLoginAsync = createAsyncThunk(
     await postLoginData(loginInfo);
   },
 );
+export const getLogOutAsync = createAsyncThunk(
+  'usersInfo/getLogOut',
+  async () => {
+    const usersInfo = await getLogOut();
+    return usersInfo?.data;
+  },
+);
 export const getUsersInfoAsync = createAsyncThunk(
   'usersInfo/getUsersInfoData',
   async () => {
@@ -103,7 +115,11 @@ export const getUsersInfoAsync = createAsyncThunk(
 export const UsersInfoSlice = createSlice({
   name: 'usersInfo',
   initialState,
-  reducers: {},
+  reducers: {
+    loggedIn: (state) => {
+      state.value.isLogin = true;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(postSignUpAsync.fulfilled, (state, action) => {
@@ -112,10 +128,15 @@ export const UsersInfoSlice = createSlice({
       .addCase(postLoginAsync.fulfilled, (state, action) => {
         state.value.isLogin = true;
       })
+      .addCase(getLogOutAsync.fulfilled, (state, action) => {
+        state.value.isLogin = false;
+      })
       .addCase(getUsersInfoAsync.fulfilled, (state, action) => {
         state.value = { ...state.value, ...action.payload };
       });
   },
 });
+
+export const { loggedIn } = UsersInfoSlice.actions;
 
 export default UsersInfoSlice.reducer;
