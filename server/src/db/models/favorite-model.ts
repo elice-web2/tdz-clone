@@ -45,7 +45,7 @@ export class FavoriteModel {
   async deleteFavoritesByUser(
     userId: string,
   ): Promise<{ deletedCount?: number }> {
-    return await Favorite.deleteMany({ _id: userId });
+    return await Favorite.deleteMany({ user_id: userId });
   }
 }
 

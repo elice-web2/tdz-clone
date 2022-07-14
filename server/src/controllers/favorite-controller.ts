@@ -87,7 +87,7 @@ const deleteFavorite = async (
 
     const deleteFavorite = await favoriteService.deleteOneFavorite(favorite_id);
 
-    if (!deleteFavorite) {
+    if (!deleteFavorite.deletedCount) {
       throw new Error('즐겨찾기 개별 삭제가 실패했습니다.');
     }
 
@@ -97,4 +97,33 @@ const deleteFavorite = async (
   }
 };
 
-export { add, allFavoriteList, favoriteList, favorite, deleteFavorite };
+const deleteAllFavorites = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const userId: string = req.currentUserId!;
+
+    const deleteFavorite = await favoriteService.deleteAllFavorites(userId);
+
+    console.log(deleteFavorite);
+
+    if (!deleteFavorite.deletedCount) {
+      throw new Error('즐겨찾기 전체 삭제가 실패했습니다.');
+    }
+
+    res.status(200).json(deleteFavorite);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export {
+  add,
+  allFavoriteList,
+  favoriteList,
+  favorite,
+  deleteFavorite,
+  deleteAllFavorites,
+};

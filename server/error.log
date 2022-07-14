@@ -866,3 +866,18 @@ Error: 해당하는 즐겨찾기가 없습니다. 다시 한 번 확인해 주�
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
     at async deleteFavorite (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/favorite-controller.ts:88:28)
 
+[2022-7-14 16:52:55] DELETE:/api/favorites
+Error: 즐겨찾기 전체 삭제가 실패했습니다.
+    at deleteAllFavorites (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/favorite-controller.ts:111:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-14 16:53:57] DELETE:/api/favorites
+Error: 즐겨찾기 전체 삭제가 실패했습니다.
+    at deleteAllFavorites (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/favorite-controller.ts:113:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-14 16:58:5] DELETE:/api/favorites
+Error: 즐겨찾기 전체 삭제가 실패했습니다.
+    at deleteAllFavorites (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/favorite-controller.ts:113:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
