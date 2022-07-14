@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 100%;
+  max-width: 420px;
   height: 100%;
 `;
 export const OutsideModal = styled.div`

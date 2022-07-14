@@ -9,6 +9,7 @@ import TDZInfo from '../../components/MealsCart/TDZInfo';
 import MealsCartList from '../../components/MealsCart/MealsCartList';
 import { useAppSelector } from '../../hooks';
 import * as api from '../../api';
+import Container from '../../components/styles/Container';
 
 interface GetMealDataObj {
   code: string;
@@ -37,7 +38,7 @@ function MealsCart() {
   }
 
   return (
-    <S.Container>
+    <Container>
       {openModal && <MealsCartModal setOpenModal={setOpenModal} />}
 
       <S.NutrientInfoContainer>
@@ -61,6 +62,7 @@ function MealsCart() {
         {result.map((el) => {
           return (
             <MealsCartList
+              key={el.code}
               name={el.name}
               quantity={el.quantity}
               totalGram={el.totalGram}
@@ -81,8 +83,8 @@ function MealsCart() {
 
         <S.RecordBtn onClick={clickHandler}>기록 하기</S.RecordBtn>
       </S.BtnContainer>
-      {/* <Navbar /> */}
-    </S.Container>
+      <Navbar />
+    </Container>
   );
 }
 
