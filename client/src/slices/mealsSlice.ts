@@ -37,7 +37,7 @@ async function postMealsData({ meals, category, date }: PostMealsDataParam) {
     category,
     date,
   };
-  await api.post('/mealhistory', mealsData);
+  await api.post('/api/mealhistory', mealsData);
 }
 
 export const postMealsDataAsync = createAsyncThunk(
@@ -59,16 +59,9 @@ export const mealsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder
-      .addCase(postMealsDataAsync.pending, (state) => {
-        return;
-      })
-      .addCase(postMealsDataAsync.fulfilled, (state) => {
-        state.value = [];
-      })
-      .addCase(postMealsDataAsync.rejected, (state) => {
-        return;
-      });
+    builder.addCase(postMealsDataAsync.fulfilled, (state) => {
+      state.value = [];
+    });
   },
 });
 

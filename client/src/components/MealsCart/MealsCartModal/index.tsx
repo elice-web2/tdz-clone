@@ -1,24 +1,56 @@
 import * as S from './style';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { postMealsDataAsync } from '../../../slices/mealsSlice';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
 
 interface MealsCartModalProps {
   setOpenModal: (value: boolean) => void;
 }
 
+type selectedType = 'morning' | 'lunch' | 'dinner' | 'snack' | '';
+
+interface MealInfoState {
+  code: string;
+  kcal: number;
+  name: string;
+  carb: number;
+  protein: number;
+  fat: number;
+  natruim: number;
+  cholesterol: number;
+  transfat: number;
+  saturatedfatty: number;
+  servingSize: number;
+  quantity: number;
+  totalGram: number;
+}
+
+interface postDataType {
+  date: string;
+  category: string;
+  meals: MealInfoState[];
+}
+
 function MealsCartModal({ setOpenModal }: MealsCartModalProps) {
-  const morningRef = useRef<HTMLButtonElement>(null);
-  const lunchRef = useRef<HTMLButtonElement>(null);
-  const dinnerRef = useRef<HTMLButtonElement>(null);
-  const snacksRef = useRef<HTMLButtonElement>(null);
-  const [isMorning, setIsMorning] = useState(false);
-  const [isLunch, setIsLunch] = useState(false);
-  const [isDinner, setIsDinner] = useState(false);
-  const [isSnacks, setIsSnacks] = useState(false);
+  const [selected, setSelected] = useState<selectedType>('');
+  const [postData, setPostData] = useState<postDataType>();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const meals = useAppSelector(({ meal }) => meal.value);
+  const postResultObj = {
+    date: '2022-05-01',
+    meals,
+    category: '아침',
+  };
+  console.log('보낼내용', postResultObj);
 
   function modalCloseHandler() {
     setOpenModal(false);
+  }
+
+  function clickSelectHandler(time: selectedType) {
+    setSelected(time);
   }
 
   return (
@@ -33,45 +65,44 @@ function MealsCartModal({ setOpenModal }: MealsCartModalProps) {
           X
         </S.XBtn>
         <S.Title>식사 종류</S.Title>
-        <S.BtnContainer
-          morning={isMorning}
-          lunch={isLunch}
-          dinner={isDinner}
-          snacks={isSnacks}
-        >
+        <S.BtnContainer>
           <button
-            className="morning"
-            ref={morningRef}
-            onClick={() => {
-              setIsMorning((cur) => !cur);
-            }}
+            style={
+              selected === 'morning'
+                ? { background: '#8C9EFF' }
+                : { background: '#C0CFFF' }
+            }
+            onClick={() => clickSelectHandler('morning')}
           >
             아침
           </button>
           <button
-            className="lunch"
-            ref={lunchRef}
-            onClick={() => {
-              setIsLunch((cur) => !cur);
-            }}
+            style={
+              selected === 'lunch'
+                ? { background: '#8C9EFF' }
+                : { background: '#C0CFFF' }
+            }
+            onClick={() => clickSelectHandler('lunch')}
           >
             점심
           </button>
           <button
-            className="dinner"
-            ref={dinnerRef}
-            onClick={() => {
-              setIsDinner((cur) => !cur);
-            }}
+            style={
+              selected === 'dinner'
+                ? { background: '#8C9EFF' }
+                : { background: '#C0CFFF' }
+            }
+            onClick={() => clickSelectHandler('dinner')}
           >
             저녁
           </button>
           <button
-            className="snacks"
-            ref={snacksRef}
-            onClick={() => {
-              setIsSnacks((cur) => !cur);
-            }}
+            style={
+              selected === 'snack'
+                ? { background: '#8C9EFF' }
+                : { background: '#C0CFFF' }
+            }
+            onClick={() => clickSelectHandler('snack')}
           >
             간식
           </button>
@@ -79,6 +110,7 @@ function MealsCartModal({ setOpenModal }: MealsCartModalProps) {
 
         <S.CompleteBtn
           onClick={() => {
+            dispatch(postMealsDataAsync(postResultObj));
             navigate('/meals');
           }}
         >
