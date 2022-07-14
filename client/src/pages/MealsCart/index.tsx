@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as S from './style';
 import Navbar from '../../components/common/Navbar';
@@ -26,12 +26,45 @@ interface GetMealDataObj {
   quantity?: number;
 }
 
+interface TestType {
+  totalKcal: number;
+  totalCarb: number;
+  totalProtein: number;
+  totalFat: number;
+}
+
 function MealsCart() {
   const [openModal, setOpenModal] = useState<boolean>(false);
+  const [info, setInfo] = useState<TestType>();
 
   const navigate = useNavigate();
   const result = useAppSelector(({ meal }) => meal.value);
   console.log('밖', result);
+
+  function calcTotalInfo() {
+    let totalKcal = 0;
+    let totalCarb = 0;
+    let totalProtein = 0;
+    let totalFat = 0;
+    result.map(({ kcal, carb, protein, fat }) => {
+      totalKcal += kcal;
+      totalCarb += carb;
+      totalProtein += protein;
+      totalFat += fat;
+    });
+    const totalNutrient = {
+      totalKcal: Math.round(totalKcal),
+      totalCarb: Math.round(totalCarb),
+      totalProtein: Math.round(totalProtein),
+      totalFat: Math.round(totalFat),
+    };
+    console.log(totalNutrient);
+    setInfo(totalNutrient);
+  }
+
+  useEffect(() => {
+    calcTotalInfo();
+  }, [result]);
 
   function clickHandler() {
     setOpenModal(true);
@@ -49,12 +82,12 @@ function MealsCart() {
         </S.IconBox>
         <S.TotalKcalBox>
           <h1>총 칼로리</h1>
-          kcal
+          {info?.totalKcal}kcal
         </S.TotalKcalBox>
         <S.TdzBox>
-          <TDZInfo nutrient={'탄수화물'} gram={400} />
-          <TDZInfo nutrient={'단백질'} gram={200} />
-          <TDZInfo nutrient={'지방'} gram={300} />
+          <TDZInfo nutrient={'탄수화물'} gram={info?.totalCarb} />
+          <TDZInfo nutrient={'단백질'} gram={info?.totalProtein} />
+          <TDZInfo nutrient={'지방'} gram={info?.totalFat} />
         </S.TdzBox>
       </S.NutrientInfoContainer>
 
