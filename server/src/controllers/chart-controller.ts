@@ -28,4 +28,6 @@ const oneDay = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
+//14, 13, 12, 11, 10, 9, 8, 7, 6... 데이터 만들기
+
 export { oneDay };
