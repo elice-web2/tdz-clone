@@ -11,6 +11,7 @@ import { useAppSelector } from '../../hooks';
 import * as api from '../../api';
 import Container from '../../components/styles/Container';
 import { MealData } from '../../customType/meal.type';
+import EmptyCart from '../../../src/components/MealsCart/EmptyCart';
 
 interface TestType {
   totalKcal: number;
@@ -83,17 +84,21 @@ function MealsCart() {
       </S.NutrientInfoContainer>
 
       <S.MealsListContainer>
-        {result.map((el) => {
-          return (
-            <MealsCartList
-              key={el.code}
-              name={el.name}
-              quantity={el.quantity}
-              totalGram={el.totalGram}
-              code={el.code}
-            ></MealsCartList>
-          );
-        })}
+        {result.length === 0 ? (
+          <EmptyCart></EmptyCart>
+        ) : (
+          result.map((el) => {
+            return (
+              <MealsCartList
+                key={el.code}
+                name={el.name}
+                quantity={el.quantity}
+                totalGram={el.totalGram}
+                code={el.code}
+              ></MealsCartList>
+            );
+          })
+        )}
       </S.MealsListContainer>
 
       <S.BtnContainer>

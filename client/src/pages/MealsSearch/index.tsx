@@ -7,7 +7,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import MealsSearchedList from '../../components/MealsSearch/MealsSearchedList';
 import MealsBookMarkList from '../../components/MealsSearch/MealsBookMarkList';
 import * as api from '../../api';
-import { MealInfo, MealData } from '../../customType/meal.type';
+import { MealData } from '../../customType/meal.type';
 
 function MealsSearch() {
   const [isSearch, setIsSearch] = useState(true);
