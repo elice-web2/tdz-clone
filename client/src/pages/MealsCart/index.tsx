@@ -1,33 +1,29 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
 import * as S from './style';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../hooks';
+import { TotalInfoType } from '../../customType/meal.type';
+import Container from '../../components/styles/Container';
 import Navbar from '../../components/common/Navbar';
-import MealsCartModal from '../../components/MealsCart/MealsCartModal';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import TDZInfo from '../../components/MealsCart/TDZInfo';
 import MealsCartList from '../../components/MealsCart/MealsCartList';
-import { useAppSelector } from '../../hooks';
-import * as api from '../../api';
-import Container from '../../components/styles/Container';
-import { MealData } from '../../customType/meal.type';
+import MealsCartModal from '../../components/MealsCart/MealsCartModal';
 import EmptyCart from '../../../src/components/MealsCart/EmptyCart';
-
-interface TestType {
-  totalKcal: number;
-  totalCarb: number;
-  totalProtein: number;
-  totalFat: number;
-}
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 function MealsCart() {
   const [openModal, setOpenModal] = useState<boolean>(false);
-  const [info, setInfo] = useState<TestType>();
-
+  const [info, setInfo] = useState<TotalInfoType>();
   const navigate = useNavigate();
   const result = useAppSelector(({ meal }) => meal.value);
-  console.log('밖', result);
 
+  //장바구니 리스트 바뀔때마다 총 영양소 다시 계산
+  useEffect(() => {
+    calcTotalInfo();
+  }, [result]);
+
+  //장바구니에 담긴 음식리스트에 따라 총 영양소 계산
   function calcTotalInfo() {
     let totalKcal = 0;
     let totalCarb = 0;
@@ -45,21 +41,17 @@ function MealsCart() {
       totalProtein: Math.round(totalProtein),
       totalFat: Math.round(totalFat),
     };
-    console.log(totalNutrient);
     setInfo(totalNutrient);
   }
 
-  useEffect(() => {
-    calcTotalInfo();
-  }, [result]);
-
-  function clickHandler() {
+  //모달창 open
+  function popupModal() {
     setOpenModal(true);
   }
 
   return (
     <Container>
-      {openModal && <MealsCartModal setOpenModal={setOpenModal} />}
+      {openModal && <MealsCartModal openModal={setOpenModal} />}
 
       <S.NutrientInfoContainer>
         <S.IconBox>
@@ -110,7 +102,7 @@ function MealsCart() {
           음식 추가
         </S.AddMealsBtn>
 
-        <S.RecordBtn onClick={clickHandler}>기록 하기</S.RecordBtn>
+        <S.RecordBtn onClick={popupModal}>기록 하기</S.RecordBtn>
       </S.BtnContainer>
       <Navbar />
     </Container>

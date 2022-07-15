@@ -972,3 +972,9 @@ Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
     at runMicrotasks (<anonymous>)
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
 
+[2022-7-15 21:53:57] GET:/api/favorites/62d015f10496613e9cfe7e7f
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
