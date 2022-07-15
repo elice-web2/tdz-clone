@@ -53,7 +53,7 @@ const initialState: UsersInfoState = {
     profile_image: '',
     nickname: '',
     comment: '',
-    isLogin: false,
+    isLogin: Boolean(localStorage.getItem('login')),
   },
 };
 // Slice 작성 예시
