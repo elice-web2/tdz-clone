@@ -98,7 +98,7 @@ function MealsCartModal({ setOpenModal }: MealsCartModalProps) {
           onClick={() => {
             dispatch(postMealsDataAsync(postResultObj));
             console.log(dispatch(postMealsDataAsync(postResultObj)));
-            // navigate('/meals');
+            navigate('/meals');
           }}
         >
           완료
