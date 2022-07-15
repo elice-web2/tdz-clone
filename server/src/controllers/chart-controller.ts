@@ -1,7 +1,7 @@
 import is from '@sindresorhus/is';
 import { Request, Response, NextFunction } from 'express';
 import { chartService } from '../services';
-import { FromToInfo, DayInfo } from '../customType/chart.type';
+import { FromToInfo, DayInfo } from '../types/chart.type';
 
 const oneDay = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -47,25 +47,27 @@ const daily = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-// const weekly = async (req: Request, res: Response, next: NextFunction) => {
-//   try {
-//     //날짜를 읽어옴
-//     const from: string = String(req.query.from);
-//     const to: string = String(req.query.to);
-//     //날짜를 일주일 단위로 끊어서 주간 데이터를 받기
-//     // from=2022-06-10&to=2022-07-07
-//     const first: string =
-//       // const fromToInfo: DayInfo = {
-//       //   user_id: req.currentUserId!,
-//       //   date,
-//       // };
+const weekly = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    //날짜를 읽어옴
+    const from: string = String(req.query.from);
+    const to: string = String(req.query.to);
 
-//       // const dateData = await chartService.getDailyChart(fromToInfo);
+    // from=2022-06-18&to=2022-07-15
+    //30일짜리의 데이터 가져오기
 
-//       res.status(200).json(dateData);
-//   } catch (error) {
-//     next(error);
-//   }
-// };
+    const fromToInfo: FromToInfo = {
+      user_id: req.currentUserId!,
+      from,
+      to,
+    };
 
-export { oneDay, daily };
+    const dateData = await chartService.getWeeklyChart(fromToInfo);
+
+    res.status(200).json(dateData);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export { oneDay, daily, weekly };

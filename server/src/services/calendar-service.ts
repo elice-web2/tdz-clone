@@ -1,5 +1,5 @@
 import { CalendarModel, calendarModel } from '../db';
-import { CalendarInfo, CalendarData } from '../customType/calendar.type';
+import { CalendarInfo, CalendarData } from '../types/calendar.type';
 
 class CalendarService {
   constructor(private calendarModel: CalendarModel) {}

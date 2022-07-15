@@ -4,8 +4,8 @@ import {
   CalendarData,
   CalendarInfo,
   ToUpdate,
-} from '../../customType/calendar.type';
-import { DayInfo, FromToInfo } from '../../customType/chart.type';
+} from '../../types/calendar.type';
+import { FromToInfo } from '../../types/chart.type';
 
 const Calendar = model<CalendarData>('calendars', CalendarSchema);
 

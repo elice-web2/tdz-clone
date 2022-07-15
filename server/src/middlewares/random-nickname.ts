@@ -1,4 +1,4 @@
-import { adjectives, animals, plants } from '../customType/nicknames';
+import { adjectives, animals, plants } from '../types/nicknames';
 
 function getRandomInteger(max: number) {
   return Math.floor(Math.random() * max);
