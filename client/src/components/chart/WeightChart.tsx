@@ -1,8 +1,8 @@
 import { Line } from 'react-chartjs-2';
 
-export default function WeightChart({ data }: any) {
+export default function WeightChart({ data, labels }: any) {
   const weightData = {
-    labels: ['6/30', '7/1', '7/2', '7/3', '7/4', '7/5', '7/6'],
+    labels,
     datasets: [
       {
         borderColor: 'rgb(54, 162, 235)',

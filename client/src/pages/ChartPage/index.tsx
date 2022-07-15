@@ -175,7 +175,7 @@ function ChartPage() {
             </S.NextButton>
           </S.PeriodContainer>
 
-          <WeightChart data={DUMMY_DATA_DAILY} />
+          <WeightChart data={DUMMY_DATA_WEEKLY} />
           <CalorieChart data={DUMMY_DATA_DAILY} />
           <NutrientAverage data={DUMMY_DATA_DAILY} />
         </S.Wrapper>
