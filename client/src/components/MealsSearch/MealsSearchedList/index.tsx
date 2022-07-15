@@ -5,7 +5,6 @@ import { useAppDispatch } from '../../../hooks';
 import NoSearched from '../NoSearched';
 import { useNavigate } from 'react-router-dom';
 import { addMeals } from '../../../slices/mealsSlice';
-import { addBookMark } from '../../../slices/bookMarkSlice';
 import * as api from '../../../api';
 import { MealInfo, MealData } from '../../../customType/meal.type';
 import { useEffect, useState } from 'react';
