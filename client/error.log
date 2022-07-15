@@ -572,3 +572,72 @@ Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
     at runMicrotasks (<anonymous>)
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
 
+[2022-7-15 17:25:9] GET:/api/favorites/undefined
+CastError: Cast to ObjectId failed for value "undefined" (type string) at path "meal_id" for model "favorites"
+    at model.Query.exec (C:\Users\Administrator\Desktop\project\TDZ\server\node_modules\mongoose\lib\query.js:4498:21)
+    at model.Query.Query.then (C:\Users\Administrator\Desktop\project\TDZ\server\node_modules\mongoose\lib\query.js:4592:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 17:25:32] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 17:26:40] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 17:28:2] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 17:32:5] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 17:33:49] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 17:33:59] GET:/api/favorites/62d057e7f3262756f4b24d02
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 17:33:59] GET:/api/favorites/62d057e7f3262756f4b24d16
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 17:34:12] GET:/api/favorites/62d02a99199fd052e4071338
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 17:34:13] GET:/api/favorites/62d02a99199fd052e4071338
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 17:34:13] GET:/api/favorites/62d02a99199fd052e4071338
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 17:39:30] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
