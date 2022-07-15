@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { postMealsDataAsync } from '../../../slices/mealsSlice';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
-import { dateFormat } from '../../../../src/utils/dateFormat';
 import { MealData } from '../../../customType/meal.type';
+import dayjs from 'dayjs';
 
 interface MealsCartModalProps {
   setOpenModal: (value: boolean) => void;
@@ -25,7 +25,7 @@ function MealsCartModal({ setOpenModal }: MealsCartModalProps) {
   const dispatch = useAppDispatch();
   const meals = useAppSelector(({ meal }) => meal.value);
   const postResultObj = {
-    date: dateFormat(new Date()),
+    date: dayjs().format('YYYY-MM-DD'),
     meals,
     category: selected,
   };
@@ -97,7 +97,6 @@ function MealsCartModal({ setOpenModal }: MealsCartModalProps) {
         <S.CompleteBtn
           onClick={() => {
             dispatch(postMealsDataAsync(postResultObj));
-            console.log(dispatch(postMealsDataAsync(postResultObj)));
             navigate('/meals');
           }}
         >
