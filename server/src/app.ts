@@ -7,6 +7,7 @@ import {
   mealRouter,
   favoriteRouter,
   calendarRouter,
+  socialLoginRouter,
 } from './routers';
 import { errorLogger, errorHandler } from './middlewares';
 
@@ -35,6 +36,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // api 라우팅
 app.use('/api', userRouter);
+app.use('/auth', socialLoginRouter);
 app.use('/api/mealhistory', mealhistoryRouter);
 app.use('/api/meal', mealRouter);
 app.use('/api/favorites', favoriteRouter);

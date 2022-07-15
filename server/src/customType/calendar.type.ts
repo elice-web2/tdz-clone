@@ -1,5 +1,3 @@
-import { NumberList } from 'aws-sdk/clients/iot';
-
 export interface CalendarInfo {
   userId: string;
   date: Date;

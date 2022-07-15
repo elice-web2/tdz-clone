@@ -1019,3 +1019,145 @@ Error: 도토리을 조회할 수 없습니다.
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
     at async getMeal (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\controllers\meal-controller.ts:9:24)
 
+[2022-7-15 11:19:50] GET:/auth/kakao/callback?code=-MfUWpLdHhO2dUvJIoqs3ezyvYvCZpW7ZiImO0oo9YctGWznpfXsYf0iO9vAnhVDyv0oFwo9dGgAAAGB_6ewRg
+undefined
+
+[2022-7-15 11:22:39] GET:/auth/kakao/callback?code=_XCPtwkGpTlHMAcDy9m0gP5wIHj7sX56y-M5QAwGp_WYemiB74ZW4XCZqIVi77S9D3_8ygo9dBEAAAGB_6pD3Q
+TypeError: Cannot destructure property 'email' of 'authData.kakao_account' as it is undefined.
+    at SocialLoginService.kakaoLogin (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\social-login-service.ts:40:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\routers\social-login-router.ts:29:24
+
+[2022-7-15 11:33:36] GET:/auth/kakao/callback?code=jdMvZAo6KQ8NHI8n6rcZ4k8oFB0UjX7fwFE4cTaDb8qjueit7Z2kCpU6pVPOrVsHgDW4CAopcBMAAAGB_7RRwg
+TypeError: Cannot destructure property 'email' of 'authData.kakao_account' as it is undefined.
+    at SocialLoginService.kakaoLogin (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\social-login-service.ts:40:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\routers\social-login-router.ts:30:24
+
+[2022-7-15 11:34:30] GET:/auth/kakao/callback?code=0Xc9iP0l6IgfJw8S86c2PzZh4RgsAFkJclpsNrH2M7ITnTH-FzzqJlo1R-yaazSxg4lOiQorDSAAAAGB_7UeRA
+TypeError: Cannot destructure property 'email' of 'authData.kakao_account' as it is undefined.
+    at SocialLoginService.kakaoLogin (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\social-login-service.ts:40:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\routers\social-login-router.ts:30:24
+
+[2022-7-15 11:35:3] GET:/auth/kakao/callback?code=eictkUdcs_YdJhyC0-b1slptVu4rw06TOaAJAWBJ7VLkqzn5gAUq1RW1MZhA18B79JGL8wopcFAAAAGB_7Wgpw
+TypeError: Cannot destructure property 'email' of 'authData.kakao_account' as it is undefined.
+    at SocialLoginService.kakaoLogin (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\social-login-service.ts:40:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\routers\social-login-router.ts:30:24
+
+[2022-7-15 11:37:58] GET:/auth/kakao/callback?code=4Qgm816dUC_sY3paVzh6nlyRrDKkc2BMYVy1fSf6y7HC-fpfd-AI1sDiGEdr1xa3xz2yPQo9c-wAAAGB_7hKIg
+TypeError: Cannot destructure property 'email' of 'authData.kakao_account' as it is undefined.
+    at SocialLoginService.kakaoLogin (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\social-login-service.ts:40:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\routers\social-login-router.ts:30:24
+
+[2022-7-15 11:39:42] GET:/auth/kakao/callback?code=XwC8vXVlZ5A_vz-u9dppezQ1_8dLjV2OVv84_xOPo5lXgF6oA--K22-mms9TC_ALAw8zzgorDR4AAAGB_7ngFA
+TypeError: Cannot destructure property 'email' of 'authData.kakao_account' as it is undefined.
+    at SocialLoginService.kakaoLogin (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\social-login-service.ts:41:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\routers\social-login-router.ts:30:24
+
+[2022-7-15 11:44:3] GET:/auth/kakao/callback?code=KFIXKfr7aEQ3vPGVZ9cRu4rOHgSQXndeX_YzTd7dQmzC8dadModULrAu9ojR2e6FLVV0iAopyNgAAAGB_73d7Q
+TypeError: Cannot destructure property 'email' of 'authData.kakao_account' as it is undefined.
+    at SocialLoginService.kakaoLogin (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\social-login-service.ts:41:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\routers\social-login-router.ts:30:24
+
+[2022-7-15 11:44:16] GET:/auth/kakao/callback?code=dc1I8nMPLHLU41KEoonG3wgyA8Y0bs8REgTWJxiazTdLqQFe7OH-XCo-pHj94JOsx5N71AopcNEAAAGB_74RvQ
+TypeError: Cannot destructure property 'email' of 'authData.kakao_account' as it is undefined.
+    at SocialLoginService.kakaoLogin (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\social-login-service.ts:41:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\routers\social-login-router.ts:30:24
+
+[2022-7-15 11:44:16] GET:/auth/kakao/callback?code=SWj7hoTATgOkqg7WuzWqgTUYI_GM7b7_6M2G6H7bT_yQA13Rl7N9q8yR2HsTHj8tm4WSCwopcNEAAAGB_74T5Q
+TypeError: Cannot destructure property 'email' of 'authData.kakao_account' as it is undefined.
+    at SocialLoginService.kakaoLogin (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\social-login-service.ts:41:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\routers\social-login-router.ts:30:24
+
+[2022-7-15 11:55:9] GET:/auth/kakao/callback?code=5aULIW5ohAhCL8emM-Zv2wF_qpCAYvXKTqwoAm5bDBylM9jKaGwUFGU_1HeciqKd5rztvgo9dBEAAAGB_8gJrQ
+ValidationError: users validation failed: email: Path `email` is required.
+    at model.Document.invalidate (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2782:32)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2574:17
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\schematype.js:1273:9
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+[2022-7-15 11:55:9] GET:/auth/kakao/callback?code=IxojAvgBPf3HeJLoQzBstPwyWN_4TcoTnqUbRmrsYaiFeF5eet3Ni7NI0VQI_AyqRsu4sAo9cxcAAAGB_8gJ2w
+ValidationError: users validation failed: email: Path `email` is required.
+    at model.Document.invalidate (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2782:32)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2574:17
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\schematype.js:1273:9
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+[2022-7-15 11:57:41] GET:/auth/kakao/callback?code=nvodDYvVNdJ7o_mfXi5oCPGSOWq-3Zvky3hNsx94TIuji5_1ewjCnJDmx7nyWxBU2Wpsfgo9c5oAAAGB_8paMA
+ValidationError: users validation failed: email: Path `email` is required.
+    at model.Document.invalidate (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2782:32)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2574:17
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\schematype.js:1273:9
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+[2022-7-15 11:59:22] GET:/auth/kakao/callback?code=Pl7U0RO0H5lZ6qT_uz0wV8Vgbi064bY2q1Dchtq4b064JYCPV9dBbQsvNpUEKYk1V6R2igo9dZwAAAGB_8veWQ
+ValidationError: users validation failed: email: Path `email` is required.
+    at model.Document.invalidate (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2782:32)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2574:17
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\schematype.js:1273:9
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+[2022-7-15 12:3:24] GET:/auth/kakao/callback?code=lrvAA0R0AwE_o4of8B_eA3FeWhOSbP971IkR-M8uMykbmaou2MuKEzj9UlQBxu2_iE5PhAopb1UAAAGB_8-U0g
+ValidationError: users validation failed: email: Path `email` is required.
+    at model.Document.invalidate (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2782:32)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2574:17
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\schematype.js:1273:9
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+[2022-7-15 12:9:55] GET:/auth/kakao/callback?code=4NO7e2IakV5jd4Uz2EL_7yCP-VdR-edX7J431X5vF1_nbKorTQ8zTlIG8AX4cCUp5X8iKwopcNEAAAGB_9WKng
+ValidationError: users validation failed: email: Path `email` is required.
+    at model.Document.invalidate (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2782:32)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2574:17
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\schematype.js:1273:9
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+[2022-7-15 12:10:23] GET:/auth/kakao/callback?code=ENgU1jYGAadA6wJ0DQzoMOTlEc04xue7Dq-O7nED7snyEvmxrCv7FrhySKUbckVznWWLagopyNgAAAGB_9X3yg
+ValidationError: users validation failed: email: Path `email` is required.
+    at model.Document.invalidate (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2782:32)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\document.js:2574:17
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\mongoose\lib\schematype.js:1273:9
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+[2022-7-15 12:23:33] GET:/auth/kakao/callback?code=n7NTCWhpayxe1UlwBXrINxBa_pAU282kJUVoBjViWjT4T-HfK5oqnmsvPWB6nNI3x9xH3gorDNIAAAGB_-IDKQ
+Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at new NodeError (node:internal/errors:371:5)
+    at ServerResponse.setHeader (node:_http_outgoing:576:11)
+    at ServerResponse.header (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.append (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\response.js:755:15)
+    at ServerResponse.res.cookie (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\response.js:884:8)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\routers\social-login-router.ts:64:11
+
+[2022-7-15 12:26:50] GET:/auth/kakao/callback?code=w6Gj2JfV3cq8Vrya89cNv7iNQr5-EA-gdMFzRK3DJYmL05IRRYS2b3k_TMTK25i9vSEnYwopcFAAAAGB_-UJAA
+Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at new NodeError (node:internal/errors:371:5)
+    at ServerResponse.setHeader (node:_http_outgoing:576:11)
+    at ServerResponse.header (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.append (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\response.js:755:15)
+    at ServerResponse.res.cookie (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\response.js:884:8)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\routers\social-login-router.ts:68:11
+
+[2022-7-15 12:27:1] GET:/auth/kakao/callback?code=20olZLwHNtSiBAgm1znTOtdjeZNhwbx2V-y3zgmSvUh1YToWjOB5Sn-qLeP2DIoXndI_ewopcSEAAAGB_-U2tg
+Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at new NodeError (node:internal/errors:371:5)
+    at ServerResponse.setHeader (node:_http_outgoing:576:11)
+    at ServerResponse.header (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.append (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\response.js:755:15)
+    at ServerResponse.res.cookie (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\response.js:884:8)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\routers\social-login-router.ts:68:11
+
+[2022-7-15 12:29:31] GET:/auth/kakao/callback?code=ptBIUwWABYgDccGnT75PfRPhOG4x1Ak93cuzP_6XpFq7f6NwceY1mIkRMqzHIQLYI0Akpwo9dZoAAAGB_-d6Fg
+Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at new NodeError (node:internal/errors:371:5)
+    at ServerResponse.setHeader (node:_http_outgoing:576:11)
+    at ServerResponse.header (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.append (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\response.js:755:15)
+    at ServerResponse.res.cookie (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\response.js:884:8)
+    at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\routers\social-login-router.ts:69:11
+

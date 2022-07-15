@@ -25,6 +25,30 @@ const signUp = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
+// const kakaoSignup = async function (
+//   req: Request,
+//   res: Response,
+//   next: NextFunction,
+// ) {
+//   try {
+//     // application/json 설정을 프론트에서 안 하면, body가 비어 있게 됨.-> validator 활성시 지우기
+//     if (is.emptyObject(req.body)) {
+//       throw new Error(
+//         'headers의 Content-Type을 application/json으로 설정해주세요',
+//       );
+//     }
+
+//     // req (request) 에서 데이터 가져오기
+//     const email: string = req.body.email;
+
+//     const kakaoUSer = await userService.addUserWithKakao(email);
+
+//     res.status(201).json(kakaoUSer);
+//   } catch (error) {
+//     next(error);
+//   }
+// };
+
 const login = async function (req: Request, res: Response, next: NextFunction) {
   try {
     // application/json 설정을 프론트에서 안 하면, body가 비어 있게 됨.-> validator 활성시 지우기
@@ -58,6 +82,36 @@ const login = async function (req: Request, res: Response, next: NextFunction) {
   }
 };
 
+/*
+const kakaoLogin = async function (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) {
+  // application/json 설정을 프론트에서 안 하면, body가 비어 있게 됨.-> validator 활성시 지우기
+  if (is.emptyObject(req.body)) {
+    throw new Error(
+      'headers의 Content-Type을 application/json으로 설정해주세요',
+    );
+  }
+
+  const email: string = req.body.email;
+
+  const userToken = await userService.getUserTokenWithKakao(email);
+
+  //만료 시간 24시간 * 3일
+  const expiryDate = new Date(Date.now() + 60 * 60 * 1000 * 24 * 3);
+
+  res
+    .cookie('token', userToken, {
+      expires: expiryDate,
+      httpOnly: true,
+      signed: true,
+    })
+    .status(200)
+    .json(userToken);
+};
+*/
 const logout = async function (
   req: Request,
   res: Response,
@@ -412,4 +466,5 @@ export {
   userUpdate,
   goalUpdate,
   deleteUser,
+  // kakaoLogin,
 };
