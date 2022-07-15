@@ -1,4 +1,4 @@
-import is from '@sindresorhus/is';
+import dayjs from 'dayjs';
 import { Request, Response, NextFunction } from 'express';
 import { chartService } from '../services';
 import { FromToInfo, DayInfo } from '../types/chart.type';
@@ -70,4 +70,27 @@ const weekly = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-export { oneDay, daily, weekly };
+const monthly = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    //날짜를 읽어옴
+    const from: string = String(req.query.from);
+    const to: string = String(req.query.to);
+
+    // from=2022-06-18&to=2022-07-15
+    //30일짜리의 데이터 가져오기
+
+    const fromToInfo: FromToInfo = {
+      user_id: req.currentUserId!,
+      from,
+      to,
+    };
+
+    const dateData = await chartService.getMonthlyChart(fromToInfo);
+
+    res.status(200).json(dateData);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export { oneDay, daily, weekly, monthly };

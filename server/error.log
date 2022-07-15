@@ -1103,3 +1103,57 @@ TypeError: Cannot set properties of undefined (setting 'userId')
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
     at async daily (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/chart-controller.ts:42:22)
 
+[2022-7-16 3:30:0] GET:/api/chart/monthly?from=2022-05-01&to=2022-07-01
+TypeError: Cannot read properties of undefined (reading 'date')
+    at ChartService.getMonthlyChart (/Users/kai/Documents/Workspace/Web/TDZ/server/src/services/chart-service.ts:268:23)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async monthly (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/chart-controller.ts:90:22)
+
+[2022-7-16 3:35:31] GET:/api/chart/monthly?from=2022-05-01&to=2022-07-01
+TypeError: Cannot read properties of undefined (reading 'date')
+    at ChartService.getMonthlyChart (/Users/kai/Documents/Workspace/Web/TDZ/server/src/services/chart-service.ts:269:23)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async monthly (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/chart-controller.ts:90:22)
+
+[2022-7-16 3:42:39] GET:/api/chart/monthly?from=2022-05-01&to=2022-07-01
+TypeError: Cannot read properties of undefined (reading 'date')
+    at ChartService.getMonthlyChart (/Users/kai/Documents/Workspace/Web/TDZ/server/src/services/chart-service.ts:269:23)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async monthly (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/chart-controller.ts:88:22)
+
+[2022-7-16 4:8:26] GET:/api/chart/monthly?from=2022-05-01&to=2022-07-01
+TypeError: Cannot read properties of undefined (reading 'date')
+    at ChartService.getMonthlyChart (/Users/kai/Documents/Workspace/Web/TDZ/server/src/services/chart-service.ts:278:23)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async monthly (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/chart-controller.ts:88:22)
+
+[2022-7-16 4:10:34] GET:/api/chart/monthly?from=2022-05-01&to=2022-07-01
+TypeError: Cannot read properties of undefined (reading 'date')
+    at ChartService.getMonthlyChart (/Users/kai/Documents/Workspace/Web/TDZ/server/src/services/chart-service.ts:278:23)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async monthly (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/chart-controller.ts:88:22)
+
+[2022-7-16 4:12:31] GET:/api/chart/monthly?from=2022-05-01&to=2022-07-01
+TypeError: Cannot read properties of undefined (reading 'date')
+    at ChartService.getMonthlyChart (/Users/kai/Documents/Workspace/Web/TDZ/server/src/services/chart-service.ts:278:23)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async monthly (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/chart-controller.ts:88:22)
+
+[2022-7-16 4:15:31] GET:/api/chart/monthly?from=2022-05-01&to=2022-07-01
+TypeError: Cannot read properties of undefined (reading 'date')
+    at ChartService.getMonthlyChart (/Users/kai/Documents/Workspace/Web/TDZ/server/src/services/chart-service.ts:280:23)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async monthly (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/chart-controller.ts:88:22)
+
+[2022-7-16 4:20:45] GET:/api/chart/monthly?from=2022-05-01&to=2022-07-01
+TypeError: Cannot read properties of undefined (reading 'date')
+    at ChartService.getMonthlyChart (/Users/kai/Documents/Workspace/Web/TDZ/server/src/services/chart-service.ts:265:23)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async monthly (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/chart-controller.ts:88:22)
+
+[2022-7-16 4:22:16] GET:/api/chart/monthly?from=2022-05-01&to=2022-07-01
+TypeError: Cannot read properties of undefined (reading 'date')
+    at ChartService.getMonthlyChart (/Users/kai/Documents/Workspace/Web/TDZ/server/src/services/chart-service.ts:265:23)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async monthly (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/chart-controller.ts:88:22)
+

@@ -8,5 +8,6 @@ const chartRouter: Router = Router();
 chartRouter.get('/day', loginRequired, chartController.oneDay);
 chartRouter.get('/daily', loginRequired, chartController.daily);
 chartRouter.get('/weekly', loginRequired, chartController.weekly);
+chartRouter.get('/monthly', loginRequired, chartController.monthly);
 
 export { chartRouter };

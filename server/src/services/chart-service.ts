@@ -195,6 +195,127 @@ class ChartService {
 
     return weeklyData;
   }
+
+  async getMonthlyChart(fromToInfo: FromToInfo): Promise<ChartData | null> {
+    //받은 날짜로 계산 - 3개월의 총 날짜수
+    let totalDays: number[] = new Array(4);
+    totalDays[0] = 0; // 첫번째 값을 빈칸으로 둬 날짜 슬로팅을 편하게 함
+
+    let fromDate = dayjs(fromToInfo.from);
+    totalDays[1] = fromDate.daysInMonth();
+    fromDate = fromDate.add(1, 'month');
+    totalDays[2] = fromDate.daysInMonth() + totalDays[1];
+    fromDate = fromDate.add(1, 'month');
+    totalDays[3] = fromDate.daysInMonth() + totalDays[2];
+    const toDate = dayjs(fromDate).add(1, 'month');
+
+    const from: string = fromToInfo.from;
+    const to: string = toDate.format().slice(0, 10);
+
+    const updatedInfo: FromToInfo = {
+      user_id: fromToInfo.user_id,
+      from: fromToInfo.from,
+      to,
+    };
+
+    const data = await this.calendarModel.findByDate(updatedInfo);
+    console.log(data);
+    if (!data || data.length === 0) {
+      return {} as ChartData;
+    }
+
+    //날짜 기준이 될 날짜 슬롯을 생성 -
+    let chartSlotList: string[] = new Array(totalDays[3]);
+    for (let i = 0; i < totalDays[3]; i++) {
+      chartSlotList[i] = String(dayjs(from).add(i, 'day').format('YYYY-MM-DD'));
+    }
+
+    //aggregate로 바꾸기
+    //인터페이스 초기화
+    let monthlyData: ChartData = {
+      userId: fromToInfo.user_id,
+      weight: [],
+      kcalAvg: [],
+      carbAvg: [],
+      proteinAvg: [],
+      kcalSum: 0,
+      carbSum: 0,
+      proteinSum: 0,
+      fatSum: 0,
+      sugarsSum: 0,
+      natriumSum: 0,
+      cholesterolSum: 0,
+      saturatedfattySum: 0,
+      transfatSum: 0,
+    };
+    //총 데이터 개수를 체크하는 변수
+    let count = 0;
+    // 실제로 한달 동안 있는 값의 수를 체크하는 변수
+    let checked = 0;
+
+    let weight = 0;
+    let kcal = 0;
+    let carb = 0;
+    let protein = 0;
+    //28주의 날짜를 각각 비교
+    for (let month = 1; month < totalDays.length; month++) {
+      for (let day = 0; day < totalDays[month] - totalDays[month - 1]; day++) {
+        if (
+          chartSlotList[totalDays[month - 1] + day] ===
+          data[count].date.toISOString().slice(0, 10)
+        ) {
+          console.log(chartSlotList[totalDays[month - 1] + day]);
+          console.log(data[count].date.toISOString().slice(0, 10));
+          weight = Number(weight) + Number(data[count].todayWeight);
+          kcal = Number(kcal) + Number(data[count].currentKcal);
+          carb = Number(carb) + Number(data[count].carbSum);
+          protein = Number(protein) + Number(data[count].proteinSum);
+
+          monthlyData.kcalSum =
+            Number(data[count].currentKcal) + Number(monthlyData.kcalSum);
+          monthlyData.carbSum =
+            Number(data[count].carbSum) + Number(monthlyData.carbSum);
+          monthlyData.proteinSum =
+            Number(data[count].proteinSum) + Number(monthlyData.proteinSum);
+          monthlyData.fatSum =
+            Number(data[count].fatSum) + Number(monthlyData.fatSum);
+          monthlyData.sugarsSum =
+            Number(data[count].sugarsSum) + Number(monthlyData.sugarsSum);
+          monthlyData.natriumSum =
+            Number(data[count].natriumSum) + Number(monthlyData.natriumSum);
+          monthlyData.cholesterolSum =
+            Number(data[count].cholesterolSum) +
+            Number(monthlyData.cholesterolSum);
+          monthlyData.saturatedfattySum =
+            Number(data[count].saturatedfattySum) +
+            Number(monthlyData.saturatedfattySum);
+          monthlyData.transfatSum =
+            Number(data[count].transfatSum) + Number(monthlyData.transfatSum);
+          count++;
+          checked++;
+        }
+
+        if (day === 6) {
+          console.log(weight);
+          monthlyData.weight.push(weight === 0 ? 0 : weight / checked);
+          weight = 0;
+          monthlyData.kcalAvg.push(kcal === 0 ? 0 : kcal / checked);
+          kcal = 0;
+          monthlyData.carbAvg.push(carb === 0 ? 0 : carb / checked);
+          carb = 0;
+          monthlyData.proteinAvg.push(protein === 0 ? 0 : protein / checked);
+          protein = 0;
+          checked = 0;
+        }
+        if (count >= data.length) break;
+      }
+      if (count >= data.length) break;
+    }
+    console.log(monthlyData);
+    console.log(count);
+
+    return monthlyData;
+  }
 }
 
 const chartService = new ChartService(calendarModel);
