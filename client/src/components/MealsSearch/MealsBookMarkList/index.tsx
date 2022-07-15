@@ -2,6 +2,8 @@ import * as S from './style';
 import * as api from '../../../api';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { addMeals } from '../../../slices/mealsSlice';
 import { MealData } from '../../../customType/meal.type';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -9,6 +11,8 @@ import { faArrowRight, faPlus } from '@fortawesome/free-solid-svg-icons';
 function MealsBookMarkList() {
   const [result, setResult] = useState<MealData[]>();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const mealStore = useAppSelector(({ meal }) => meal.value);
 
   useEffect(() => {
     (async () => {
@@ -24,6 +28,23 @@ function MealsBookMarkList() {
     });
   }, [result]);
 
+  //장바구니 담을땐 중복필터링
+  function addToCart(food: MealData) {
+    const result = mealStore.filter((el) => el._id !== food._id);
+    if (mealStore.length !== result.length) {
+      const answer = confirm('이미 담겨진 음식입니다. 더 추가하시겠습니까?');
+      if (answer) {
+        //영양소 누적해서 더해주기
+        alert('추가해줄게');
+      } else {
+        return;
+      }
+    } else {
+      dispatch(addMeals(food));
+      navigate('/meals/cart');
+    }
+  }
+
   function deleteBookMark(id: string) {
     api.delete(`/api/favorites/${id}`).then((res) => console.log(res));
   }
@@ -33,7 +54,7 @@ function MealsBookMarkList() {
       {result &&
         result.map((food: any) => {
           return (
-            <S.List key={food.meal_id.code}>
+            <S.List key={food.meal_id._id}>
               <S.NamedInfo>
                 <div
                   className="title"
@@ -51,7 +72,12 @@ function MealsBookMarkList() {
                 >
                   <FontAwesomeIcon icon={faArrowRight} />
                 </span>
-                <span className="plusIcon">
+                <span
+                  className="plusIcon"
+                  onClick={() => {
+                    addToCart(food.meal_id);
+                  }}
+                >
                   <FontAwesomeIcon icon={faPlus} />
                 </span>
                 <span

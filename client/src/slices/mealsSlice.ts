@@ -41,6 +41,10 @@ export const mealsSlice = createSlice({
   reducers: {
     addMeals: (state, action: PayloadAction<MealData>) => {
       state.value.push(action.payload);
+      // //중복제거
+      // state.value = state.value.filter((el, idx, arr) => {
+      //   return arr.findIndex((item) => item._id === el._id) === idx;
+      // });
     },
     deleteMeals: (state, action: PayloadAction<string>) => {
       state.value = state.value.filter((meal) => meal.code !== action.payload);

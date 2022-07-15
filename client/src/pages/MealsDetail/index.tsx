@@ -2,7 +2,7 @@ import * as S from './style';
 import * as api from '../../api';
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { addMeals } from '../../slices/mealsSlice';
 import Container from '../../components/styles/Container';
 import { MealData, MealInfo } from '../../customType/meal.type';
@@ -20,6 +20,7 @@ function MealsDetail() {
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const mealStore = useAppSelector(({ meal }) => meal.value);
   const params = useParams();
   const selectRef = useRef<HTMLSelectElement>(null);
   const responseRef = useRef<MealData>();
@@ -144,6 +145,23 @@ function MealsDetail() {
     }
   }
 
+  //장바구니 담을땐 중복필터링
+  function addToCart(food: MealData) {
+    const result = mealStore.filter((el) => el._id !== food._id);
+    if (mealStore.length !== result.length) {
+      const answer = confirm('이미 담겨진 음식입니다. 더 추가하시겠습니까?');
+      if (answer) {
+        //영양소 누적해서 더해주기
+        alert('추가해줄게');
+      } else {
+        return;
+      }
+    } else {
+      dispatch(addMeals(food));
+      navigate('/meals/cart');
+    }
+  }
+
   function plusHandler() {
     setCount((cur) => cur + 1);
   }
@@ -245,8 +263,7 @@ function MealsDetail() {
           </S.SelectBox>
           <S.AddBtn
             onClick={() => {
-              foodInfo && dispatch(addMeals(foodInfo));
-              navigate('/meals/cart');
+              foodInfo && addToCart(foodInfo);
             }}
           >
             식단 추가
