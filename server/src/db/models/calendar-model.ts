@@ -4,7 +4,7 @@ import {
   CalendarData,
   CalendarInfo,
   ToUpdate,
-} from '../../customType/calendar.type';
+} from '../../types/calendar.type';
 
 const Calendar = model<CalendarData>('calendars', CalendarSchema);
 
