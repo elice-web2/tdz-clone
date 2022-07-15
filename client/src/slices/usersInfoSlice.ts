@@ -53,7 +53,7 @@ const initialState: UsersInfoState = {
     profile_image: '',
     nickname: '',
     comment: '',
-    isLogin: false,
+    isLogin: Boolean(localStorage.getItem('login')),
   },
 };
 // Slice 작성 예시
@@ -62,6 +62,27 @@ const initialState: UsersInfoState = {
 interface postLoginSignup {
   email: string;
   password: string;
+}
+// 회원가입 정보입력 타입지정
+interface patchActivityParam {
+  login_path?: string;
+  profile_image?: string;
+  comment?: string;
+  gender: string;
+  age: number;
+  height: number;
+  current_weight: number;
+  goal_weight: number;
+  bmi: number;
+  mode: string;
+  activity: string;
+  nutrient?: {
+    kcal: number;
+    carb: number;
+    protein: number;
+    fat: number;
+  };
+  nickname?: string;
 }
 // 회원가입 post API 통신 함수
 async function postSignupData(usersInfo: postLoginSignup) {
@@ -82,8 +103,18 @@ async function getUsersInfoData() {
   const resp = await api.get('/api/users');
   return resp;
 }
+async function patchActivityData(activityInfo: patchActivityParam) {
+  const resp = await api.patch('/api/users/activity', activityInfo);
+  return resp.data;
+}
 
 // 비동기로 데이터를 불러와 액션을 생성하고 싶을 경우 예시
+export const patchActivityAsync = createAsyncThunk(
+  'usersInfo/patchActivityData',
+  async (activityInfo: patchActivityParam) => {
+    return await patchActivityData(activityInfo);
+  },
+);
 export const postSignUpAsync = createAsyncThunk(
   'usersInfo/postSignupData',
   async (usersInfo: postLoginSignup) => {
@@ -125,13 +156,16 @@ export const UsersInfoSlice = createSlice({
       .addCase(postSignUpAsync.fulfilled, (state, action) => {
         state.value = { ...state.value, ...action.payload };
       })
-      .addCase(postLoginAsync.fulfilled, (state, action) => {
+      .addCase(postLoginAsync.fulfilled, (state) => {
         state.value.isLogin = true;
       })
-      .addCase(getLogOutAsync.fulfilled, (state, action) => {
+      .addCase(getLogOutAsync.fulfilled, (state) => {
         state.value.isLogin = false;
       })
       .addCase(getUsersInfoAsync.fulfilled, (state, action) => {
+        state.value = { ...state.value, ...action.payload };
+      })
+      .addCase(patchActivityAsync.fulfilled, (state, action) => {
         state.value = { ...state.value, ...action.payload };
       });
   },
