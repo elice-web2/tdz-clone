@@ -11,13 +11,25 @@ function MealsBookMarkList() {
   const [result, setResult] = useState<MealData[]>();
 
   useEffect(() => {
-    api.get('/api/favorites').then((res: any) => {
-      setResult(res.data);
-      console.log('resdata', res.data);
-    });
+    (async () => {
+      api.get('/api/favorites').then((res: any) => {
+        setResult(res.data);
+        console.log('resdata', res.data);
+      });
+    })();
   }, []);
 
+  useEffect(() => {
+    api.get('/api/favorites').then((res: any) => {
+      setResult(res.data);
+    });
+  }, [result]);
+
   const navigate = useNavigate();
+
+  function deleteBookMark(id: string) {
+    api.delete(`/api/favorites/${id}`).then((res) => console.log(res));
+  }
 
   return (
     <S.SearchListContainer>
@@ -45,7 +57,10 @@ function MealsBookMarkList() {
                 <span className="plusIcon">
                   <FontAwesomeIcon icon={faPlus} />
                 </span>
-                <span className="starIcon">
+                <span
+                  className="starIcon"
+                  onClick={() => deleteBookMark(food.meal_id._id)}
+                >
                   <img src={require('../../../assets/YellowStar.png')}></img>
                 </span>
               </S.NamedInfo>
