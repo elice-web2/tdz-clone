@@ -1,6 +1,6 @@
 import { model } from 'mongoose';
 import { MealSchema } from '../schemas/meal-schema';
-import { MealData, MealInfo } from '../../customType/meal.type';
+import { MealData, MealInfo } from '../../types/meal.type';
 const Meal = model<MealData>('meals', MealSchema);
 
 export class MealModel {
@@ -8,12 +8,16 @@ export class MealModel {
 
   async findByMealName(mealName: string): Promise<MealData[]> {
     const regex = new RegExp(`.*${mealName}.*`);
-    // return await Meal.find({ name: { $regex: regex } }).lean();
-    return await Meal.find({ name: mealName }).lean();
+    return await Meal.find({
+      name: {
+        $regex: regex,
+      },
+    }).lean();
   }
 
   async create(mealInfo: MealInfo): Promise<MealData> {
-    return await Meal.create(mealInfo);
+    const createdMealData = await Meal.create(mealInfo);
+    return createdMealData.toObject<MealData>();
   }
 
   /*

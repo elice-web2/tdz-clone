@@ -52,7 +52,7 @@ export class CalendarModel {
     }).sort({ date: 1 });
   }
 
-  async caculateDaily(fromToInfo: FromToInfo) {
+  async caculateWeekly(fromToInfo: FromToInfo) {
     const data = Calendar.aggregate([
       {
         $and: [
@@ -87,11 +87,6 @@ export class CalendarModel {
     console.log(data);
     return data;
   }
-
-  //유저의 주간별 조회
-  // findByWeek;
-
-  //유저의 월별 조회
 }
 
 const calendarModel = new CalendarModel();

@@ -113,14 +113,27 @@ class ChartService {
       from,
       to,
     };
+    // 날짜만 들어가있는 배열...?
+    // 기준이 되는 배열...
+    // 아 네...!
+    // 빈칸........................흠....
+    //
+    let chartSlotList: string[] = new Array(28);
+    for (let i = 0; i < 28; i++) {
+      chartSlotList[i] = String();
+    }
 
+    // 2월 3월 4월 5월
+    //모델에서 28일씩 받아옴 7일씩 4묶음 포문
+    // 1주차 - 캘린더 등록된 게 3개
+    // 2주차 - 7개
     //전체 데이터 받음
     const data = await this.calendarModel.findByDate(updatedInfo);
 
     if (!data) {
       return {} as ChartData;
     }
-
+    //aggregate로 바꾸기
     //인터페이스 초기화
     let dailyData: ChartData = {
       userId: 'undefined',
