@@ -1,13 +1,13 @@
 import * as S from './style';
 import * as api from '../../api';
 import React, { useState, useRef, useEffect } from 'react';
+import { MealData } from '../../customType/meal.type';
 import Container from '../../components/styles/Container';
 import Navbar from '../../components/common/Navbar';
 import MealsSearchedList from '../../components/MealsSearch/MealsSearchedList';
 import MealsBookMarkList from '../../components/MealsSearch/MealsBookMarkList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import { MealData } from '../../customType/meal.type';
 
 function MealsSearch() {
   const [isSearch, setIsSearch] = useState(true);
