@@ -31,9 +31,9 @@ function Mypage() {
     const total = carb + protein + fat;
 
     return {
-      carb: (carb * 100) / total || 0,
-      protein: (protein * 100) / total || 0,
-      fat: (fat * 100) / total || 0,
+      carb: Math.round((carb * 100) / total) || 0,
+      protein: Math.round((protein * 100) / total) || 0,
+      fat: Math.round((fat * 100) / total) || 0,
     };
   };
 
