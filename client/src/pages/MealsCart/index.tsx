@@ -10,24 +10,7 @@ import MealsCartList from '../../components/MealsCart/MealsCartList';
 import { useAppSelector } from '../../hooks';
 import * as api from '../../api';
 import Container from '../../components/styles/Container';
-
-interface MealInfo {
-  code: string;
-  kcal: number;
-  name: string;
-  carb: number;
-  protein: number;
-  fat: number;
-  natruim: number;
-  cholesterol: number;
-  transfat: number;
-  saturatedfatty: number;
-  servingSize: number;
-  quantity: number;
-  totalGram: number;
-  sugars: number;
-  updated_date: string;
-}
+import EmptyCart from '../../../src/components/MealsCart/EmptyCart';
 
 interface TestType {
   totalKcal: number;
@@ -100,17 +83,21 @@ function MealsCart() {
       </S.NutrientInfoContainer>
 
       <S.MealsListContainer>
-        {result.map((el) => {
-          return (
-            <MealsCartList
-              key={el.code}
-              name={el.name}
-              quantity={el.quantity}
-              totalGram={el.totalGram}
-              code={el.code}
-            ></MealsCartList>
-          );
-        })}
+        {result.length === 0 ? (
+          <EmptyCart></EmptyCart>
+        ) : (
+          result.map((el) => {
+            return (
+              <MealsCartList
+                key={el.code}
+                name={el.name}
+                quantity={el.quantity}
+                totalGram={el.totalGram}
+                code={el.code}
+              ></MealsCartList>
+            );
+          })
+        )}
       </S.MealsListContainer>
 
       <S.BtnContainer>

@@ -1,30 +1,13 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import * as api from '../api';
+import { MealData } from '../customType/meal.type';
 
 export interface MealsState {
-  value: MealInfo[];
-}
-
-interface MealInfo {
-  code: string;
-  kcal: number;
-  name: string;
-  carb: number;
-  protein: number;
-  fat: number;
-  natruim: number;
-  cholesterol: number;
-  transfat: number;
-  saturatedfatty: number;
-  servingSize: number;
-  quantity: number;
-  totalGram: number;
-  sugars: number;
-  updated_date: string;
+  value: MealData[];
 }
 
 interface PostMealsDataParam {
-  meals: MealInfo[];
+  meals: MealData[];
   category: string;
   date: string;
 }
@@ -56,7 +39,7 @@ export const mealsSlice = createSlice({
   name: 'meals',
   initialState,
   reducers: {
-    addMeals: (state, action: PayloadAction<MealInfo>) => {
+    addMeals: (state, action: PayloadAction<MealData>) => {
       state.value.push(action.payload);
     },
     deleteMeals: (state, action: PayloadAction<string>) => {

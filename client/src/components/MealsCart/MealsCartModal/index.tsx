@@ -3,35 +3,19 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { postMealsDataAsync } from '../../../slices/mealsSlice';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { dateFormat } from '../../../../src/utils/dateFormat';
+import { MealData } from '../../../customType/meal.type';
 
 interface MealsCartModalProps {
   setOpenModal: (value: boolean) => void;
 }
 
-type selectedType = 'morning' | 'lunch' | 'dinner' | 'snack' | '';
-
-interface MealInfo {
-  code: string;
-  kcal: number;
-  name: string;
-  carb: number;
-  protein: number;
-  fat: number;
-  natruim: number;
-  cholesterol: number;
-  transfat: number;
-  saturatedfatty: number;
-  servingSize: number;
-  quantity: number;
-  totalGram: number;
-  sugars: number;
-  updated_date: string;
-}
+type selectedType = '아침' | '점심' | '저녁' | '간식' | '';
 
 interface postDataType {
   date: string;
   category: string;
-  meals: MealInfo[];
+  meals: MealData[];
 }
 
 function MealsCartModal({ setOpenModal }: MealsCartModalProps) {
@@ -41,9 +25,9 @@ function MealsCartModal({ setOpenModal }: MealsCartModalProps) {
   const dispatch = useAppDispatch();
   const meals = useAppSelector(({ meal }) => meal.value);
   const postResultObj = {
-    date: '2022-05-01',
+    date: dateFormat(new Date()),
     meals,
-    category: '간식',
+    category: selected,
   };
   console.log('보낼내용', postResultObj);
 
@@ -70,41 +54,41 @@ function MealsCartModal({ setOpenModal }: MealsCartModalProps) {
         <S.BtnContainer>
           <button
             style={
-              selected === 'morning'
+              selected === '아침'
                 ? { background: '#8C9EFF' }
                 : { background: '#C0CFFF' }
             }
-            onClick={() => clickSelectHandler('morning')}
+            onClick={() => clickSelectHandler('아침')}
           >
             아침
           </button>
           <button
             style={
-              selected === 'lunch'
+              selected === '점심'
                 ? { background: '#8C9EFF' }
                 : { background: '#C0CFFF' }
             }
-            onClick={() => clickSelectHandler('lunch')}
+            onClick={() => clickSelectHandler('점심')}
           >
             점심
           </button>
           <button
             style={
-              selected === 'dinner'
+              selected === '저녁'
                 ? { background: '#8C9EFF' }
                 : { background: '#C0CFFF' }
             }
-            onClick={() => clickSelectHandler('dinner')}
+            onClick={() => clickSelectHandler('저녁')}
           >
             저녁
           </button>
           <button
             style={
-              selected === 'snack'
+              selected === '간식'
                 ? { background: '#8C9EFF' }
                 : { background: '#C0CFFF' }
             }
-            onClick={() => clickSelectHandler('snack')}
+            onClick={() => clickSelectHandler('간식')}
           >
             간식
           </button>

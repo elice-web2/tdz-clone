@@ -8,30 +8,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 import * as api from '../../api';
 import { addMeals } from '../../slices/mealsSlice';
 import { useAppDispatch } from '../../hooks';
-
-interface MealInfo {
-  code: string;
-  kcal: number;
-  name: string;
-  carb: number;
-  protein: number;
-  fat: number;
-  natruim: number;
-  cholesterol: number;
-  transfat: number;
-  saturatedfatty: number;
-  servingSize: number;
-  quantity: number;
-  totalGram: number;
-  sugars: number;
-  updated_date: string;
-}
+import { MealData, MealInfo } from '../../customType/meal.type';
 
 function MealsDetail() {
   const [count, setCount] = useState(1);
   const [selected, setSelected] = useState('quantity');
-  const [foodInfo, setFoodInfo] = useState<MealInfo>();
-  const [firstInfo, setFirstInfo] = useState<MealInfo>();
+  const [foodInfo, setFoodInfo] = useState<MealData>();
+  const [firstInfo, setFirstInfo] = useState<MealData>();
 
   const navigate = useNavigate();
   const params = useParams();
@@ -105,12 +88,12 @@ function MealsDetail() {
 
   useEffect(() => {
     if (selected === 'quantity') {
-      setFoodInfo((cur: any) => {
+      setFoodInfo((cur: any): any => {
         const newObj = { ...cur };
         return calcInfo(newObj);
       });
     } else {
-      setFoodInfo((cur: any) => {
+      setFoodInfo((cur: any): any => {
         const newObj = { ...cur };
         return calcInfoByGram(newObj);
       });
