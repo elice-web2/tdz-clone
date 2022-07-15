@@ -8,6 +8,7 @@ import Container from '../../components/styles/Container';
 import { MealData, MealInfo } from '../../customType/meal.type';
 import { calNutrient } from '../../../src/utils/calcultateNutrient';
 import { accNutrientCal } from '../../../src/utils/calculateAccNutrient';
+import { ScrollContainer } from '../../components/styles/ScrollContainer';
 import Navbar from '../../components/common/Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -180,7 +181,7 @@ function MealsDetail() {
 
   return (
     <Container>
-      <S.MealsContainer>
+      <ScrollContainer minusHeight={60}>
         <S.MealsInfoBox>
           <S.IconBox>
             <div
@@ -275,7 +276,7 @@ function MealsDetail() {
             식단 추가
           </S.AddBtn>
         </S.MealsInfoBox>
-      </S.MealsContainer>
+      </ScrollContainer>
       <Navbar />
     </Container>
   );

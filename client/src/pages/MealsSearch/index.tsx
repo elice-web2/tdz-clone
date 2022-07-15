@@ -6,6 +6,7 @@ import Container from '../../components/styles/Container';
 import Navbar from '../../components/common/Navbar';
 import MealsSearchedList from '../../components/MealsSearch/MealsSearchedList';
 import MealsBookMarkList from '../../components/MealsSearch/MealsBookMarkList';
+import { ScrollContainer } from '../../components/styles/ScrollContainer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
@@ -65,45 +66,47 @@ function MealsSearch() {
 
   return (
     <Container>
-      <S.SearchForm
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
-      >
-        <S.SearchBox>
-          <span className="searchIcon">
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </span>
-          <button className="XBtn" onClick={deleteInputHandler}>
-            X
-          </button>
-          <S.SearchInput
-            type="text"
-            value={inputValue}
-            ref={inputRef}
-            onChange={onChangeInputHandler}
-            onFocus={focusHandler}
-            // onKeyPress={onKeyPressHandler}
-          ></S.SearchInput>
-        </S.SearchBox>
-        <S.SearchBtn onClick={() => inputSubmitHandler()}>검색</S.SearchBtn>
-      </S.SearchForm>
-      <S.ButtonContainer>
-        <S.SearchTabBtn isSearch={isSearch} onClick={moveSearchTab}>
-          검색
-        </S.SearchTabBtn>
-        <S.BookMarkTabBtn isSearch={isSearch} onClick={moveBookMarkTab}>
-          즐겨찾기
-        </S.BookMarkTabBtn>
-      </S.ButtonContainer>
-      {isSearch ? (
-        <MealsSearchedList
-          inputValue={inputValue}
-          result={searchedResult}
-        ></MealsSearchedList>
-      ) : (
-        <MealsBookMarkList></MealsBookMarkList>
-      )}
+      <ScrollContainer minusHeight={60}>
+        <S.SearchForm
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
+          <S.SearchBox>
+            <span className="searchIcon">
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </span>
+            <button className="XBtn" onClick={deleteInputHandler}>
+              X
+            </button>
+            <S.SearchInput
+              type="text"
+              value={inputValue}
+              ref={inputRef}
+              onChange={onChangeInputHandler}
+              onFocus={focusHandler}
+              // onKeyPress={onKeyPressHandler}
+            ></S.SearchInput>
+          </S.SearchBox>
+          <S.SearchBtn onClick={() => inputSubmitHandler()}>검색</S.SearchBtn>
+        </S.SearchForm>
+        <S.ButtonContainer>
+          <S.SearchTabBtn isSearch={isSearch} onClick={moveSearchTab}>
+            검색
+          </S.SearchTabBtn>
+          <S.BookMarkTabBtn isSearch={isSearch} onClick={moveBookMarkTab}>
+            즐겨찾기
+          </S.BookMarkTabBtn>
+        </S.ButtonContainer>
+        {isSearch ? (
+          <MealsSearchedList
+            inputValue={inputValue}
+            result={searchedResult}
+          ></MealsSearchedList>
+        ) : (
+          <MealsBookMarkList></MealsBookMarkList>
+        )}
+      </ScrollContainer>
       <Navbar />
     </Container>
   );

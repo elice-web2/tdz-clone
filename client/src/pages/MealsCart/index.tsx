@@ -9,6 +9,7 @@ import TDZInfo from '../../components/MealsCart/TDZInfo';
 import MealsCartList from '../../components/MealsCart/MealsCartList';
 import MealsCartModal from '../../components/MealsCart/MealsCartModal';
 import EmptyCart from '../../../src/components/MealsCart/EmptyCart';
+import { ScrollContainer } from '../../components/styles/ScrollContainer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
@@ -51,59 +52,61 @@ function MealsCart() {
 
   return (
     <Container>
-      {openModal && <MealsCartModal openModal={setOpenModal} />}
+      <ScrollContainer minusHeight={60}>
+        {openModal && <MealsCartModal openModal={setOpenModal} />}
 
-      <S.NutrientInfoContainer>
-        <S.IconBox>
-          <div
-            className="arrow-icon"
+        <S.NutrientInfoContainer>
+          <S.IconBox>
+            <div
+              className="arrow-icon"
+              onClick={() => {
+                navigate('/meals/search');
+              }}
+            >
+              <FontAwesomeIcon icon={faArrowLeft} />
+            </div>
+          </S.IconBox>
+          <S.TotalKcalBox>
+            <h1>총 칼로리</h1>
+            {info?.totalKcal}kcal
+          </S.TotalKcalBox>
+          <S.TdzBox>
+            <TDZInfo nutrient={'탄수화물'} gram={info?.totalCarb} />
+            <TDZInfo nutrient={'단백질'} gram={info?.totalProtein} />
+            <TDZInfo nutrient={'지방'} gram={info?.totalFat} />
+          </S.TdzBox>
+        </S.NutrientInfoContainer>
+
+        <S.MealsListContainer>
+          {result.length === 0 ? (
+            <EmptyCart></EmptyCart>
+          ) : (
+            result.map((el) => {
+              return (
+                <MealsCartList
+                  key={el.code}
+                  name={el.name}
+                  quantity={el.quantity}
+                  totalGram={el.totalGram}
+                  code={el.code}
+                ></MealsCartList>
+              );
+            })
+          )}
+        </S.MealsListContainer>
+
+        <S.BtnContainer>
+          <S.AddMealsBtn
             onClick={() => {
               navigate('/meals/search');
             }}
           >
-            <FontAwesomeIcon icon={faArrowLeft} />
-          </div>
-        </S.IconBox>
-        <S.TotalKcalBox>
-          <h1>총 칼로리</h1>
-          {info?.totalKcal}kcal
-        </S.TotalKcalBox>
-        <S.TdzBox>
-          <TDZInfo nutrient={'탄수화물'} gram={info?.totalCarb} />
-          <TDZInfo nutrient={'단백질'} gram={info?.totalProtein} />
-          <TDZInfo nutrient={'지방'} gram={info?.totalFat} />
-        </S.TdzBox>
-      </S.NutrientInfoContainer>
+            음식 추가
+          </S.AddMealsBtn>
 
-      <S.MealsListContainer>
-        {result.length === 0 ? (
-          <EmptyCart></EmptyCart>
-        ) : (
-          result.map((el) => {
-            return (
-              <MealsCartList
-                key={el.code}
-                name={el.name}
-                quantity={el.quantity}
-                totalGram={el.totalGram}
-                code={el.code}
-              ></MealsCartList>
-            );
-          })
-        )}
-      </S.MealsListContainer>
-
-      <S.BtnContainer>
-        <S.AddMealsBtn
-          onClick={() => {
-            navigate('/meals/search');
-          }}
-        >
-          음식 추가
-        </S.AddMealsBtn>
-
-        <S.RecordBtn onClick={popupModal}>기록 하기</S.RecordBtn>
-      </S.BtnContainer>
+          <S.RecordBtn onClick={popupModal}>기록 하기</S.RecordBtn>
+        </S.BtnContainer>
+      </ScrollContainer>
       <Navbar />
     </Container>
   );

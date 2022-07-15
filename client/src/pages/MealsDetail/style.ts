@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-export const MealsContainer = styled.div`
-  min-height: 800px;
-`;
-
 export const MealsInfoBox = styled.div`
   position: relative;
   width: 100%;
