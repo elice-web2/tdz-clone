@@ -1,15 +1,18 @@
-import { useState, useEffect, useRef } from 'react';
 import * as S from './style';
-import Container from '../../components/styles/Container';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faStar } from '@fortawesome/free-solid-svg-icons';
-import Navbar from '../../components/common/Navbar';
-import { useNavigate, useParams } from 'react-router-dom';
 import * as api from '../../api';
-import { addMeals } from '../../slices/mealsSlice';
-import { useAppDispatch } from '../../hooks';
+import { useState, useEffect, useRef } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { addMeals, deleteMeals } from '../../slices/mealsSlice';
+import Container from '../../components/styles/Container';
 import { MealData, MealInfo } from '../../customType/meal.type';
 import { calNutrient } from '../../../src/utils/calcultateNutrient';
+import { accNutrientCal } from '../../../src/utils/calculateAccNutrient';
+import { ScrollContainer } from '../../components/styles/ScrollContainer';
+import Navbar from '../../components/common/Navbar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+
 function MealsDetail() {
   const [count, setCount] = useState(1);
   const [selected, setSelected] = useState('quantity');
@@ -18,51 +21,73 @@ function MealsDetail() {
   const [isBookMark, setIsBookMark] = useState<boolean>();
 
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const mealStore = useAppSelector(({ meal }) => meal.value);
   const params = useParams();
   const selectRef = useRef<HTMLSelectElement>(null);
-  const dispatch = useAppDispatch();
   const responseRef = useRef<MealData>();
 
-  //DB에서 음식 정보 받아오기
+  //URL의 params으로 DB에서 음식정보와 즐겨찾기정보 GET
   useEffect(() => {
     (async () => {
       const res = await api.get(`/api/meal/${params.name}`);
-      console.log(res?.data[0]);
       setFoodInfo(res?.data[0]);
       setFirstInfo(res?.data[0]);
       responseRef.current = res?.data[0];
-      if (responseRef.current) {
-        const bookMark = await api.get(
-          `/api/favorites/${responseRef.current._id}`,
-        );
-        if (!bookMark) {
-          setIsBookMark(false);
-          console.log('마킹상태F');
-        } else {
-          setIsBookMark(true);
-          console.log('마킹상태T');
-        }
-      }
+      getBookMark();
     })();
   }, []);
 
+  //즐겨찾기 여부가 바뀔때마다 즐겨찾기 정보 다시GET
   useEffect(() => {
     (async () => {
-      if (responseRef.current) {
-        const bookMark = await api.get(
-          `/api/favorites/${responseRef.current._id}`,
-        );
-        if (!bookMark) {
-          setIsBookMark(false);
-          console.log('마킹상태F');
-        } else {
-          setIsBookMark(true);
-          console.log('마킹상태T');
-        }
-      }
+      getBookMark();
     })();
   }, [isBookMark]);
 
+  //select 옵션에 따라 영양소 계산
+  useEffect(() => {
+    if (selected === 'quantity') {
+      setFoodInfo((cur: any): any => {
+        const newObj = { ...cur };
+        return calcInfo(newObj);
+      });
+    } else {
+      setFoodInfo((cur: any): any => {
+        const newObj = { ...cur };
+        return calcInfoByGram(newObj);
+      });
+    }
+  }, [count]);
+
+  //select 옵션에 따른 기본 count 변경
+  useEffect(() => {
+    if (selected === 'quantity') {
+      setCount(1);
+    } else {
+      if (firstInfo) {
+        setCount(firstInfo?.servingSize);
+      }
+    }
+  }, [selected]);
+
+  //즐겨찾기 GET 함수
+  async function getBookMark() {
+    if (responseRef.current) {
+      const bookMark = await api.get(
+        `/api/favorites/${responseRef.current._id}`,
+      );
+      if (!bookMark) {
+        setIsBookMark(false);
+        console.log('마킹상태F');
+      } else {
+        setIsBookMark(true);
+        console.log('마킹상태T');
+      }
+    }
+  }
+
+  // 인분 당 영양소 계산 함수
   function calcInfo(info: MealInfo) {
     if (firstInfo) {
       info.kcal = calNutrient(firstInfo?.kcal, count);
@@ -79,6 +104,7 @@ function MealsDetail() {
     return info;
   }
 
+  //그램 당 영양소 계산 함수
   function calcInfoByGram(info: MealInfo) {
     if (firstInfo) {
       const oneSize = firstInfo?.servingSize;
@@ -106,29 +132,42 @@ function MealsDetail() {
     }
   }
 
-  useEffect(() => {
-    if (selected === 'quantity') {
-      setFoodInfo((cur: any): any => {
-        const newObj = { ...cur };
-        return calcInfo(newObj);
+  //별 눌렀을때 즐겨찾기 상태 변경
+  function markingHandler(id: string) {
+    if (isBookMark) {
+      //즐겨찾기 delete요청
+      api.delete(`/api/favorites/${id}`).then(() => {
+        setIsBookMark(false);
       });
     } else {
-      setFoodInfo((cur: any): any => {
-        const newObj = { ...cur };
-        return calcInfoByGram(newObj);
-      });
+      //즐겨찾기 post 요청
+      api
+        .post('/api/favorites', { meal_id: id })
+        .then(() => setIsBookMark(true));
     }
-  }, [count]);
+  }
 
-  useEffect(() => {
-    if (selected === 'quantity') {
-      setCount(1);
-    } else {
-      if (firstInfo) {
-        setCount(firstInfo?.servingSize);
+  //장바구니 담을땐 중복필터링
+  function addToCart(food: MealData) {
+    const result = mealStore.filter((el) => el._id !== food._id);
+    const acc = mealStore.filter((el) => el._id === food._id)[0];
+    if (mealStore.length !== result.length) {
+      const answer = confirm('이미 담겨진 음식입니다. 더 추가하시겠습니까?');
+      if (answer) {
+        //영양소 누적해서 더해주기
+        const total = accNutrientCal(acc, food);
+        //원래담긴건 지워주고 새로 담자
+        dispatch(deleteMeals(acc.code));
+        dispatch(addMeals(total));
+        navigate('/meals/cart');
+      } else {
+        return;
       }
+    } else {
+      dispatch(addMeals(food));
+      navigate('/meals/cart');
     }
-  }, [selected]);
+  }
 
   function plusHandler() {
     setCount((cur) => cur + 1);
@@ -140,23 +179,9 @@ function MealsDetail() {
     }
   }
 
-  function markingHandler(id: string) {
-    if (isBookMark) {
-      //즐겨찾기 delete요청
-      api.delete(`/api/favorites/${id}`).then((res) => {
-        setIsBookMark(false);
-      });
-    } else {
-      //즐겨찾기 post 요청
-      api
-        .post('/api/favorites', { meal_id: id })
-        .then((res) => setIsBookMark(true));
-    }
-  }
-
   return (
     <Container>
-      <S.MealsContainer>
+      <ScrollContainer minusHeight={60}>
         <S.MealsInfoBox>
           <S.IconBox>
             <div
@@ -245,14 +270,13 @@ function MealsDetail() {
           </S.SelectBox>
           <S.AddBtn
             onClick={() => {
-              foodInfo && dispatch(addMeals(foodInfo));
-              navigate('/meals/cart');
+              foodInfo && addToCart(foodInfo);
             }}
           >
             식단 추가
           </S.AddBtn>
         </S.MealsInfoBox>
-      </S.MealsContainer>
+      </ScrollContainer>
       <Navbar />
     </Container>
   );
