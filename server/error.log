@@ -1056,4 +1056,50 @@ Error: Function not implemented.
     at next (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/index.js:280:10)
     at Function.handle (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/index.js:175:3)
     at router (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/express/lib/router/index.js:47:12)
+[2022-7-15 15:20:7] DELETE:/api/favorites/:meal_id
+CastError: Cast to ObjectId failed for value ":meal_id" (type string) at path "meal_id" for model "favorites"
+    at model.Query.exec (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/mongoose/lib/query.js:4498:21)
+    at model.Query.Query.then (/Users/kai/Documents/Workspace/Web/TDZ/server/node_modules/mongoose/lib/query.js:4592:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 16:20:59] PATCH:/api/users
+Error: 이 이메일은 현재 사용중입니다. 다른 이메일을 입력해 주세요.
+    at UserService.checkEmail (/Users/kai/Documents/Workspace/Web/TDZ/server/src/services/user-service.ts:101:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async userUpdate (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/user-controller.ts:130:5)
+
+[2022-7-15 16:21:27] PATCH:/api/users
+Error: 이 이메일은 현재 사용중입니다. 다른 이메일을 입력해 주세요.
+    at UserService.checkEmail (/Users/kai/Documents/Workspace/Web/TDZ/server/src/services/user-service.ts:101:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async userUpdate (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/user-controller.ts:130:5)
+
+[2022-7-15 16:21:43] POST:/api/auth/login
+Error: 비밀번호가 일치하지 않습니다. 다시 한 번 확인해 주세요.
+    at UserService.getUserToken (/Users/kai/Documents/Workspace/Web/TDZ/server/src/services/user-service.ts:69:13)
+    at async login (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/user-controller.ts:43:23)
+
+[2022-7-15 16:22:9] PATCH:/api/users
+Error: 이 이메일은 현재 사용중입니다. 다른 이메일을 입력해 주세요.
+    at UserService.checkEmail (/Users/kai/Documents/Workspace/Web/TDZ/server/src/services/user-service.ts:101:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async userUpdate (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/user-controller.ts:130:5)
+
+[2022-7-15 17:43:55] GET:/api/chart/daily?date=2022-07-15
+TypeError: Cannot set properties of undefined (setting 'userId')
+    at ChartService.getDailyChart (/Users/kai/Documents/Workspace/Web/TDZ/server/src/services/chart-service.ts:52:21)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async daily (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/chart-controller.ts:42:22)
+
+[2022-7-15 17:45:46] GET:/api/chart/daily?date=2022-07-15
+TypeError: Cannot set properties of undefined (setting 'userId')
+    at ChartService.getDailyChart (/Users/kai/Documents/Workspace/Web/TDZ/server/src/services/chart-service.ts:53:21)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async daily (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/chart-controller.ts:42:22)
+
+[2022-7-15 17:46:42] GET:/api/chart/daily?date=2022-07-15
+TypeError: Cannot set properties of undefined (setting 'userId')
+    at ChartService.getDailyChart (/Users/kai/Documents/Workspace/Web/TDZ/server/src/services/chart-service.ts:53:21)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async daily (/Users/kai/Documents/Workspace/Web/TDZ/server/src/controllers/chart-controller.ts:42:22)
 

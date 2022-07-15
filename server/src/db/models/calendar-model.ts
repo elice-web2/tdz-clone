@@ -39,8 +39,6 @@ export class CalendarModel {
 
   //유저의 기간별 조회
   async findByDate(fromToInfo: FromToInfo): Promise<CalendarData[] | null> {
-    console.log(fromToInfo.user_id);
-    console.log(new Date(fromToInfo.from));
     return await Calendar.find({
       $and: [
         { userId: fromToInfo.user_id },
@@ -51,7 +49,7 @@ export class CalendarModel {
           },
         },
       ],
-    });
+    }).sort({ date: 1 });
   }
 
   //유저의 주간별 조회

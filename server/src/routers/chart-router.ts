@@ -5,6 +5,7 @@ import * as chartController from '../controllers';
 
 const chartRouter: Router = Router();
 
-chartRouter.get('/daily', loginRequired, chartController.oneDay);
+chartRouter.get('/day', loginRequired, chartController.oneDay);
+chartRouter.get('/daily', loginRequired, chartController.daily);
 
 export { chartRouter };
