@@ -6,7 +6,7 @@ class SocialLoginService {
   constructor(private userModel: UserModel) {}
 
   // 소셜 로그인 (카카오)
-  async kakaoLogin(code: string) {
+  async kakaoLoginService(code: string) {
     const tokenResponse = await axios({
       method: 'POST',
       url: 'https://kauth.kakao.com/oauth/token',
@@ -38,10 +38,27 @@ class SocialLoginService {
     };
 
     console.log('authData', authData);
-    const { email } = authData.kakao_account;
+    const access_token = authData.access_token;
+    const {
+      profile: { nickname },
+      email,
+    } = authData.kakao_account;
 
+    // 가입 확인
     const isRegister = await this.userModel.findByEmail(email);
-    return { isRegister, email };
+    return { isRegister, email, nickname, access_token };
+  }
+
+  async kakaoLogoutService(accessToken: string) {
+    const response = await axios({
+      method: 'POST',
+      url: 'https://kapi.kakao.com/v1/user/logout',
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded',
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    return response;
   }
 }
 

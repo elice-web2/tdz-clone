@@ -42,61 +42,31 @@ class UserService {
   }
 
   // 카카오 회원가입
-  // async addUserWithKakao(email: string): Promise<UserData> {
-  //   if (!email) {
-  //     throw new Error('회원가입을 위해 이메일이 필요합니다');
-  //   }
+  async addUserWithKakao(
+    userInfo: LoginInfo,
+    nickname: string,
+  ): Promise<UserData> {
+    // 객체 destructuring
+    const { email, password } = userInfo;
 
-  //   // 임시 비밀번호
-  //   const password = 'kakao';
-  //   const hashedPassword = await bcrypt.hash(password, 10);
-
-  //   const nickname: string = getRandomNickname();
-  //   const newUserInfo = {
-  //     email,
-  //     password: hashedPassword,
-  //     nickname,
-  //     login_path: 'kakao',
-  //   };
-
-  //   // db에 저장
-  //   return await this.userModel.create(newUserInfo);
-  // }
-
-  // 카카오 로그인
-  /*
-  async getUserTokenWithKakao(email: string): Promise<string> {
     if (!email) {
-      throw new Error('로그인을 위해 이메일 필요합니다');
+      throw new Error('회원가입을 위해 이메일이 필요합니다');
     }
 
-    // 이메일 db에 존재 여부 확인
-    const user = await this.userModel.findByEmail(email);
+    // 비밀번호 해쉬화(암호화)
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-    if (!user) {
-      // 임시 비밀번호
-      const password = 'kakao';
-      const hashedPassword = await bcrypt.hash(password, 10);
+    const newUserInfo = {
+      email,
+      password: hashedPassword,
+      nickname,
+      login_path: 'kakao',
+    };
 
-      const nickname: string = getRandomNickname();
-      const newUserInfo = {
-        email,
-        password: hashedPassword,
-        nickname,
-        login_path: 'kakao',
-      };
-
-      // db에 저장
-      await this.userModel.create(newUserInfo);
-    }
-
-    // 로그인 성공 -> JWT 웹 토큰 생성
-    const secretKey = process.env.JWT_SECRET_KEY || 'secret-key';
-    const token = jwt.sign({ userId: user?._id, role: user?.role }, secretKey);
-
-    return token;
+    // db에 저장
+    return await this.userModel.create(newUserInfo);
   }
-*/
+
   // 로그인
   async getUserToken(loginInfo: LoginInfo): Promise<string> {
     // 객체 destructuring

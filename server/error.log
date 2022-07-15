@@ -1161,3 +1161,62 @@ Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the cli
     at ServerResponse.res.cookie (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\node_modules\express\lib\response.js:884:8)
     at C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\routers\social-login-router.ts:69:11
 
+[2022-7-15 20:19:56] POST:/api/auth/login
+Error: 비밀번호가 일치하지 않습니다. 다시 한 번 확인해 주세요.
+    at UserService.getUserToken (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\user-service.ts:125:13)
+    at async login (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\controllers\user-controller.ts:67:23)
+
+[2022-7-15 21:36:51] POST:/api/mealhistory
+TypeError: Cannot read properties of undefined (reading 'kcal')
+    at MealHistoryService.addMealHistory (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\mealhistory-service.ts:38:43)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async createHistory (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\controllers\mealhistory-controller.ts:52:30)
+
+[2022-7-15 21:39:30] DELETE:/api/users
+Error: 가입 내역이 없습니다. 다시 한 번 확인해 주세요.
+    at UserService.deleteUserData (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\user-service.ts:252:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async deleteUser (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\controllers\user-controller.ts:285:26)
+
+[2022-7-15 21:43:10] POST:/api/auth/login
+Error: 해당 이메일은 가입 내역이 없습니다. 다시 한 번 확인해 주세요.
+    at UserService.getUserToken (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\user-service.ts:112:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async login (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\controllers\user-controller.ts:67:23)
+
+[2022-7-16 0:38:20] GET:/auth/kakao/callback?code=R3H2bVWkGNp_oT69RszL9He0ejbHnvTB4xyXk7Sg4K2TpzUkJVpYeU70H11aQN5zi9KOUgorDKcAAAGCAoKLGA
+undefined
+
+[2022-7-16 1:22:48] GET:/auth/kakao/logout
+undefined
+
+[2022-7-16 1:27:11] GET:/auth/kakao/logout
+undefined
+
+[2022-7-16 1:33:11] GET:/auth/kakao/logout
+undefined
+
+[2022-7-16 1:34:41] GET:/auth/kakao/logout
+undefined
+
+[2022-7-16 1:37:23] GET:/auth/kakao/logout
+undefined
+
+[2022-7-16 2:0:13] GET:/auth/kakao/logout
+undefined
+
+[2022-7-16 2:0:30] GET:/auth/kakao/logout
+undefined
+
+[2022-7-16 2:1:6] GET:/auth/kakao/logout
+undefined
+
+[2022-7-16 2:3:45] GET:/auth/kakao/logout
+undefined
+
+[2022-7-16 2:8:15] GET:/auth/kakao/logout
+undefined
+
+[2022-7-16 2:17:40] GET:/auth/kakao/logout
+undefined
+
