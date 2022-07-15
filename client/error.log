@@ -374,3 +374,155 @@ TypeError: Cannot read properties of undefined (reading 'length')
     at async MealService.findMeal (C:\Users\Administrator\Desktop\project\TDZ\server\src\services\meal-service.ts:13:24)
     at async getMeal (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\meal-controller.ts:9:24)
 
+[2022-7-15 15:32:8] POST:/api/favorites
+Error: 이미 즐겨찾기에 등록된 식단입니다
+    at add (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:26:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 16:2:1] GET:/api/favorites/undefined
+CastError: Cast to ObjectId failed for value "undefined" (type string) at path "meal_id" for model "favorites"
+    at model.Query.exec (C:\Users\Administrator\Desktop\project\TDZ\server\node_modules\mongoose\lib\query.js:4498:21)
+    at model.Query.Query.then (C:\Users\Administrator\Desktop\project\TDZ\server\node_modules\mongoose\lib\query.js:4592:15)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 16:2:27] GET:/api/favorites/undefined
+CastError: Cast to ObjectId failed for value "undefined" (type string) at path "meal_id" for model "favorites"
+    at model.Query.exec (C:\Users\Administrator\Desktop\project\TDZ\server\node_modules\mongoose\lib\query.js:4498:21)
+    at model.Query.Query.then (C:\Users\Administrator\Desktop\project\TDZ\server\node_modules\mongoose\lib\query.js:4592:15)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 16:2:32] GET:/api/favorites/undefined
+CastError: Cast to ObjectId failed for value "undefined" (type string) at path "meal_id" for model "favorites"
+    at model.Query.exec (C:\Users\Administrator\Desktop\project\TDZ\server\node_modules\mongoose\lib\query.js:4498:21)
+    at model.Query.Query.then (C:\Users\Administrator\Desktop\project\TDZ\server\node_modules\mongoose\lib\query.js:4592:15)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 16:4:51] GET:/api/favorites/undefined
+CastError: Cast to ObjectId failed for value "undefined" (type string) at path "meal_id" for model "favorites"
+    at model.Query.exec (C:\Users\Administrator\Desktop\project\TDZ\server\node_modules\mongoose\lib\query.js:4498:21)
+    at model.Query.Query.then (C:\Users\Administrator\Desktop\project\TDZ\server\node_modules\mongoose\lib\query.js:4592:15)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 16:6:58] GET:/api/favorites/62d03cdcac2e4a4928ad2386
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 16:9:21] GET:/api/favorites/62d03cdcac2e4a4928ad2386
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 16:10:6] GET:/api/favorites/62d03cdcac2e4a4928ad2386
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 16:10:43] GET:/api/favorites/62d015dbd5875f76f8dea840
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 16:15:48] GET:/api/favorites/undefined
+CastError: Cast to ObjectId failed for value "undefined" (type string) at path "meal_id" for model "favorites"
+    at model.Query.exec (C:\Users\Administrator\Desktop\project\TDZ\server\node_modules\mongoose\lib\query.js:4498:21)
+    at model.Query.Query.then (C:\Users\Administrator\Desktop\project\TDZ\server\node_modules\mongoose\lib\query.js:4592:15)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 16:15:49] GET:/api/favorites/undefined
+CastError: Cast to ObjectId failed for value "undefined" (type string) at path "meal_id" for model "favorites"
+    at model.Query.exec (C:\Users\Administrator\Desktop\project\TDZ\server\node_modules\mongoose\lib\query.js:4498:21)
+    at model.Query.Query.then (C:\Users\Administrator\Desktop\project\TDZ\server\node_modules\mongoose\lib\query.js:4592:15)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 16:15:59] GET:/api/favorites/undefined
+CastError: Cast to ObjectId failed for value "undefined" (type string) at path "meal_id" for model "favorites"
+    at model.Query.exec (C:\Users\Administrator\Desktop\project\TDZ\server\node_modules\mongoose\lib\query.js:4498:21)
+    at model.Query.Query.then (C:\Users\Administrator\Desktop\project\TDZ\server\node_modules\mongoose\lib\query.js:4592:15)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 16:26:10] POST:/api/favorites
+Error: 이미 즐겨찾기에 등록된 식단입니다
+    at add (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:26:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 16:47:31] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 16:47:31] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 16:48:32] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 16:48:32] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 16:48:36] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 16:48:37] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 16:50:39] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 16:50:39] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 16:51:11] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 16:52:46] GET:/api/favorites/62d015f10496613e9cfe7e7f
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 16:52:59] GET:/api/favorites/62d015f10496613e9cfe7e7f
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 16:52:59] GET:/api/favorites/62d015f10496613e9cfe7e7f
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+

@@ -26,7 +26,14 @@ function MealsBookMarkList() {
           return (
             <S.List key={food.meal_id.code}>
               <S.NamedInfo>
-                <div className="title">{food.meal_id.name}</div>
+                <div
+                  className="title"
+                  onClick={() => {
+                    navigate(`/meals/detail/${food.meal_id.name}`);
+                  }}
+                >
+                  {food.meal_id.name}
+                </div>
                 <span
                   className="arrowIcon"
                   onClick={() => {
