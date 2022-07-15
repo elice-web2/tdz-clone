@@ -6,29 +6,17 @@ import NoSearched from '../NoSearched';
 import { useNavigate } from 'react-router-dom';
 import { addMeals } from '../../../slices/mealsSlice';
 import { addBookMark } from '../../../slices/bookMarkSlice';
-
-interface GetMealDataObj {
-  name: string;
-  code: string;
-  kcal: number;
-  carb: number;
-  protein: number;
-  fat: number;
-  natruim: number;
-  cholesterol: number;
-  transfat: number;
-  saturatedfatty: number;
-  servingSize: number;
-  quantity: number;
-  totalGram: number;
-}
+import * as api from '../../../api';
+import { MealInfo, MealData } from '../../../customType/meal.type';
+import { useState } from 'react';
 
 interface MealsSearchedListProps {
-  result: GetMealDataObj[];
+  result: MealData[];
   inputValue: string;
 }
 
 function MealsSearchedList({ inputValue, result }: MealsSearchedListProps) {
+  const [isBookMarked, setIsBookMarked] = useState(false);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -37,7 +25,7 @@ function MealsSearchedList({ inputValue, result }: MealsSearchedListProps) {
       {result.length === 0 || !inputValue ? (
         <NoSearched></NoSearched>
       ) : (
-        result.map((food: GetMealDataObj) => {
+        result.map((food: MealData) => {
           return (
             <S.List key={food.code}>
               <S.NamedInfo>
@@ -69,14 +57,26 @@ function MealsSearchedList({ inputValue, result }: MealsSearchedListProps) {
                 <span
                   className="starIcon"
                   onClick={() => {
-                    dispatch(
-                      addBookMark({
-                        meal_id: food.code,
-                      }),
-                    );
+                    if (!isBookMarked) {
+                      //추가
+                      api.post('/api/favorites', {
+                        meal_id: food._id,
+                      });
+                      setIsBookMarked((cur) => !cur);
+                    } else {
+                      //삭제
+                      api.delete(`/api/favorites/${food._id}`);
+                      setIsBookMarked((cur) => !cur);
+                    }
                   }}
                 >
-                  <img src={require('../../../assets/blackStar.png')}></img>
+                  <img
+                    src={
+                      isBookMarked
+                        ? require('../../../assets/YellowStar.png')
+                        : require('../../../assets/blackStar.png')
+                    }
+                  ></img>
                 </span>
               </S.NamedInfo>
               <S.QuanInfo>1인분</S.QuanInfo>

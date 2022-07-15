@@ -10,21 +10,7 @@ import MealsCartList from '../../components/MealsCart/MealsCartList';
 import { useAppSelector } from '../../hooks';
 import * as api from '../../api';
 import Container from '../../components/styles/Container';
-
-interface GetMealDataObj {
-  code: string;
-  name: string;
-  kcal: number;
-  carb: number;
-  protein: number;
-  fat: number;
-  natruim: number;
-  cholesterol: number;
-  transfat: number;
-  saturatedfatty: number;
-  servingSize: number;
-  quantity?: number;
-}
+import { MealData } from '../../customType/meal.type';
 
 interface TestType {
   totalKcal: number;

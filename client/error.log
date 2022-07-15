@@ -269,3 +269,75 @@ Error: 피자을 조회할 수 없습니다.
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
     at async getMeal (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\meal-controller.ts:9:24)
 
+[2022-7-15 3:21:47] POST:/api/favorites
+CastError: Cast to ObjectId failed for value "D018163" (type string) at path "meal_id" for model "favorites"
+    at model.Query.exec (C:\Users\Administrator\Desktop\project\TDZ\server\node_modules\mongoose\lib\query.js:4498:21)
+    at model.Query.Query.then (C:\Users\Administrator\Desktop\project\TDZ\server\node_modules\mongoose\lib\query.js:4592:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 11:4:23] POST:/api/favorites
+Error: 이미 즐겨찾기에 등록된 식단입니다
+    at add (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:26:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 11:4:26] POST:/api/favorites
+Error: 이미 즐겨찾기에 등록된 식단입니다
+    at add (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:26:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 11:38:34] DELETE:/api/favorites/62d02a99199fd052e4071338
+SyntaxError: Unexpected token " in JSON at position 0
+    at JSON.parse (<anonymous>)
+    at createStrictSyntaxError (C:\Users\Administrator\Desktop\project\TDZ\server\node_modules\body-parser\lib\types\json.js:160:10)
+    at parse (C:\Users\Administrator\Desktop\project\TDZ\server\node_modules\body-parser\lib\types\json.js:83:15)
+    at C:\Users\Administrator\Desktop\project\TDZ\server\node_modules\body-parser\lib\read.js:128:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:202:9)
+    at invokeCallback (C:\Users\Administrator\Desktop\project\TDZ\server\node_modules\raw-body\index.js:231:16)
+    at done (C:\Users\Administrator\Desktop\project\TDZ\server\node_modules\raw-body\index.js:220:7)
+    at IncomingMessage.onEnd (C:\Users\Administrator\Desktop\project\TDZ\server\node_modules\raw-body\index.js:280:7)
+    at IncomingMessage.emit (node:events:539:35)
+    at IncomingMessage.emit (node:domain:475:12)
+    at endReadableNT (node:internal/streams/readable:1345:12)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+[2022-7-15 11:42:15] DELETE:/api/favorites/62d02a99199fd052e4071338
+Error: 해당하는 즐겨찾기가 없습니다. 다시 한 번 확인해 주세요.
+    at FavoriteService.deleteOneFavorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\services\favorite-service.ts:59:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async deleteFavorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:88:28)
+
+[2022-7-15 11:43:7] POST:/api/favorites
+Error: 이미 즐겨찾기에 등록된 식단입니다
+    at add (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:26:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 11:43:52] DELETE:/api/favorites/62d02a99199fd052e4071338
+Error: 해당하는 즐겨찾기가 없습니다. 다시 한 번 확인해 주세요.
+    at FavoriteService.deleteOneFavorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\services\favorite-service.ts:59:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async deleteFavorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:88:28)
+
+[2022-7-15 11:44:50] DELETE:/api/favorites/62d015dad5875f76f8dea838
+Error: 해당하는 즐겨찾기가 없습니다. 다시 한 번 확인해 주세요.
+    at FavoriteService.deleteOneFavorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\services\favorite-service.ts:59:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async deleteFavorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:88:28)
+
+[2022-7-15 11:51:2] POST:/api/favorites
+Error: 이미 즐겨찾기에 등록된 식단입니다
+    at add (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:26:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 11:51:4] DELETE:/api/favorites/62d015dad5875f76f8dea838
+Error: 해당하는 즐겨찾기가 없습니다. 다시 한 번 확인해 주세요.
+    at FavoriteService.deleteOneFavorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\services\favorite-service.ts:59:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async deleteFavorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:88:28)
+
+[2022-7-15 13:24:30] GET:/api/meal/D010835
+TypeError: Cannot read properties of undefined (reading 'length')
+    at MealService.addMeal (C:\Users\Administrator\Desktop\project\TDZ\server\src\services\meal-service.ts:44:38)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async MealService.findMeal (C:\Users\Administrator\Desktop\project\TDZ\server\src\services\meal-service.ts:13:24)
+    at async getMeal (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\meal-controller.ts:9:24)
+
