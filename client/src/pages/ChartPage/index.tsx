@@ -1,7 +1,7 @@
 // dependencies
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import * as S from './style';
 import {
@@ -94,20 +94,32 @@ const DUMMY_DATA_MONTHLY = {
 function ChartPage() {
   const [filter, setFilter] = useState<FilterType>('DAILY');
   const [baseDate, setBaseDate] = useState(dayjs());
+  const [disableNext, setDisableNext] = useState(true);
 
   const onClickFilter = (filter: FilterType) => {
     setFilter(filter);
     setBaseDate(dayjs());
+    setDisableNext(true);
   };
 
-  const onClickLeftAndRight = (value: number) => {
-    const converted = convertDate(baseDate, filter, false);
+  const onClickLeftAndRight = (value: number, isNext: boolean) => {
+    const converted = convertDate(baseDate, filter, isNext);
+    if (converted.diff(dayjs()) > 0) return;
     const newDate =
       filter === 'MONTHLY'
         ? converted.add(value, 'month')
         : converted.add(value, 'day');
     setBaseDate(newDate);
   };
+
+  useEffect(() => {
+    // 현재 일자보다 앞의 날짜를 설정하지 못하게 버튼을 비활성화 하는 기능
+    if (filter === 'MONTHLY') {
+      setDisableNext(baseDate.month() === dayjs().month());
+    } else {
+      setDisableNext(baseDate.date() === dayjs().date());
+    }
+  }, [baseDate]);
 
   return (
     <Container>
@@ -140,7 +152,7 @@ function ChartPage() {
           <S.PeriodContainer>
             <FontAwesomeIcon
               icon={faAngleLeft}
-              onClick={() => onClickLeftAndRight(-1)}
+              onClick={() => onClickLeftAndRight(-1, false)}
             />
             <p>
               <span>
@@ -155,10 +167,12 @@ function ChartPage() {
                 )}
               </span>
             </p>
-            <FontAwesomeIcon
-              icon={faAngleRight}
-              onClick={() => onClickLeftAndRight(1)}
-            />
+            <S.NextButton isDisable={disableNext}>
+              <FontAwesomeIcon
+                icon={faAngleRight}
+                onClick={() => onClickLeftAndRight(1, true)}
+              />
+            </S.NextButton>
           </S.PeriodContainer>
 
           <WeightChart data={DUMMY_DATA_DAILY} />
