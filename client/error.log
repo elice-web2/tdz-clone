@@ -786,3 +786,15 @@ Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
     at runMicrotasks (<anonymous>)
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
 
+[2022-7-15 18:11:18] GET:/api/meal/%ED%94%BC%EC%9E%90
+Error: 피자을 조회할 수 없습니다.
+    at MealService.findMeal (C:\Users\Administrator\Desktop\project\TDZ\server\src\services\meal-service.ts:17:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async getMeal (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\meal-controller.ts:9:24)
+
+[2022-7-15 18:11:22] GET:/api/meal/%ED%94%BC%EC%9E%90
+Error: 피자을 조회할 수 없습니다.
+    at MealService.findMeal (C:\Users\Administrator\Desktop\project\TDZ\server\src\services\meal-service.ts:17:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async getMeal (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\meal-controller.ts:9:24)
+
