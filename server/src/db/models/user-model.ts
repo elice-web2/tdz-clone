@@ -5,7 +5,7 @@ import {
   LoginInfo,
   UserInfo,
   ToUpdate,
-} from '../../customType/user.type';
+} from '../../types/user.type';
 
 const User = model<UserData>('users', UserSchema);
 
