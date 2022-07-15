@@ -1,19 +1,16 @@
 import * as S from './style';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight, faPlus } from '@fortawesome/free-solid-svg-icons';
+import * as api from '../../../api';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../../hooks';
 import NoSearched from '../NoSearched';
-import { useNavigate } from 'react-router-dom';
 import { addMeals } from '../../../slices/mealsSlice';
-import * as api from '../../../api';
-import { MealInfo, MealData } from '../../../customType/meal.type';
-import { useEffect, useState } from 'react';
-import { set } from 'immer/dist/internal';
-
-interface MealsSearchedListProps {
-  result: MealData[];
-  inputValue: string;
-}
+import {
+  MealData,
+  MealsSearchedListProps,
+} from '../../../customType/meal.type';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 function MealsSearchedList({ inputValue, result }: MealsSearchedListProps) {
   const [isBookMarked, setIsBookMarked] = useState(false);
@@ -34,13 +31,18 @@ function MealsSearchedList({ inputValue, result }: MealsSearchedListProps) {
     })();
   }, [result]);
 
+  function addToCart(food: MealData) {
+    dispatch(addMeals(food));
+    navigate('/meals/cart');
+  }
+
   function bookmarkHandler(id: string) {
     if (isBookMarked) {
-      api.delete(`/api/favorites/${id}`).then((res) => {
+      api.delete(`/api/favorites/${id}`).then(() => {
         setIsBookMarked(false);
       });
     } else {
-      api.post('/api/favorites', { meal_id: id }).then((res) => {
+      api.post('/api/favorites', { meal_id: id }).then(() => {
         setIsBookMarked(true);
       });
     }
@@ -74,8 +76,7 @@ function MealsSearchedList({ inputValue, result }: MealsSearchedListProps) {
                 <span
                   className="plusIcon"
                   onClick={() => {
-                    dispatch(addMeals(food));
-                    navigate('/meals/cart');
+                    addToCart(food);
                   }}
                 >
                   <FontAwesomeIcon icon={faPlus} />

@@ -1,20 +1,19 @@
 import * as S from './style';
+import * as api from '../../../api';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { MealData } from '../../../customType/meal.type';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { useAppSelector } from '../../../hooks';
-import { useNavigate } from 'react-router-dom';
-import * as api from '../../../api';
-import { MealData } from '../../../customType/meal.type';
-import { useEffect, useState } from 'react';
 
 function MealsBookMarkList() {
   const [result, setResult] = useState<MealData[]>();
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
       api.get('/api/favorites').then((res: any) => {
         setResult(res.data);
-        console.log('resdata', res.data);
       });
     })();
   }, []);
@@ -24,8 +23,6 @@ function MealsBookMarkList() {
       setResult(res.data);
     });
   }, [result]);
-
-  const navigate = useNavigate();
 
   function deleteBookMark(id: string) {
     api.delete(`/api/favorites/${id}`).then((res) => console.log(res));
@@ -64,7 +61,7 @@ function MealsBookMarkList() {
                   <img src={require('../../../assets/YellowStar.png')}></img>
                 </span>
               </S.NamedInfo>
-              <S.QuanInfo>{food.meal_id.quantity}인분</S.QuanInfo>
+              <S.QuanInfo>1인분</S.QuanInfo>
             </S.List>
           );
         })}

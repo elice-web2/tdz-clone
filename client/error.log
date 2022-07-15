@@ -816,3 +816,117 @@ Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
     at runMicrotasks (<anonymous>)
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
 
+[2022-7-15 21:15:59] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 21:16:21] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 21:16:43] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 21:17:47] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 21:18:5] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 21:18:5] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 21:18:5] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 21:18:43] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 21:18:44] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 21:18:44] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 21:18:48] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 21:18:52] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 21:18:52] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 21:18:57] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 21:18:58] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 21:18:58] GET:/api/favorites/62d03cdcac2e4a4928ad2372
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 21:20:31] GET:/api/favorites/62d015dbd5875f76f8dea83e
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 21:22:43] GET:/api/favorites/62d015dbd5875f76f8dea83e
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[2022-7-15 21:22:43] GET:/api/favorites/62d015dbd5875f76f8dea83e
+Error: 해당 식단에 관련한 즐겨찾기 정보가 없습니다.
+    at favorite (C:\Users\Administrator\Desktop\project\TDZ\server\src\controllers\favorite-controller.ts:82:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+

@@ -1,12 +1,12 @@
 import * as S from './style';
-import { useState, useRef, useEffect } from 'react';
+import * as api from '../../api';
+import React, { useState, useRef, useEffect } from 'react';
 import Container from '../../components/styles/Container';
 import Navbar from '../../components/common/Navbar';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import MealsSearchedList from '../../components/MealsSearch/MealsSearchedList';
 import MealsBookMarkList from '../../components/MealsSearch/MealsBookMarkList';
-import * as api from '../../api';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { MealData } from '../../customType/meal.type';
 
 function MealsSearch() {
@@ -21,6 +21,28 @@ function MealsSearch() {
     }
   }, [inputValue]);
 
+  function deleteInputHandler() {
+    setInputValue('');
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }
+
+  function onChangeInputHandler(e: React.ChangeEvent<HTMLInputElement>) {
+    setInputValue(e.target.value);
+  }
+
+  function focusHandler() {
+    setIsSearch(true);
+  }
+
+  function onKeyPressHandler(e: React.KeyboardEvent<HTMLInputElement>) {
+    e.preventDefault();
+    if (e.key === 'Enter') {
+      inputSubmitHandler();
+    }
+  }
+
   function inputSubmitHandler() {
     if (inputRef.current) {
       setInputValue(inputRef.current.value);
@@ -28,6 +50,17 @@ function MealsSearch() {
         setSearchedResult(res.data);
       });
     }
+  }
+
+  function moveSearchTab() {
+    setIsSearch(true);
+    setInputValue('');
+    inputRef.current && inputRef.current.focus();
+  }
+
+  function moveBookMarkTab() {
+    setIsSearch(false);
+    setInputValue('');
   }
 
   return (
@@ -41,55 +74,25 @@ function MealsSearch() {
           <span className="searchIcon">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </span>
-          <button
-            className="XBtn"
-            onClick={() => {
-              setInputValue('');
-              if (inputRef.current) {
-                inputRef.current.focus();
-              }
-            }}
-          >
+          <button className="XBtn" onClick={deleteInputHandler}>
             X
           </button>
           <S.SearchInput
             type="text"
             value={inputValue}
             ref={inputRef}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              setInputValue(event.target.value);
-            }}
-            onFocus={() => {
-              setIsSearch(true);
-            }}
-            onKeyPress={(e) => {
-              e.preventDefault();
-              if (e.key === 'Enter') {
-                inputSubmitHandler();
-              }
-            }}
+            onChange={onChangeInputHandler}
+            onFocus={focusHandler}
+            // onKeyPress={onKeyPressHandler}
           ></S.SearchInput>
         </S.SearchBox>
         <S.SearchBtn onClick={() => inputSubmitHandler()}>검색</S.SearchBtn>
       </S.SearchForm>
       <S.ButtonContainer>
-        <S.SearchTabBtn
-          isSearch={isSearch}
-          onClick={() => {
-            setIsSearch(true);
-            setInputValue('');
-            inputRef.current && inputRef.current.focus();
-          }}
-        >
+        <S.SearchTabBtn isSearch={isSearch} onClick={moveSearchTab}>
           검색
         </S.SearchTabBtn>
-        <S.BookMarkTabBtn
-          isSearch={isSearch}
-          onClick={() => {
-            setIsSearch(false);
-            setInputValue('');
-          }}
-        >
+        <S.BookMarkTabBtn isSearch={isSearch} onClick={moveBookMarkTab}>
           즐겨찾기
         </S.BookMarkTabBtn>
       </S.ButtonContainer>
