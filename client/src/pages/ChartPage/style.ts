@@ -34,6 +34,10 @@ export const PeriodContainer = styled.div`
 
     cursor: pointer;
   }
+
+  span {
+    padding: 0 5px;
+  }
 `;
 
 export const Wrapper = styled.div`

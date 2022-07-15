@@ -23,6 +23,7 @@ import WeightChart from '../../components/chart/WeightChart';
 import CalorieChart from '../../components/chart/CalorieChart';
 import NutrientAverage from '../../components/chart/NutrientAverage';
 import { ScrollContainer } from '../../components/styles/ScrollContainer';
+import { convertDate, FilterType } from '../../utils';
 
 // ChartJS를 react 에서 쓸 수 있도록 하는 코드
 ChartJS.register(
@@ -59,12 +60,53 @@ const DUMMY_DATA_DAILY = {
   콜레스테롤합: 100,
   나트륨합: 100,
 };
+const DUMMY_DATA_WEEKLY = {
+  체중: [70, 70.5, 69.4, 70.2],
+  칼로리평균: [1550, 1300, 1400, 1200],
+  탄수화물: [65, 66, 67, 68],
+  단백질: [65, 66, 67, 68],
+  지방: [65, 66, 67, 68],
+  칼로리합: 12000,
+  탄수화물합: 1000,
+  단백질합: 1000,
+  지방합: 1000,
+  포화지방합: 100,
+  당류합: 100,
+  콜레스테롤합: 100,
+  나트륨합: 100,
+};
+const DUMMY_DATA_MONTHLY = {
+  체중: [70, 70.5, 69.4],
+  칼로리평균: [1550, 1300, 1400],
+  탄수화물: [65, 66, 67],
+  단백질: [65, 66, 67],
+  지방: [65, 66, 67],
+  칼로리합: 12000,
+  탄수화물합: 1000,
+  단백질합: 1000,
+  지방합: 1000,
+  포화지방합: 100,
+  당류합: 100,
+  콜레스테롤합: 100,
+  나트륨합: 100,
+};
 
 function ChartPage() {
-  const [filter, setFilter] = useState<'DAILY' | 'WEEKLY' | 'MONTHLY'>('DAILY');
+  const [filter, setFilter] = useState<FilterType>('DAILY');
+  const [baseDate, setBaseDate] = useState(dayjs());
 
-  const onClickFilter = (filter: 'DAILY' | 'WEEKLY' | 'MONTHLY') => {
+  const onClickFilter = (filter: FilterType) => {
     setFilter(filter);
+    setBaseDate(dayjs());
+  };
+
+  const onClickLeftAndRight = (value: number) => {
+    const converted = convertDate(baseDate, filter, false);
+    const newDate =
+      filter === 'MONTHLY'
+        ? converted.add(value, 'month')
+        : converted.add(value, 'day');
+    setBaseDate(newDate);
   };
 
   return (
@@ -96,13 +138,27 @@ function ChartPage() {
           </S.FilterContainer>
           {/* 날짜 변경 UI */}
           <S.PeriodContainer>
-            <FontAwesomeIcon icon={faAngleLeft} />
+            <FontAwesomeIcon
+              icon={faAngleLeft}
+              onClick={() => onClickLeftAndRight(-1)}
+            />
             <p>
-              {/* 필터에 따라 날짜를 보여주고 왼쪽 오른쪽 버튼 클릭 시 날짜를 변경 가능하게 해야함 */}
-              {dayjs().add(-1, 'week').format('YY-MM-DD')} ~{' '}
-              {dayjs().add(-1, 'day').format('YY-MM-DD')}
+              <span>
+                {convertDate(baseDate, filter, false).format(
+                  filter === 'MONTHLY' ? 'YYYY.MM' : 'YY.MM.DD',
+                )}
+              </span>
+              <span>~</span>
+              <span>
+                {dayjs(baseDate).format(
+                  filter === 'MONTHLY' ? 'YYYY.MM' : 'YY.MM.DD',
+                )}
+              </span>
             </p>
-            <FontAwesomeIcon icon={faAngleRight} />
+            <FontAwesomeIcon
+              icon={faAngleRight}
+              onClick={() => onClickLeftAndRight(1)}
+            />
           </S.PeriodContainer>
 
           <WeightChart data={DUMMY_DATA_DAILY} />

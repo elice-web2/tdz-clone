@@ -8,7 +8,7 @@ import * as S from './style';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
 import dayjs from 'dayjs';
 import { updateDate } from '../../../slices/dateSlice';
-import { parseDateFromNow } from './parseDateFromNow';
+import { parseDateFromNow } from '../../../utils/parseDateFromNow';
 import { useState } from 'react';
 import CalendarStamp from '../../CalendarStamp';
 
