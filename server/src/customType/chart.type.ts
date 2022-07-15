@@ -27,9 +27,9 @@ export interface FromToInfo {
 //     to: Date;
 //   }
 
-export interface DailyData {
+export interface ChartData {
   userId: string;
-  todayWeight: Number[];
+  weight: Number[];
   kcalAvg: Number[];
   carbAvg: Number[];
   proteinAvg: Number[];
@@ -43,3 +43,20 @@ export interface DailyData {
   saturatedfattySum: Number;
   transfatSum: Number;
 }
+
+// export interface ChartData {
+//   userId: string;
+//   weight: Number[];
+//   kcalAvg: Number[];
+//   carbAvg: Number[];
+//   proteinAvg: Number[];
+//   kcalSum: Number;
+//   carbSum: Number;
+//   proteinSum: Number;
+//   fatSum: Number;
+//   sugarsSum: Number;
+//   natriumSum: Number;
+//   cholesterolSum: Number;
+//   saturatedfattySum: Number;
+//   transfatSum: Number;
+// }

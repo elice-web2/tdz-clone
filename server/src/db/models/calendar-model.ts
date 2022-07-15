@@ -52,6 +52,42 @@ export class CalendarModel {
     }).sort({ date: 1 });
   }
 
+  async caculateDaily(fromToInfo: FromToInfo) {
+    const data = Calendar.aggregate([
+      {
+        $and: [
+          { userId: fromToInfo.user_id },
+          {
+            date: {
+              $gte: new Date(fromToInfo.from),
+              $lt: new Date(fromToInfo.to),
+            },
+          },
+        ],
+      },
+      {
+        $group: {
+          _id: {
+            interval: {
+              $subtract: [
+                { $year: '$DATE' },
+                { $week: '$DATE' },
+                { $mod: [{ $week: '$DATE' }, 1] },
+              ],
+            },
+          },
+          date: '$DATE',
+          weight: { $sum: 'todayWeight' },
+          kcal: { $sum: '$currentKcal' },
+          carb: { $sum: '$carbSum' },
+        },
+      },
+      { $sort: { _id: 1 } },
+    ]);
+    console.log(data);
+    return data;
+  }
+
   //유저의 주간별 조회
   // findByWeek;
 

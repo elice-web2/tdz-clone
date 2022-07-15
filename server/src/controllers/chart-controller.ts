@@ -46,6 +46,26 @@ const daily = async (req: Request, res: Response, next: NextFunction) => {
     next(error);
   }
 };
-//14, 13, 12, 11, 10, 9, 8, 7, 6... 데이터 만들기
+
+// const weekly = async (req: Request, res: Response, next: NextFunction) => {
+//   try {
+//     //날짜를 읽어옴
+//     const from: string = String(req.query.from);
+//     const to: string = String(req.query.to);
+//     //날짜를 일주일 단위로 끊어서 주간 데이터를 받기
+//     // from=2022-06-10&to=2022-07-07
+//     const first: string =
+//       // const fromToInfo: DayInfo = {
+//       //   user_id: req.currentUserId!,
+//       //   date,
+//       // };
+
+//       // const dateData = await chartService.getDailyChart(fromToInfo);
+
+//       res.status(200).json(dateData);
+//   } catch (error) {
+//     next(error);
+//   }
+// };
 
 export { oneDay, daily };
