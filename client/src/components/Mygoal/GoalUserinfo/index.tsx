@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import * as S from '../style';
-import { userCalories } from '../../../utils';
+import { userCalories, userBmi } from '../../../utils';
 
 function GoalUserInfoForm() {
   const {
@@ -11,6 +11,7 @@ function GoalUserInfoForm() {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
+
   const [mode, setMode] = useState('DEC');
   const [activity, setActivity] = useState('NORMAL');
   const [gender, setGender] = useState('MALE');
@@ -49,6 +50,7 @@ function GoalUserInfoForm() {
   const genderHandler = (e: any) => {
     setGender(e.target.value);
   };
+
   const onSubmit = (data: any) => {
     const age = data.age;
     const height = data.height;
@@ -62,6 +64,7 @@ function GoalUserInfoForm() {
       height,
       current_weight,
       goal_weight: data.goal_weight,
+      bmi: userBmi({ height, current_weight }),
       mode,
       activity,
       nutrient: {
