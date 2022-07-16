@@ -84,11 +84,10 @@ function MealsCart() {
             result.map((el) => {
               return (
                 <MealsCartList
-                  key={el.code}
+                  id={el._id}
                   name={el.name}
                   quantity={el.quantity}
                   totalGram={el.totalGram}
-                  code={el.code}
                 ></MealsCartList>
               );
             })
