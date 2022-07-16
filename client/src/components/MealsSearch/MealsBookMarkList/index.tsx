@@ -3,34 +3,30 @@ import * as api from '../../../api';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
-import NoSearched from '../NoSearched';
 import { addMeals, deleteMeals } from '../../../slices/mealsSlice';
 import { accNutrientCal } from '../../../utils/calculateAccNutrient';
-import {
-  MealData,
-  MealsSearchedListProps,
-} from '../../../customType/meal.type';
+import { MealData } from '../../../customType/meal.type';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faPlus } from '@fortawesome/free-solid-svg-icons';
 
-function MealsSearchedList({ inputValue, result }: MealsSearchedListProps) {
-  const [isBookMarked, setIsBookMarked] = useState(false);
+function MealsBookMarkList() {
+  const [result, setResult] = useState<MealData[]>();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const mealStore = useAppSelector(({ meal }) => meal.value);
 
   useEffect(() => {
     (async () => {
-      result.map((meal) => {
-        api.get(`/api/favorites/${meal._id}`).then((res) => {
-          if (!res) {
-            setIsBookMarked(false);
-          } else {
-            setIsBookMarked(true);
-          }
-        });
+      api.get('/api/favorites').then((res: any) => {
+        setResult(res.data);
       });
     })();
+  }, []);
+
+  useEffect(() => {
+    api.get('/api/favorites').then((res: any) => {
+      setResult(res.data);
+    });
   }, [result]);
 
   //장바구니 담을땐 중복필터링
@@ -54,39 +50,30 @@ function MealsSearchedList({ inputValue, result }: MealsSearchedListProps) {
       navigate('/meals/cart');
     }
   }
-  function bookmarkHandler(id: string) {
-    if (isBookMarked) {
-      api.delete(`/api/favorites/${id}`).then(() => {
-        setIsBookMarked(false);
-      });
-    } else {
-      api.post('/api/favorites', { meal_id: id }).then(() => {
-        setIsBookMarked(true);
-      });
-    }
+
+  function deleteBookMark(id: string) {
+    api.delete(`/api/favorites/${id}`).then((res) => console.log(res));
   }
 
   return (
     <S.SearchListContainer>
-      {result.length === 0 || !inputValue ? (
-        <NoSearched></NoSearched>
-      ) : (
-        result.map((food: MealData) => {
+      {result &&
+        result.map((food: any) => {
           return (
-            <S.List key={food.code}>
+            <S.List key={food.meal_id._id}>
               <S.NamedInfo>
                 <div
                   className="title"
                   onClick={() => {
-                    navigate(`/meals/detail/${food.name}`);
+                    navigate(`/meals/detail/${food.meal_id.name}`);
                   }}
                 >
-                  {food.name}
+                  {food.meal_id.name}
                 </div>
                 <span
                   className="arrowIcon"
                   onClick={() => {
-                    navigate(`/meals/detail/${food.name}`);
+                    navigate(`/meals/detail/${food.meal_id.name}`);
                   }}
                 >
                   <FontAwesomeIcon icon={faArrowRight} />
@@ -94,32 +81,23 @@ function MealsSearchedList({ inputValue, result }: MealsSearchedListProps) {
                 <span
                   className="plusIcon"
                   onClick={() => {
-                    addToCart(food);
+                    addToCart(food.meal_id);
                   }}
                 >
                   <FontAwesomeIcon icon={faPlus} />
                 </span>
                 <span
                   className="starIcon"
-                  onClick={() => {
-                    bookmarkHandler(food._id);
-                  }}
+                  onClick={() => deleteBookMark(food.meal_id._id)}
                 >
-                  <img
-                    src={
-                      isBookMarked
-                        ? require('../../../assets/YellowStar.png')
-                        : require('../../../assets/blackStar.png')
-                    }
-                  ></img>
+                  <img src={require('../../../assets/YellowStar.png')}></img>
                 </span>
               </S.NamedInfo>
               <S.QuanInfo>1인분</S.QuanInfo>
             </S.List>
           );
-        })
-      )}
+        })}
     </S.SearchListContainer>
   );
 }
-export default MealsSearchedList;
+export default MealsBookMarkList;

@@ -41,7 +41,7 @@ export interface ToUpdate {
 }
 
 export interface CalendarToUpdate {
-  date?: Date;
+  isSuccess?: boolean;
   current_kcal?: Number;
   goal_kcal?: Number;
   mode?: string;

@@ -29,15 +29,6 @@ export const NamedInfo = styled.div`
     font-weight: bold;
     cursor: pointer;
   }
-
-  .plusIcon {
-    position: absolute;
-    right: 18px;
-    top: 60px;
-    font-size: 20px;
-    cursor: pointer;
-  }
-
   .starIcon img {
     width: 23px;
     height: 23px;
@@ -47,8 +38,15 @@ export const NamedInfo = styled.div`
     font-size: 20px;
     cursor: pointer;
   }
-`;
 
+  .plusIcon {
+    position: absolute;
+    right: 18px;
+    top: 60px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+`;
 export const QuanInfo = styled.p`
   margin-bottom: 20px;
   padding: 3px 10px 10px 13px;
