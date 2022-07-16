@@ -30,7 +30,10 @@ class SocialLoginController {
         );
       }
 
-      res.cookie('token', access_token).status(200).json(access_token);
+      res
+        .cookie('token', access_token, { httpOnly: true })
+        .status(200)
+        .json(access_token);
     } catch (err) {
       next(err);
     }
