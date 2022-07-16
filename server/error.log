@@ -1297,3 +1297,6 @@ undefined
 [2022-7-16 12:35:54] GET:/auth/kakao/logout
 undefined
 
+[2022-7-17 0:56:29] GET:/api/auth/kakao/callback?code=XCWZLzpH30yBd0Nac7KpCZB6vOYpxk2O8-5jv2wAy_7l2iE-HdwI3eFmj4H9q-ptEjrQ_Aopb7gAAAGCB7mBRA
+undefined
+

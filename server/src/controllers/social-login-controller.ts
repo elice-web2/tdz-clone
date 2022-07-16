@@ -61,8 +61,10 @@ class SocialLoginController {
       const response = await socialLoginService.kakaoLogoutService(
         accessTokenValue,
       );
-      res.clearCookie('token');
-      res.json({ success: true, data: '성공적으로 로그아웃 되었습니다.' });
+      res
+        .clearCookie('accessToken')
+        .clearCookie('token')
+        .json({ success: true, data: '성공적으로 로그아웃 되었습니다.' });
     } catch (err) {
       next(err);
     }
