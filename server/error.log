@@ -1279,3 +1279,21 @@ TypeError: Cannot read properties of undefined (reading 'kcal')
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
     at async createHistory (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\controllers\mealhistory-controller.ts:52:30)
 
+[2022-7-16 12:13:36] GET:/auth/kakao/callback?code=lMFkhu935OxjvNP7qW8ML3PIHR8CO6PuTJGYKhvaqKwOQ3VxHI-_dLzug0lGjiVXHkqc3wo9c5oAAAGCBP8UeQ
+undefined
+
+[2022-7-16 12:15:25] GET:/auth/kakao/callback?code=w93krXX_m8F1h6JIhjOR1NbgBJlugMO-01GBLRtUmlzKgp1Z7SOHNX8nWOTKBVIFZQ_dtwo9dZoAAAGCBQC1wg
+undefined
+
+[2022-7-16 12:15:39] GET:/auth/kakao/logout
+undefined
+
+[2022-7-16 12:19:6] GET:/auth/kakao/logout
+undefined
+
+[2022-7-16 12:19:59] GET:/auth/kakao/logout
+undefined
+
+[2022-7-16 12:35:54] GET:/auth/kakao/logout
+undefined
+
