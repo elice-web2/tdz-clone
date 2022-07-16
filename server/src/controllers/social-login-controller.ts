@@ -36,9 +36,8 @@ class SocialLoginController {
       //만료 시간 24시간 * 3일
       const expiryDate = new Date(Date.now() + 60 * 60 * 1000 * 24 * 3);
 
-      res.cookie('accessToken', access_token);
-
       res
+        .cookie('accessToken', access_token)
         .cookie('token', userToken, {
           expires: expiryDate,
           httpOnly: true,
