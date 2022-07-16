@@ -9,6 +9,7 @@ import TDZInfo from '../../components/MealsCart/TDZInfo';
 import MealsCartList from '../../components/MealsCart/MealsCartList';
 import MealsCartModal from '../../components/MealsCart/MealsCartModal';
 import EmptyCart from '../../../src/components/MealsCart/EmptyCart';
+import CartIcon from '../../components/common/CartIcon';
 import { ScrollContainer } from '../../components/styles/ScrollContainer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -109,6 +110,7 @@ function MealsCart() {
 
           <S.RecordBtn onClick={popupModal}>기록 하기</S.RecordBtn>
         </S.BtnContainer>
+        <CartIcon></CartIcon>
       </ScrollContainer>
       <Navbar />
     </Container>
