@@ -1,6 +1,6 @@
 import is from '@sindresorhus/is';
 import { Request, Response, NextFunction } from 'express';
-import { userService } from '../services';
+import { userService, socialLoginService } from '../services';
 import { UserInfo, Nutrient, UserData } from '../types/user.type';
 
 //회원 가입을 위한 function
@@ -24,30 +24,6 @@ const signUp = async (req: Request, res: Response, next: NextFunction) => {
     next(error);
   }
 };
-
-// const kakaoSignup = async function (
-//   req: Request,
-//   res: Response,
-//   next: NextFunction,
-// ) {
-//   try {
-//     // application/json 설정을 프론트에서 안 하면, body가 비어 있게 됨.-> validator 활성시 지우기
-//     if (is.emptyObject(req.body)) {
-//       throw new Error(
-//         'headers의 Content-Type을 application/json으로 설정해주세요',
-//       );
-//     }
-
-//     // req (request) 에서 데이터 가져오기
-//     const email: string = req.body.email;
-
-//     const kakaoUSer = await userService.addUserWithKakao(email);
-
-//     res.status(201).json(kakaoUSer);
-//   } catch (error) {
-//     next(error);
-//   }
-// };
 
 const login = async function (req: Request, res: Response, next: NextFunction) {
   try {
@@ -82,36 +58,6 @@ const login = async function (req: Request, res: Response, next: NextFunction) {
   }
 };
 
-/*
-const kakaoLogin = async function (
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) {
-  // application/json 설정을 프론트에서 안 하면, body가 비어 있게 됨.-> validator 활성시 지우기
-  if (is.emptyObject(req.body)) {
-    throw new Error(
-      'headers의 Content-Type을 application/json으로 설정해주세요',
-    );
-  }
-
-  const email: string = req.body.email;
-
-  const userToken = await userService.getUserTokenWithKakao(email);
-
-  //만료 시간 24시간 * 3일
-  const expiryDate = new Date(Date.now() + 60 * 60 * 1000 * 24 * 3);
-
-  res
-    .cookie('token', userToken, {
-      expires: expiryDate,
-      httpOnly: true,
-      signed: true,
-    })
-    .status(200)
-    .json(userToken);
-};
-*/
 const logout = async function (
   req: Request,
   res: Response,
@@ -119,6 +65,20 @@ const logout = async function (
 ) {
   //쿠키에 있는 jwt 토큰이 들어 있는 쿠키를 비워줌
   try {
+    const cookie: string = req.headers.cookie as string;
+
+    const tokens = cookie.split('; ');
+
+    const accessToken: string = tokens[0].slice(0, 12);
+
+    // 카카오 로그아웃 (accessToken이 존재하는 경우)
+    if (accessToken === 'accessToken=') {
+      const accessTokenValue: string = tokens[0].slice(12);
+
+      await socialLoginService.kakaoLogoutService(accessTokenValue);
+      res.clearCookie('accessToken');
+    }
+
     res.clearCookie('token').json({
       success: true,
       data: '성공적으로 로그아웃 되었습니다.',

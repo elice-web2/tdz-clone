@@ -37,7 +37,7 @@ class SocialLoginController {
       const expiryDate = new Date(Date.now() + 60 * 60 * 1000 * 24 * 3);
 
       res
-        .cookie('accessToken', access_token)
+        .cookie('accessToken', access_token, { httpOnly: true })
         .cookie('token', userToken, {
           expires: expiryDate,
           httpOnly: true,
@@ -45,26 +45,6 @@ class SocialLoginController {
         })
         .status(200)
         .json(userToken);
-    } catch (err) {
-      next(err);
-    }
-  }
-
-  async kakaoLogout(req: Request, res: Response, next: NextFunction) {
-    try {
-      const cookie: string = req.headers.cookie as string;
-
-      const tokens = cookie.split('; ');
-
-      const accessTokenValue: string = tokens[0].slice(12);
-
-      const response = await socialLoginService.kakaoLogoutService(
-        accessTokenValue,
-      );
-      res
-        .clearCookie('accessToken')
-        .clearCookie('token')
-        .json({ success: true, data: '성공적으로 로그아웃 되었습니다.' });
     } catch (err) {
       next(err);
     }

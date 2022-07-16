@@ -1300,3 +1300,24 @@ undefined
 [2022-7-17 0:56:29] GET:/api/auth/kakao/callback?code=XCWZLzpH30yBd0Nac7KpCZB6vOYpxk2O8-5jv2wAy_7l2iE-HdwI3eFmj4H9q-ptEjrQ_Aopb7gAAAGCB7mBRA
 undefined
 
+[2022-7-17 1:25:15] DELETE:/api/users
+Error: 가입 내역이 없습니다. 다시 한 번 확인해 주세요.
+    at UserService.deleteUserData (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\user-service.ts:218:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async deleteUser (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\controllers\user-controller.ts:301:27)
+
+[2022-7-17 1:28:38] POST:/api/auth/login
+Error: 해당 이메일은 가입 내역이 없습니다. 다시 한 번 확인해 주세요.
+    at UserService.getUserToken (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\services\user-service.ts:78:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async login (C:\Users\user\Desktop\엘리스sw\mini-project\TDZ\TDZ\server\src\controllers\user-controller.ts:67:23)
+
+[2022-7-17 1:32:56] GET:/api/auth/kakao/callback?code=T_CfL6ap_wuslD9PA1-pmWXDPtOF8-LpT4mWZASZXCYBseA_hvkZO-U3YbeRsOF5qNSnSgo9dRsAAAGCB9r1xg
+undefined
+
+[2022-7-17 1:35:8] GET:/api/auth/kakao/callback?code=OW5qt9r9KDezAHSlXt-F3MOQvjuERuwon5xnfLXqraPp5uWP8rnIUFcK02SoHIWrfxegZgopcJ4AAAGCB90D6Q
+undefined
+
+[2022-7-17 1:42:3] GET:/api/auth/kakao/callback?code=3ga1LV8yR84tAw7D_JJ9Cw5CPrm97BFbhza9UtpgMtnc2dQY_7E6UG6ylloZlE4i54QuNwo9c5oAAAGCB-NLDQ
+undefined
+
