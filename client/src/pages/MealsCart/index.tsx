@@ -47,7 +47,11 @@ function MealsCart() {
 
   //모달창 open
   function popupModal() {
-    setOpenModal(true);
+    if (result.length === 0) {
+      alert('식단을 추가해주세요!');
+    } else {
+      setOpenModal(true);
+    }
   }
 
   return (
