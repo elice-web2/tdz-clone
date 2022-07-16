@@ -30,10 +30,22 @@ class SocialLoginController {
         );
       }
 
+      // db 있을 시 로그인 성공 및, 토큰 받아오기
+      const userToken = await userService.getUserToken({ email, password });
+
+      //만료 시간 24시간 * 3일
+      const expiryDate = new Date(Date.now() + 60 * 60 * 1000 * 24 * 3);
+
+      res.cookie('accessToken', access_token);
+
       res
-        .cookie('token', access_token, { httpOnly: true })
+        .cookie('token', userToken, {
+          expires: expiryDate,
+          httpOnly: true,
+          signed: true,
+        })
         .status(200)
-        .json(access_token);
+        .json(userToken);
     } catch (err) {
       next(err);
     }
@@ -43,9 +55,13 @@ class SocialLoginController {
     try {
       const cookie: string = req.headers.cookie as string;
 
-      const cookieValue = cookie.slice(6);
+      const tokens = cookie.split('; ');
 
-      const response = await socialLoginService.kakaoLogoutService(cookieValue);
+      const accessTokenValue: string = tokens[0].slice(12);
+
+      const response = await socialLoginService.kakaoLogoutService(
+        accessTokenValue,
+      );
 
       res.json({ success: true, data: '성공적으로 로그아웃 되었습니다.' });
     } catch (err) {
