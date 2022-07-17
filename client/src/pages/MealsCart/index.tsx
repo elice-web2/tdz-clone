@@ -1,8 +1,8 @@
 import * as S from './style';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
-import { TotalInfoType } from '../../customType/meal.type';
+import { MealData, TotalInfoType } from '../../customType/meal.type';
 import Container from '../../components/styles/Container';
 import Navbar from '../../components/common/Navbar';
 import TDZInfo from '../../components/MealsCart/TDZInfo';
@@ -16,17 +16,14 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 function MealsCart() {
   const [openModal, setOpenModal] = useState<boolean>(false);
-  const [info, setInfo] = useState<TotalInfoType>();
   const navigate = useNavigate();
   const result = useAppSelector(({ meal }) => meal.value);
 
   //장바구니 리스트 바뀔때마다 총 영양소 다시 계산
-  useEffect(() => {
-    calcTotalInfo();
-  }, [result]);
+  const info: TotalInfoType = calcTotalInfo(result);
 
   //장바구니에 담긴 음식리스트에 따라 총 영양소 계산
-  function calcTotalInfo() {
+  function calcTotalInfo(result: MealData[]) {
     let totalKcal = 0;
     let totalCarb = 0;
     let totalProtein = 0;
@@ -43,7 +40,7 @@ function MealsCart() {
       totalProtein: Math.round(totalProtein),
       totalFat: Math.round(totalFat),
     };
-    setInfo(totalNutrient);
+    return totalNutrient;
   }
 
   //모달창 open
@@ -73,12 +70,12 @@ function MealsCart() {
           </S.IconBox>
           <S.TotalKcalBox>
             <h1>총 칼로리</h1>
-            {info?.totalKcal}kcal
+            {info.totalKcal}kcal
           </S.TotalKcalBox>
           <S.TdzBox>
-            <TDZInfo nutrient={'탄수화물'} gram={info?.totalCarb} />
-            <TDZInfo nutrient={'단백질'} gram={info?.totalProtein} />
-            <TDZInfo nutrient={'지방'} gram={info?.totalFat} />
+            <TDZInfo nutrient={'탄수화물'} gram={info.totalCarb} />
+            <TDZInfo nutrient={'단백질'} gram={info.totalProtein} />
+            <TDZInfo nutrient={'지방'} gram={info.totalFat} />
           </S.TdzBox>
         </S.NutrientInfoContainer>
 
@@ -89,6 +86,7 @@ function MealsCart() {
             result.map((el) => {
               return (
                 <MealsCartList
+                  key={el._id}
                   id={el._id}
                   name={el.name}
                   quantity={el.quantity}
