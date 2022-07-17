@@ -16,7 +16,6 @@ function Signin() {
     event.preventDefault();
     try {
       await dispatch(postLoginAsync({ email: email, password: password }));
-      await dispatch(getUsersInfoAsync());
       localStorage.setItem('login', 'true');
       navigate('/home');
     } catch (error: any) {

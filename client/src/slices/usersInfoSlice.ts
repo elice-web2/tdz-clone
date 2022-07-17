@@ -139,6 +139,8 @@ export const postLoginAsync = createAsyncThunk(
   'usersInfo/postLoginData',
   async (loginInfo: postLoginSignup) => {
     await postLoginData(loginInfo);
+    const usersInfo = await getUsersInfoData();
+    return usersInfo?.data;
   },
 );
 export const delUserAsync = createAsyncThunk(
@@ -191,14 +193,15 @@ export const UsersInfoSlice = createSlice({
       .addCase(postSignUpAsync.fulfilled, (state, action) => {
         state.value = { ...state.value, ...action.payload };
       })
-      .addCase(postLoginAsync.fulfilled, (state) => {
+      .addCase(postLoginAsync.fulfilled, (state, action) => {
+        state.value = { ...state.value, ...action.payload };
         state.value.isLogin = true;
       })
       .addCase(delUserAsync.fulfilled, (state, action) => {
         state.value.isLogin = false;
       })
       .addCase(getLogOutAsync.fulfilled, (state) => {
-        state.value.isLogin = false;
+        state.value = { ...initialState.value };
       })
       .addCase(getUsersInfoAsync.fulfilled, (state, action) => {
         state.value = { ...state.value, ...action.payload };
