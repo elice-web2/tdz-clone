@@ -9,6 +9,7 @@ const getRandomNickname = () => {
 
   let noun;
   if (type === 1) noun = animals[getRandomInteger(animals.length)];
+  else noun = plants[getRandomInteger(plants.length)];
 
   const adjective = adjectives[getRandomInteger(adjectives.length)];
 

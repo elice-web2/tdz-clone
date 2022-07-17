@@ -4,3 +4,4 @@ export * from './meal-router';
 export * from './favorite-router';
 export * from './calendar-router';
 export * from './social-login-router';
+export * from './chart-router';
