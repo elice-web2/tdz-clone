@@ -11,7 +11,8 @@ import Container from '../../styles/Container';
 import { useState } from 'react';
 
 function Navbar() {
-  const currentURL = useLocation().pathname;
+  const currentURL = useLocation().pathname.split('/')[1];
+  // console.log(currentURL);
   const [selected, setSelected] = useState(currentURL);
   const navigate = useNavigate();
   return (
@@ -21,7 +22,7 @@ function Navbar() {
           onClick={() => {
             navigate('/home');
           }}
-          isSelected={selected === '/home'}
+          isSelected={selected === 'home'}
         >
           <div className="icon">
             <FontAwesomeIcon size="lg" icon={faHouseChimney} />
@@ -33,7 +34,7 @@ function Navbar() {
           onClick={() => {
             navigate('/meals');
           }}
-          isSelected={selected === '/meals'}
+          isSelected={selected === 'meals'}
         >
           <div className="icon">
             <FontAwesomeIcon size="lg" icon={faUtensils} />
@@ -44,7 +45,7 @@ function Navbar() {
           onClick={() => {
             navigate('/chart');
           }}
-          isSelected={selected === '/chart'}
+          isSelected={selected === 'chart'}
         >
           <div className="icon">
             <FontAwesomeIcon size="lg" icon={faChartColumn} />
@@ -56,7 +57,7 @@ function Navbar() {
           onClick={() => {
             navigate('/mypage');
           }}
-          isSelected={selected === '/mypage'}
+          isSelected={selected === 'mypage'}
         >
           <div className="icon">
             <FontAwesomeIcon size="lg" icon={faUser} />
