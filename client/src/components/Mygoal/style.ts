@@ -22,7 +22,7 @@ export const Button = styled.input`
   height: 30px;
   margin-top: 5px;
 
-  background-color: black;
+  background-color: ${({ theme }) => theme.mainColor.darker};
   border-radius: 8px;
   border-style: none;
 
